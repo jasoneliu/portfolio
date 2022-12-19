@@ -2,5 +2,21 @@
 
 body {
   background-color: $crust;
+  color: $text;
   font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $text;
+  margin: 0;
+}
+
+p {
+  color: $subtext1;
+  margin: 0;
 }

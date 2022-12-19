@@ -17,7 +17,7 @@
 <style lang="scss">
   .tag {
     border: 1px solid;
-    border-radius: 1rem;
-    padding: 0.5rem;
+    border-radius: 2rem;
+    padding: 0.5rem 0.7rem 0.3rem;
   }
 </style>
