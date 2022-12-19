@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+  import Tag from '$lib/components/Tag.svelte';
+</script>
+
+<Tag text="Hello world!" color="lavender" />
