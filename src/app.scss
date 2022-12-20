@@ -1,4 +1,5 @@
 @import '$lib/colors/colors.module.scss';
+@import 'static/fonts/fonts.scss';
 
 body {
   background-color: $crust;
@@ -19,4 +20,8 @@ h6 {
 p {
   color: $subtext1;
   margin: 0;
+}
+
+.mono {
+  font-family: Iosevka;
 }
