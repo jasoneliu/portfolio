@@ -25,11 +25,19 @@ const google: Project = {
 
 const arcxp: Project = {
   name: 'Arc XP',
-  description: 'The Washington Post’s cloud-native digital experience platform.',
+  description:
+    'The Washington Post’s cloud-native digital experience platform.',
   position: 'Software Engineering Internship',
   date: 'Summer 2022',
   image: arcXpImage,
-  tags: [tags.typescript, tags.react, tags.nextjs, tags.storybook, tags.aws, tags.jest]
+  tags: [
+    tags.typescript,
+    tags.react,
+    tags.nextjs,
+    tags.storybook,
+    tags.aws,
+    tags.jest
+  ]
 };
 
 const bitcamp: Project = {
