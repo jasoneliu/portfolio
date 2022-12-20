@@ -3,11 +3,16 @@
 
   export let text: string = '';
   export let color: Color = 'text';
+
+  const backgroundColorAlpha = 0.2;
+  const backgroundColorAlphaHex = Math.round(
+    backgroundColorAlpha * 255
+  ).toString(16);
 </script>
 
 <span
   class="tag"
-  style:background-color={`${colors[color]}33`}
+  style:background-color={`${colors[color]}${backgroundColorAlphaHex}`}
   style:border-color={colors[color]}
   style:color={colors[color]}
 >
