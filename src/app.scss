@@ -17,11 +17,29 @@ h6 {
   margin: 0;
 }
 
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
 p {
   color: $subtext1;
+  font-size: 1rem;
   margin: 0;
 }
 
 .mono {
+  color: $lavender;
   font-family: Iosevka;
 }
