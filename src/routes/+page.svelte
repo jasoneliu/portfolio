@@ -1,13 +1,17 @@
 <script lang="ts">
+  import Navbar from '$lib/components/Navbar.svelte';
   import ProjectList from '$lib/components/ProjectList.svelte';
   import { projects } from '$lib/projects';
+
+  const navbarItems = ['home', 'projects'];
 </script>
 
 <div class="page">
-  <section class="section intro">
-    <h1 class="intro__header">Jason Liu</h1>
-    <h4 class="mono">Software Engineer, Full Stack Developer</h4>
-    <div class="intro__info">
+  <Navbar items={navbarItems} />
+  <section class="section home" id="home">
+    <h1 class="home__name">Jason Liu</h1>
+    <h4 class="home__headline mono">Software Engineer, Full Stack Developer</h4>
+    <div class="home__about">
       <p>
         Hello! I’m a junior studying Computer Science and Mathematics at the
         University of Maryland.
@@ -15,7 +19,7 @@
       <p>I work primarily with Node.js, TypeScript, React, and AWS.</p>
     </div>
   </section>
-  <section class="projects">
+  <section class="projects" id="projects">
     <h2>Projects</h2>
     <ProjectList {projects} />
   </section>
@@ -37,18 +41,18 @@
     }
   }
 
-  .intro {
+  .home {
     display: flex;
     flex-flow: column nowrap;
     height: 100vh;
     justify-content: center;
     text-align: center;
 
-    &__header {
+    &__name {
       margin-bottom: -1rem;
     }
 
-    &__info {
+    &__about {
       display: flex;
       flex-flow: column nowrap;
       gap: 0.5rem;
