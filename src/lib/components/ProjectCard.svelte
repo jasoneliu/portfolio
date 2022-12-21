@@ -48,7 +48,7 @@
     }
 
     &__image {
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
       border-radius: 0.5rem;
       object-fit: cover;
       width: 100%;
