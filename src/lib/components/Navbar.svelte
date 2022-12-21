@@ -7,8 +7,8 @@
     {#each items as item, itemIndex}
       <li class="navbar__item">
         <a class="navbar__link" href={`#${item}`}>
-          <div class="navbar__number mono">{`0${itemIndex + 1}`}</div>
-          <div class="navbar__text">{item}</div>
+          <span class="navbar__number mono">{`0${itemIndex + 1}`}</span>
+          <span class="navbar__text">{item}</span>
         </a>
       </li>
     {/each}
@@ -39,7 +39,8 @@
     }
 
     &__link {
-      display: block;
+      display: flex;
+      flex-flow: column nowrap;
       padding: 0 0.75rem;
       text-decoration: none;
     }
