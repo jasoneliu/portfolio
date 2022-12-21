@@ -1,5 +1,5 @@
-@import '$lib/colors/colors.module.scss';
-@import 'static/fonts/fonts.scss';
+@use 'src/styles/_fonts';
+@import 'src/styles/_variables';
 
 html {
   scroll-behavior: smooth;

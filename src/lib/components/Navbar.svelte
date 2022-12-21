@@ -16,8 +16,6 @@
 </nav>
 
 <style lang="scss">
-  @import '$lib/colors/colors.module.scss';
-
   .navbar {
     display: flex;
     justify-content: center;
