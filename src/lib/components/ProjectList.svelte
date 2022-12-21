@@ -2,7 +2,7 @@
   import ProjectCard from '$lib/components/ProjectCard.svelte';
   import type { Project } from '$lib/projects';
 
-  export let projects: Project[] = [];
+  export let projects: Project[];
 </script>
 
 <div class="project-list">

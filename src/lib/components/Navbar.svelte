@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let items: string[] = [];
+  export let items: string[];
 </script>
 
 <nav class="navbar">

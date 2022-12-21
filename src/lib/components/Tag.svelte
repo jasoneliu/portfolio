@@ -1,7 +1,7 @@
 <script lang="ts">
   import { colors, type Color } from '$lib/colors';
 
-  export let text: string = '';
+  export let text: string;
   export let color: Color = 'text';
 
   const backgroundColorAlpha = 0.2;
