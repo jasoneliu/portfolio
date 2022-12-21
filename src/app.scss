@@ -2,6 +2,7 @@
 @import 'static/fonts/fonts.scss';
 
 html {
+  scroll-behavior: smooth;
   scrollbar-color: $overlay2 $crust;
   scrollbar-width: auto;
 }
