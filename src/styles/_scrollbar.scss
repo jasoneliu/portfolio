@@ -1,0 +1,21 @@
+@use 'src/styles/_variables' as *;
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: $overlay2 $crust;
+  scrollbar-width: auto;
+}
+
+body {
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $overlay2;
+    border-radius: 1rem;
+    border: 0.2rem solid $crust;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $crust;
+  }
+}

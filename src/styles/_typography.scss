@@ -1,0 +1,42 @@
+@use 'src/styles/_variables' as *;
+
+body {
+  color: $text;
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $text;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  color: $subtext1;
+  font-size: 1rem;
+}
+
+.mono {
+  color: $lavender;
+  font-family: Iosevka;
+}

@@ -1,62 +1,9 @@
 @use 'src/styles/_fonts';
 @use 'src/styles/_reset';
-@import 'src/styles/_variables';
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-color: $overlay2 $crust;
-  scrollbar-width: auto;
-}
+@use 'src/styles/_scrollbar';
+@use 'src/styles/_typography';
+@use 'src/styles/_variables' as *;
 
 body {
   background-color: $crust;
-  color: $text;
-  font-family: sans-serif;
-
-  &::-webkit-scrollbar {
-    width: 0.7rem;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: $overlay2;
-    border-radius: 1rem;
-    border: 0.2rem solid $crust;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: $crust;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: $text;
-}
-
-h1 {
-  font-size: 6rem;
-}
-
-h2 {
-  font-size: 3rem;
-}
-
-h3 {
-  font-size: 2rem;
-}
-
-h4 {
-  font-size: 1.5rem;
-}
-
-p {
-  color: $subtext1;
-  font-size: 1rem;
-}
-
-.mono {
-  color: $lavender;
-  font-family: Iosevka;
 }

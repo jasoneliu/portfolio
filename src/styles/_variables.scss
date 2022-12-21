@@ -1,2 +1,2 @@
-@use 'src/styles/_breakpoints';
-@import 'src/lib/colors/_colors.module';
+@forward 'src/lib/colors/_colors.module';
+@forward 'src/styles/_breakpoints';
