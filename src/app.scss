@@ -1,10 +1,28 @@
 @import '$lib/colors/colors.module.scss';
 @import 'static/fonts/fonts.scss';
 
+html {
+  scrollbar-color: $overlay2 $crust;
+  scrollbar-width: auto;
+}
+
 body {
   background-color: $crust;
   color: $text;
   font-family: sans-serif;
+  margin: 0;
+
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $overlay2;
+    border-radius: 1rem;
+    border: 0.2rem solid $crust;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $crust;
+  }
 }
 
 h1,
