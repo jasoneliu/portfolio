@@ -33,8 +33,6 @@
   }
 
   section {
-    padding: 0 2rem;
-
     h2 {
       margin-bottom: 1rem;
       text-align: center;

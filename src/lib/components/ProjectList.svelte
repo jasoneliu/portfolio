@@ -15,6 +15,6 @@
   .project-list {
     display: flex;
     flex-flow: column nowrap;
-    gap: 1rem;
+    align-items: center;
   }
 </style>
