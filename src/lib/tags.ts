@@ -7,7 +7,7 @@ export interface Tag {
 
 const angular: Tag = {
   text: 'Angular',
-  color: 'blue'
+  color: 'red'
 };
 
 const aws: Tag = {
@@ -62,7 +62,7 @@ const reactnative: Tag = {
 
 const storybook: Tag = {
   text: 'Storybook',
-  color: 'blue'
+  color: 'pink'
 };
 
 const typescript: Tag = {

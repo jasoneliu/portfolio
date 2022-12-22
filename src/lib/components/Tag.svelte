@@ -4,7 +4,7 @@
   export let text: string;
   export let color: Color = 'text';
 
-  const backgroundColorAlpha = 0.2;
+  const backgroundColorAlpha = 0.1;
   const backgroundColorAlphaHex = Math.round(
     backgroundColorAlpha * 255
   ).toString(16);
