@@ -7,72 +7,72 @@ export interface Tag {
 
 const angular: Tag = {
   text: 'Angular',
-  color: 'red'
+  color: 'red',
 };
 
 const aws: Tag = {
   text: 'AWS',
-  color: 'peach'
+  color: 'peach',
 };
 
 const expo: Tag = {
   text: 'Expo',
-  color: 'text'
+  color: 'text',
 };
 
 const jasmine: Tag = {
   text: 'Jasmine',
-  color: 'mauve'
+  color: 'mauve',
 };
 
 const javascript: Tag = {
   text: 'JavaScript',
-  color: 'yellow'
+  color: 'yellow',
 };
 
 const jest: Tag = {
   text: 'Jest',
-  color: 'red'
+  color: 'red',
 };
 
 const nextjs: Tag = {
   text: 'Next.js',
-  color: 'text'
+  color: 'text',
 };
 
 const ngrx: Tag = {
   text: 'NgRx',
-  color: 'mauve'
+  color: 'mauve',
 };
 
 const nuxt: Tag = {
   text: 'Nuxt',
-  color: 'green'
+  color: 'green',
 };
 
 const react: Tag = {
   text: 'React',
-  color: 'sky'
+  color: 'sky',
 };
 
 const reactnative: Tag = {
   text: 'React Native',
-  color: 'sky'
+  color: 'sky',
 };
 
 const storybook: Tag = {
   text: 'Storybook',
-  color: 'pink'
+  color: 'pink',
 };
 
 const typescript: Tag = {
   text: 'TypeScript',
-  color: 'blue'
+  color: 'blue',
 };
 
 const vue: Tag = {
   text: 'Vue',
-  color: 'green'
+  color: 'green',
 };
 
 export const tags = {
@@ -89,5 +89,5 @@ export const tags = {
   reactnative,
   storybook,
   typescript,
-  vue
+  vue,
 };

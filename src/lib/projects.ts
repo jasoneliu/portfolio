@@ -20,7 +20,7 @@ const google: Project = {
   position: 'Software Engineering Internship',
   date: 'Fall 2022',
   image: agentAssistImage,
-  tags: [tags.typescript, tags.angular, tags.ngrx, tags.jasmine]
+  tags: [tags.typescript, tags.angular, tags.ngrx, tags.jasmine],
 };
 
 const arcxp: Project = {
@@ -36,8 +36,8 @@ const arcxp: Project = {
     tags.nextjs,
     tags.storybook,
     tags.aws,
-    tags.jest
-  ]
+    tags.jest,
+  ],
 };
 
 const bitcamp: Project = {
@@ -46,7 +46,7 @@ const bitcamp: Project = {
   position: 'Tech Co-director',
   date: '',
   image: bitcampImage,
-  tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws]
+  tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws],
 };
 
 const technica: Project = {
@@ -55,7 +55,7 @@ const technica: Project = {
   position: 'Tech Organizer',
   date: '',
   image: technicaImage,
-  tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws]
+  tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws],
 };
 
 export const projects: Project[] = [google, arcxp, bitcamp, technica];

@@ -8,14 +8,14 @@ const config = {
   preprocess: [
     sveltePreprocess({
       scss: {
-        prependData: `@use 'src/styles/_variables.scss' as *;`
-      }
-    })
+        prependData: `@use 'src/styles/_variables.scss' as *;`,
+      },
+    }),
   ],
 
   kit: {
-    adapter: adapter()
-  }
+    adapter: adapter(),
+  },
 };
 
 export default config;
