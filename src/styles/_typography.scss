@@ -4,6 +4,7 @@
 body {
   color: $text;
   font-family: Jost, sans-serif;
+  font-size: 1.125rem;
 }
 
 h1,
@@ -14,6 +15,7 @@ h5,
 h6 {
   color: $text;
   font-weight: bold;
+  line-height: 1.2;
 }
 
 h1 {
@@ -42,7 +44,7 @@ h4 {
 
 p {
   color: $subtext1;
-  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .mono {

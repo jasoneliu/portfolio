@@ -51,6 +51,10 @@
     padding: 0 2rem;
     text-align: center;
 
+    &__name {
+      margin-bottom: 0.5rem;
+    }
+
     &__headline {
       column-gap: 0.75rem;
       display: flex;
