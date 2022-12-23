@@ -46,10 +46,6 @@
     justify-content: center;
     text-align: center;
 
-    &__name {
-      margin-bottom: -1rem;
-    }
-
     &__about {
       display: flex;
       flex-flow: column nowrap;
