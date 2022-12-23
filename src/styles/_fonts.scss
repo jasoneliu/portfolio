@@ -1,3 +1,17 @@
+@use '@fontsource/jost/scss/mixins' as Jost;
+
+@include Jost.fontFace(
+  $weight: 400,
+  $style: normal,
+  $fontDir: '@fontsource/jost/files'
+);
+
+@include Jost.fontFace(
+  $weight: 700,
+  $style: normal,
+  $fontDir: '@fontsource/jost/files'
+);
+
 @font-face {
   font-family: 'Iosevka';
   font-style: normal;
