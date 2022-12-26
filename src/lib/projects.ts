@@ -44,7 +44,7 @@ const bitcamp: Project = {
   name: 'Bitcamp',
   description: 'The University of Maryland’s premier hackathon.',
   position: 'Tech Co-director',
-  date: '',
+  date: 'Fall 2021 – Present',
   image: bitcampImage,
   tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws],
 };
@@ -53,7 +53,7 @@ const technica: Project = {
   name: 'Technica',
   description: 'The world’s largest hackathon for underrepresented genders.',
   position: 'Tech Organizer',
-  date: '',
+  date: 'Spring – Fall 2022',
   image: technicaImage,
   tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws],
 };
