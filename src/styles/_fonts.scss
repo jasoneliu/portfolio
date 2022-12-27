@@ -1,15 +1,15 @@
-@use '@fontsource/jost/scss/mixins' as Jost;
+@use '@fontsource/figtree/scss/mixins' as Figtree;
 
-@include Jost.fontFace(
+@include Figtree.fontFace(
   $weight: 400,
   $style: normal,
-  $fontDir: '@fontsource/jost/files'
+  $fontDir: '@fontsource/figtree/files'
 );
 
-@include Jost.fontFace(
+@include Figtree.fontFace(
   $weight: 700,
   $style: normal,
-  $fontDir: '@fontsource/jost/files'
+  $fontDir: '@fontsource/figtree/files'
 );
 
 @font-face {
