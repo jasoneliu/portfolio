@@ -23,7 +23,6 @@
   .tag {
     border: 1px solid;
     border-radius: 2rem;
-    font-size: 1rem;
     padding: 0.25rem 0.7rem 0.3rem;
   }
 </style>

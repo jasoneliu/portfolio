@@ -33,7 +33,7 @@
 
     &__item {
       list-style: none;
-      transition: opacity 500ms;
+      transition: opacity 400ms;
     }
 
     &__link {

@@ -10,8 +10,9 @@ export interface Project {
   description: string;
   position: string;
   date: string;
-  image: string;
   tags: Tag[];
+  link: string;
+  image: string;
 }
 
 const google: Project = {
@@ -19,8 +20,9 @@ const google: Project = {
   description: 'Deliver AI-powered conversations with human agents.',
   position: 'Software Engineering Internship',
   date: 'Fall 2022',
-  image: agentAssistImage,
   tags: [tags.typescript, tags.angular, tags.ngrx, tags.jasmine],
+  link: 'https://cloud.google.com/agent-assist',
+  image: agentAssistImage,
 };
 
 const arcxp: Project = {
@@ -29,7 +31,6 @@ const arcxp: Project = {
     'The Washington Post’s cloud-native digital experience platform.',
   position: 'Software Engineering Internship',
   date: 'Summer 2022',
-  image: arcXpImage,
   tags: [
     tags.typescript,
     tags.react,
@@ -38,6 +39,8 @@ const arcxp: Project = {
     tags.aws,
     tags.jest,
   ],
+  link: 'https://www.arcxp.com/',
+  image: arcXpImage,
 };
 
 const bitcamp: Project = {
@@ -45,8 +48,9 @@ const bitcamp: Project = {
   description: 'The University of Maryland’s premier hackathon.',
   position: 'Tech Co-director',
   date: 'Fall 2021 – Present',
-  image: bitcampImage,
   tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws],
+  link: 'https://bit.camp/',
+  image: bitcampImage,
 };
 
 const technica: Project = {
@@ -54,8 +58,9 @@ const technica: Project = {
   description: 'The world’s largest hackathon for underrepresented genders.',
   position: 'Tech Organizer',
   date: 'Spring – Fall 2022',
-  image: technicaImage,
   tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws],
+  link: 'https://www.gotechnica.org/',
+  image: technicaImage,
 };
 
 export const projects: Project[] = [google, arcxp, bitcamp, technica];
