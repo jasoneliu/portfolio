@@ -1,7 +1,7 @@
 <script lang="ts">
   import Navbar from '$lib/components/Navbar.svelte';
-  import HomeSection from '$lib/components/HomeSection.svelte';
-  import ProjectsSection from '$lib/components/ProjectsSection.svelte';
+  import Home from '$lib/sections/Home.svelte';
+  import Projects from '$lib/sections/Projects.svelte';
 </script>
 
 <svelte:head>
@@ -23,8 +23,8 @@
 
 <div class="page">
   <Navbar />
-  <HomeSection />
-  <ProjectsSection />
+  <Home />
+  <Projects />
 </div>
 
 <style lang="scss">
