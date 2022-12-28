@@ -2,8 +2,6 @@
   import Navbar from '$lib/components/Navbar.svelte';
   import HomeSection from '$lib/components/HomeSection.svelte';
   import ProjectsSection from '$lib/components/ProjectsSection.svelte';
-
-  const navbarItems = ['home', 'projects'];
 </script>
 
 <svelte:head>
@@ -24,7 +22,7 @@
 </svelte:head>
 
 <div class="page">
-  <Navbar items={navbarItems} />
+  <Navbar />
   <HomeSection />
   <ProjectsSection />
 </div>

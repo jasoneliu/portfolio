@@ -1,24 +1,36 @@
 <script lang="ts">
-  export let items: string[];
+  const items = ['Home', 'Projects'];
 </script>
 
 <nav class="navbar">
   <ul class="navbar__list">
-    {#each items as item, itemIndex}
+    {#each items as item}
       <li class="navbar__item">
-        <a class="navbar__link" href={`#${item}`}>
-          <span class="navbar__number mono">{`0${itemIndex + 1}`}</span>
+        <a class="navbar__link" href={`#${item.toLowerCase()}`}>
           <span class="navbar__text">{item}</span>
         </a>
       </li>
     {/each}
+    <li class="navbar__item">
+      <a
+        class="navbar__link"
+        href="https://drive.google.com/file/d/1839WZa3DpYe1a5eQLdNsCkZ9U_Qb7Xe9/view?usp=sharing"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <span class="navbar__text">Resume</span>
+      </a>
+    </li>
   </ul>
 </nav>
 
 <style lang="scss">
   .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
 
     &__list {
       display: flex;
@@ -41,11 +53,6 @@
       flex-flow: column nowrap;
       padding: 0 0.75rem;
       text-decoration: none;
-    }
-
-    &__number {
-      font-size: 0.875rem;
-      text-align: right;
     }
 
     &__text {
