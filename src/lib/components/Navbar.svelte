@@ -27,10 +27,10 @@
 <style lang="scss">
   .navbar {
     display: flex;
-    justify-content: flex-end;
-    padding: 1rem;
     position: fixed;
+    justify-content: flex-end;
     width: 100%;
+    padding: 1rem;
 
     &__list {
       display: flex;
@@ -44,8 +44,8 @@
     }
 
     &__item {
-      list-style: none;
       transition: opacity 400ms;
+      list-style: none;
     }
 
     &__link {

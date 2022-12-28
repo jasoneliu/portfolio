@@ -20,11 +20,12 @@
 
 <style lang="scss">
   .home {
-    align-items: center;
     display: flex;
     flex-flow: column nowrap;
-    height: 100vh;
+    align-items: center;
     justify-content: center;
+
+    height: 100vh;
     padding: 0 2rem;
     text-align: center;
 
@@ -33,10 +34,10 @@
     }
 
     &__headline {
-      column-gap: 0.75rem;
       display: flex;
       flex-flow: row wrap;
       justify-content: center;
+      column-gap: 0.75rem;
     }
 
     &__about {
@@ -48,17 +49,17 @@
     }
 
     &__scroll {
-      align-items: center;
-      color: $subtext1;
       display: flex;
+      align-items: center;
       gap: 0.5rem;
       overflow: hidden;
+      color: $subtext1;
     }
 
     &__scroll-icon {
-      animation: scrollIconLoop 3s ease infinite;
-      height: 1rem;
       width: 1rem;
+      height: 1rem;
+      animation: scrollIconLoop 3s ease infinite;
     }
 
     &__scroll-text {

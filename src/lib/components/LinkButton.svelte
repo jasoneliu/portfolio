@@ -23,25 +23,28 @@
 
 <style lang="scss">
   .link-button {
+    display: flex;
     align-items: center;
+    justify-content: center;
+
+    transition: opacity 300ms;
+
+    width: fit-content;
     border: 1px solid;
     border-radius: 2rem;
-    display: flex;
-    justify-content: center;
     padding: 0.5rem 0.7rem;
+
     text-decoration: none;
-    transition: opacity 300ms;
-    width: fit-content;
 
     &:hover {
       opacity: 0.5;
     }
 
     &__icon {
-      height: 2rem;
       margin: -1rem 0;
       margin-right: -0.25rem;
       width: 2rem;
+      height: 2rem;
     }
   }
 </style>

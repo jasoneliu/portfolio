@@ -38,25 +38,26 @@
     }
 
     &__card {
-      column-gap: 3rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;
-      max-width: 100rem;
-      padding: 2rem 2rem;
+      grid-template-columns: 1fr 1fr;
       row-gap: 1.5rem;
+      column-gap: 3rem;
+
+      max-width: 100rem;
+      padding: 2rem;
 
       @media (max-width: $breakpoint-md) {
-        grid-template-columns: 1fr;
         grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
       }
     }
 
     &__image {
-      aspect-ratio: 4 / 3;
-      border-radius: 0.5rem;
-      object-fit: cover;
       width: 100%;
+      border-radius: 0.5rem;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
     }
 
     &__info {
@@ -66,9 +67,9 @@
     }
 
     &__details {
+      margin-bottom: -0.25rem;
       color: $subtext1;
       font-size: 0.875rem;
-      margin-bottom: -0.25rem;
     }
 
     &__name {
