@@ -1,15 +1,20 @@
+<script lang="ts">
+  import IoMdArrowRoundDown from 'svelte-icons/io/IoMdArrowRoundDown.svelte';
+</script>
+
 <section class="home" id="home">
   <h1 class="home__name">Jason Liu</h1>
-  <h4 class="home__headline mono">
-    <span>Software Engineer,</span>
-    <span>Full Stack Developer</span>
-  </h4>
   <div class="home__about">
+    <p>full-stack web developer</p>
     <p>
-      Hello! I’m a junior studying Computer Science and Mathematics at the
-      University of Maryland.
+      studying computer science and mathematics and the University of Maryland
     </p>
-    <p>I work primarily with Node.js, TypeScript, React, and AWS.</p>
+  </div>
+  <div class="home__scroll">
+    <div class="home__scroll-icon">
+      <IoMdArrowRoundDown />
+    </div>
+    <span class="home__scroll-text">SCROLL</span>
   </div>
 </section>
 
@@ -40,6 +45,42 @@
       gap: 0.5rem;
       margin-top: 3rem;
       max-width: 30rem;
+    }
+
+    &__scroll {
+      align-items: center;
+      color: $subtext1;
+      display: flex;
+      gap: 0.5rem;
+      overflow: hidden;
+    }
+
+    &__scroll-icon {
+      animation: scrollIconLoop 3s ease infinite;
+      height: 1rem;
+      width: 1rem;
+    }
+
+    &__scroll-text {
+      letter-spacing: 0.1rem;
+    }
+  }
+
+  @keyframes scrollIconLoop {
+    0% {
+      transform: translateY(-120%);
+    }
+
+    30% {
+      transform: translateY(0%);
+    }
+
+    70% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(120%);
     }
   }
 </style>
