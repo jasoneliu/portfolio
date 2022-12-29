@@ -29,6 +29,7 @@
     display: flex;
     position: fixed;
     justify-content: flex-end;
+    z-index: 10;
     width: 100%;
     padding: 1rem;
 
