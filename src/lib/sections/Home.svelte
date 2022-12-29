@@ -62,7 +62,7 @@
 
     &__name {
       text-align: left;
-      text-shadow: 0px 0.25rem 0.75rem rgba($crust, 0.3);
+      text-shadow: 0px 0.25rem 0.75rem rgba($base, 0.3);
     }
 
     &__about {

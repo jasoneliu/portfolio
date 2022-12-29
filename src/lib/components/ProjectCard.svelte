@@ -12,7 +12,7 @@
       <img class="project-card__image" src={project.image} alt={project.name} />
     </picture>
     <div class="project-card__info">
-      <span class="project-card__details">{project.position}</span>
+      <span class="project-card__position">{project.position}</span>
       <h3 class="project-card__name">{project.name}</h3>
       <p class="project-card__description">{project.description}</p>
       <div class="project-card__tags">
@@ -66,9 +66,9 @@
       gap: 1rem;
     }
 
-    &__details {
+    &__position {
       margin-bottom: -0.25rem;
-      color: $subtext1;
+      color: $subtext0;
       font-size: 0.875rem;
     }
 
