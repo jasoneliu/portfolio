@@ -1,27 +1,127 @@
 <script lang="ts">
-  const items = ['Home', 'Projects'];
+  import { onMount } from 'svelte';
+  import { fly } from 'svelte/transition';
+  import { colors } from '$lib/colors';
+  import { Hamburger } from 'svelte-hamburgers';
+
+  // Navbar items
+  const navItems: string[] = ['Home', 'Projects', 'Resume'];
+  const resumeLink =
+    'https://drive.google.com/file/d/1839WZa3DpYe1a5eQLdNsCkZ9U_Qb7Xe9/view?usp=sharing';
+  let hoveredNavItem: string | null = null;
+
+  // Screen width and mobile layout
+  let innerWidth: number;
+  let mobileLayout: boolean = false;
+  $: mobileLayout = innerWidth <= 768; // $breakpoint-md
+
+  // Hamburger menu for mobile layout
+  let hamburgerOpen: boolean = false;
+  let hamburgerAnimating: boolean = false;
+  const hamburgerAnimationDurationMs: number = 750;
+
+  // Show navbar items to trigger svelte transition in
+  let showNavbarItems: boolean = true;
+  $: showNavbarItems =
+    animationReady && (!mobileLayout || hamburgerOpen || hamburgerAnimating);
+
+  // Close hamburger menu after switching to desktop layout
+  $: if (!mobileLayout) {
+    closeHamburger();
+  }
+
+  /** Update which navbar item is hovered. */
+  function setHoveredNavItem(navItem: string | null) {
+    hoveredNavItem = navItem;
+  }
+
+  /** Close hamburger menu. */
+  function closeHamburger() {
+    hamburgerOpen = false;
+    hoveredNavItem = null;
+  }
+
+  /** Disable clicking on hamburger menu icon while it's animating. */
+  function animateHamburger() {
+    hamburgerAnimating = true;
+    setTimeout(() => {
+      hamburgerAnimating = false;
+    }, hamburgerAnimationDurationMs);
+  }
+
+  // Run svelte transitions on first render
+  let animationReady: boolean = false;
+  onMount(() => {
+    animationReady = true;
+  });
 </script>
 
+<!-- Bind screen width -->
+<svelte:window bind:innerWidth />
+
+<!-- Disable scrolling when hamburger menu is open -->
+<svelte:head>
+  {#if hamburgerOpen}
+    <style lang="scss">
+      body {
+        overflow: hidden;
+      }
+    </style>
+  {/if}
+</svelte:head>
+
 <nav class="navbar">
-  <ul class="navbar__list">
-    {#each items as item}
-      <li class="navbar__item">
-        <a class="navbar__link" href={`#${item.toLowerCase()}`}>
-          <span class="navbar__text">{item}</span>
-        </a>
-      </li>
-    {/each}
-    <li class="navbar__item">
-      <a
-        class="navbar__link"
-        href="https://drive.google.com/file/d/1839WZa3DpYe1a5eQLdNsCkZ9U_Qb7Xe9/view?usp=sharing"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <span class="navbar__text">Resume</span>
-      </a>
-    </li>
-  </ul>
+  <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
+    <Hamburger
+      bind:open={hamburgerOpen}
+      type="spin"
+      --color={colors.text}
+      --padding="0.5rem"
+      --layer-width="1.5rem"
+      --layer-height="0.15rem"
+      --layer-spacing="0.3rem"
+      on:click={animateHamburger}
+    />
+  </div>
+  <div
+    class="navbar__wrapper"
+    class:open={hamburgerOpen}
+    style:transition-duration={`${hamburgerAnimationDurationMs}ms`}
+  >
+    {#if showNavbarItems}
+      <ul class="navbar__list">
+        {#each navItems as item, itemIndex}
+          <li class="navbar__item">
+            <a
+              class="navbar__link"
+              href={item === 'Resume' ? resumeLink : `#${item.toLowerCase()}`}
+              rel="noreferrer"
+              target={item === 'Resume' ? '_blank' : null}
+              on:click={closeHamburger}
+            >
+              <span
+                class="navbar__text"
+                class:hovered={hoveredNavItem && hoveredNavItem !== item}
+                on:mouseenter={() => setHoveredNavItem(item)}
+                on:mouseleave={() => setHoveredNavItem(null)}
+                in:fly={mobileLayout
+                  ? {
+                      x: -200,
+                      duration: 500,
+                      delay: 200 + 50 * itemIndex,
+                    }
+                  : {
+                      duration: 0,
+                    }}
+              >
+                {item}
+              </span>
+            </a>
+          </li>
+        {/each}
+      </ul>
+    {/if}
+  </div>
 </nav>
 
 <style lang="scss">
@@ -30,34 +130,88 @@
     position: fixed;
     justify-content: flex-end;
     z-index: 10;
+    margin: 1rem 0;
     width: 100%;
     padding: 1rem;
+
+    &__hamburger {
+      display: none;
+    }
 
     &__list {
       display: flex;
       flex-flow: row nowrap;
-      margin: 1rem 0;
-      padding: 0;
-
-      &:hover > .navbar__item:not(:hover) {
-        opacity: 0.5;
-      }
     }
 
     &__item {
-      transition: opacity 400ms;
       list-style: none;
     }
 
     &__link {
-      display: flex;
-      flex-flow: column nowrap;
-      padding: 0 0.75rem;
       text-decoration: none;
     }
 
     &__text {
+      display: inline-block;
+      transition: opacity 0.4s;
+      padding: 0.25rem 0.75rem;
       color: $text;
+
+      &.hovered {
+        opacity: 0.4;
+      }
+    }
+
+    @media screen and (max-width: $breakpoint-md) {
+      &__hamburger {
+        display: block;
+        z-index: 10;
+        margin-top: -0.25rem;
+        margin-right: 1rem;
+        width: 2rem;
+        height: 2rem;
+
+        &.disabled {
+          pointer-events: none;
+        }
+      }
+
+      &__wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        transition-property: width;
+        width: 0vw;
+        height: 100vh;
+        background-color: $crust;
+
+        &.open {
+          left: 0;
+          width: 100vw;
+        }
+      }
+
+      &__list {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 10vw;
+      }
+
+      &__item {
+        font-size: 8vw;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $surface2;
+        }
+      }
+
+      &__text {
+        margin: 0 -0.75rem;
+        padding: 1rem;
+      }
     }
   }
 </style>
