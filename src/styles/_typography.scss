@@ -20,7 +20,7 @@ h6 {
 h1 {
   font-size: 6rem;
 
-  @media (max-width: $breakpoint-md) {
+  @media screen and (max-width: $breakpoint-md) {
     font-size: max(4rem, 12vw);
   }
 }
@@ -36,7 +36,7 @@ h3 {
 h4 {
   font-size: 1.5rem;
 
-  @media (max-width: $breakpoint-md) {
+  @media screen and (max-width: $breakpoint-md) {
     font-size: max(1.25rem, 3vw);
   }
 }

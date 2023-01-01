@@ -47,7 +47,7 @@
       max-width: 100rem;
       padding: 2rem;
 
-      @media (max-width: $breakpoint-md) {
+      @media screen and (max-width: $breakpoint-md) {
         grid-template-rows: auto auto;
         grid-template-columns: 1fr;
       }
