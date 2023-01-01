@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
+  import { cubicOut } from 'svelte/easing';
   import { colors } from '$lib/colors';
   import { Hamburger } from 'svelte-hamburgers';
 
@@ -109,6 +110,7 @@
                       x: -200,
                       duration: 500,
                       delay: 200 + 50 * itemIndex,
+                      easing: cubicOut,
                     }
                   : {
                       duration: 0,
@@ -181,6 +183,7 @@
         top: 0;
         right: 0;
         transition-property: width;
+        transition-timing-function: $cubic-in-out;
         width: 0vw;
         height: 100vh;
         background-color: $crust;
