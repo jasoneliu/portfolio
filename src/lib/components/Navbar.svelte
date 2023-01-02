@@ -27,7 +27,7 @@
     animationReady && (!mobileLayout || hamburgerOpen || hamburgerAnimating);
 
   // Close hamburger menu after switching to desktop layout
-  $: if (!mobileLayout) {
+  $: if (!mobileLayout && animationReady) {
     closeHamburger();
   }
 
@@ -36,18 +36,19 @@
     hoveredNavItem = navItem;
   }
 
-  /** Close hamburger menu. */
-  function closeHamburger() {
-    hamburgerOpen = false;
-    hoveredNavItem = null;
-  }
-
   /** Disable clicking on hamburger menu icon while it's animating. */
   function animateHamburger() {
     hamburgerAnimating = true;
     setTimeout(() => {
       hamburgerAnimating = false;
     }, hamburgerAnimationDurationMs);
+  }
+
+  /** Close hamburger menu. */
+  function closeHamburger() {
+    animateHamburger();
+    hamburgerOpen = false;
+    hoveredNavItem = null;
   }
 
   // Run svelte transitions on first render
