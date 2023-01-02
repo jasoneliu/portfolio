@@ -185,13 +185,13 @@
         right: 0;
         transition-property: width;
         transition-timing-function: $cubic-in-out;
-        width: 0vw;
-        height: 100vh;
+        width: 0%;
+        height: 100%;
         background-color: $crust;
 
         &.open {
           left: 0;
-          width: 100vw;
+          width: 100%;
         }
       }
 
