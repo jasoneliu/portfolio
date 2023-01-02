@@ -31,6 +31,6 @@
   .page {
     display: flex;
     flex-flow: column nowrap;
-    gap: 2rem;
+    gap: 10vh;
   }
 </style>

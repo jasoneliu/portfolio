@@ -12,16 +12,17 @@ h3,
 h4,
 h5,
 h6 {
+  line-height: 1.2;
   color: $text;
   font-weight: bold;
-  line-height: 1.2;
 }
 
 h1 {
+  line-height: 1;
   font-size: 6rem;
 
   @media screen and (max-width: $breakpoint-md) {
-    font-size: max(4rem, 12vw);
+    font-size: clamp(4rem, 12vw, 6rem);
   }
 }
 
@@ -35,19 +36,10 @@ h3 {
 
 h4 {
   font-size: 1.5rem;
-
-  @media screen and (max-width: $breakpoint-md) {
-    font-size: max(1.25rem, 3vw);
-  }
 }
 
 p {
+  line-height: 1.4;
   color: $subtext1;
   font-size: 1.125rem;
-  line-height: 1.4;
-}
-
-.mono {
-  color: $lavender;
-  font-family: Iosevka, monospace;
 }

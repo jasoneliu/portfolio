@@ -9,12 +9,15 @@
 
 <section class="home" id="home">
   <div class="home__wrapper">
-    <div class="home__info">
+    <div
+      class="home__info"
+      style="transform: translate3d(0, {scrollY * -0.25}px, 0)"
+    >
       <h1 class="home__name">Jason Liu</h1>
       <div class="home__about">
-        <p>full-stack web developer</p>
+        <p>Full-stack web developer</p>
         <p>
-          studying computer science and mathematics at the University of
+          Studying computer science and mathematics at the University of
           Maryland
         </p>
       </div>
@@ -31,7 +34,6 @@
         src={homeBackgroundImage}
         alt="Home Background"
         draggable="false"
-        style="transform: translate3d(0, {scrollY * 0.25}px, 0)"
       />
     </div>
   </div>
@@ -41,8 +43,7 @@
   .home {
     width: 100%;
     height: 100vh;
-    margin-bottom: 30vh;
-    padding: 20vh 7vw 12vh;
+    padding: 20vh max(8vw, 2rem) 12vh;
 
     &__wrapper {
       display: flex;
@@ -62,7 +63,7 @@
 
     &__name {
       text-align: left;
-      text-shadow: 0px 0.25rem 0.75rem rgba($base, 0.3);
+      text-shadow: 0px 0.25rem 0.75rem rgba($crust, 0.3);
     }
 
     &__about {
@@ -97,7 +98,6 @@
       width: 100%;
       height: 100%;
       border-radius: 1.5vh;
-      opacity: 0.5;
       z-index: -1;
     }
 
@@ -105,9 +105,10 @@
       width: 100%;
       height: 100%;
       border-radius: 1.5vh;
+      box-shadow: 0.2rem 0.6rem 1.2rem rgba($crust, 0.6);
       object-fit: cover;
-      object-position: 0 100%;
-      filter: brightness(80%) contrast(110%);
+      object-position: 0% 100%;
+      filter: brightness(90%) contrast(105%) saturate(90%) opacity(50%);
     }
   }
 
