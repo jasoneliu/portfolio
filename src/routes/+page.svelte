@@ -2,6 +2,7 @@
   import Navbar from '$lib/components/Navbar.svelte';
   import Home from '$lib/sections/Home.svelte';
   import Projects from '$lib/sections/Projects.svelte';
+  import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <svelte:head>
@@ -25,6 +26,7 @@
   <Navbar />
   <Home />
   <Projects />
+  <Footer />
 </div>
 
 <style lang="scss">
