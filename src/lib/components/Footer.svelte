@@ -38,7 +38,6 @@
     flex-flow: column nowrap;
     align-items: center;
     gap: 0.5rem;
-    margin-top: -10vh;
     padding: 3rem;
 
     &__text {

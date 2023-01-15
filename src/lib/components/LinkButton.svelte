@@ -10,8 +10,6 @@
 <a
   class="link-button"
   href={link}
-  rel="noreferrer"
-  target="_blank"
   style:border-color={colors[color]}
   style:color={colors[color]}
 >

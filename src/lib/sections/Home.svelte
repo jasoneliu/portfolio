@@ -42,8 +42,8 @@
 <style lang="scss">
   .home {
     width: 100%;
-    height: 100vh;
-    padding: 20vh max(8vw, 2rem) 12vh;
+    height: 80vh;
+    padding: 0 max(8vw, 2rem) 12vh;
 
     &__wrapper {
       display: flex;

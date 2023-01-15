@@ -96,7 +96,7 @@
           <li class="navbar__item">
             <a
               class="navbar__link"
-              href={item === 'Resume' ? resumeLink : `#${item.toLowerCase()}`}
+              href={item === 'Resume' ? resumeLink : `/#${item.toLowerCase()}`}
               rel="noreferrer"
               target={item === 'Resume' ? '_blank' : null}
               on:click={closeHamburger}
