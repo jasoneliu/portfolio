@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-  <title>Oops</title>
+  <title>Oops — Jason Liu</title>
   <meta
     name="description"
     content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
