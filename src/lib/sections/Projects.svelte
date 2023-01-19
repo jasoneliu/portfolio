@@ -20,7 +20,7 @@
 
     &__project-list {
       display: flex;
-      flex-flow: column nowrap;
+      flex-direction: column;
       align-items: center;
     }
   }

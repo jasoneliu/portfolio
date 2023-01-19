@@ -21,7 +21,7 @@
 <style lang="scss">
   .error {
     display: flex;
-    flex-flow: column nowrap;
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
     width: 100%;

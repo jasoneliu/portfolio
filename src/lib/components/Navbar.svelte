@@ -143,7 +143,7 @@
 
     &__list {
       display: flex;
-      flex-flow: row nowrap;
+      flex-direction: row;
     }
 
     &__item {
@@ -197,7 +197,7 @@
 
       &__list {
         display: flex;
-        flex-flow: column nowrap;
+        flex-direction: column;
         justify-content: center;
         width: 100%;
         height: 100%;

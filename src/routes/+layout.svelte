@@ -27,13 +27,13 @@
 <style lang="scss">
   .page {
     display: flex;
-    flex-flow: column nowrap;
+    flex-direction: column;
     min-height: 100dvh;
 
     &__content {
       display: flex;
       justify-content: center;
-      flex-flow: column nowrap;
+      flex-direction: column;
       flex-grow: 1;
       gap: 10vh;
       padding-top: 20vh;

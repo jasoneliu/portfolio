@@ -35,7 +35,7 @@
 <style lang="scss">
   .footer {
     display: flex;
-    flex-flow: column nowrap;
+    flex-direction: column;
     align-items: center;
     gap: 0.5rem;
     padding: 3rem;

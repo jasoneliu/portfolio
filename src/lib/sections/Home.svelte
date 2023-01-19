@@ -55,7 +55,7 @@
 
     &__info {
       display: flex;
-      flex-flow: column nowrap;
+      flex-direction: column;
       justify-content: center;
       gap: 3rem;
       padding: 0 2rem;
@@ -68,7 +68,7 @@
 
     &__about {
       display: flex;
-      flex-flow: column nowrap;
+      flex-direction: column;
       gap: 0.75rem;
       max-width: 30rem;
     }
