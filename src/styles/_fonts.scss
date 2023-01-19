@@ -1,55 +1,30 @@
-@use '@fontsource/figtree/scss/mixins' as Figtree;
-
-@include Figtree.fontFace(
-  $weight: 400,
-  $style: normal,
-  $fontDir: '@fontsource/figtree/files'
-);
-
-@include Figtree.fontFace(
-  $weight: 700,
-  $style: normal,
-  $fontDir: '@fontsource/figtree/files'
-);
-
 @font-face {
-  font-family: 'Iosevka';
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-Variable.woff') format('woff'),
+    url('/fonts/satoshi/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
   font-style: normal;
-  font-weight: normal;
-  src: url('/fonts/iosevka/iosevka-regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Iosevka';
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi/Satoshi-VariableItalic.woff2') format('woff2'),
+    url('/fonts/satoshi/Satoshi-VariableItalic.woff') format('woff'),
+    url('/fonts/satoshi/Satoshi-VariableItalic.ttf') format('truetype');
+  font-weight: 300 900;
+  font-display: swap;
   font-style: italic;
-  font-weight: normal;
-  src: url('/fonts/iosevka/iosevka-italic.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Iosevka';
-  font-style: oblique;
-  font-weight: normal;
-  src: url('/fonts/iosevka/iosevka-oblique.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Iosevka';
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk/CabinetGrotesk-Variable.woff2')
+      format('woff2'),
+    url('/fonts/cabinet-grotesk/CabinetGrotesk-Variable.woff') format('woff'),
+    url('/fonts/cabinet-grotesk/CabinetGrotesk-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
   font-style: normal;
-  font-weight: bold;
-  src: url('/fonts/iosevka/iosevka-bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Iosevka';
-  font-style: italic;
-  font-weight: bold;
-  src: url('/fonts/iosevka/iosevka-bolditalic.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Iosevka';
-  font-style: oblique;
-  font-weight: bold;
-  src: url('/fonts/iosevka/iosevka-boldoblique.ttf') format('truetype');
 }

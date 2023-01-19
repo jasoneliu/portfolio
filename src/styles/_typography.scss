@@ -3,7 +3,9 @@
 
 body {
   color: $text;
-  font-family: Figtree, sans-serif;
+  font-family: Satoshi, sans-serif;
+  font-weight: 400;
+  font-feature-settings: 'ss03'; // Alternate 't'
 }
 
 h1,
@@ -14,7 +16,9 @@ h5,
 h6 {
   line-height: 1.2;
   color: $text;
-  font-weight: bold;
+  font-family: Cabinet Grotesk, sans-serif;
+  font-weight: 800;
+  font-feature-settings: 'ss05'; // Alternate 'g'
 }
 
 h1 {
