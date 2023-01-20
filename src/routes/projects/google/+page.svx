@@ -1,0 +1,61 @@
+<script lang="ts">
+  import { google } from '$lib/projects';
+</script>
+
+## {google.name}
+
+<p class="project__description">{google.description}</p>
+
+### Overview
+
+#### The Product
+
+Agent Assist is Google Cloud’s AI solution for contact centers. Agent Assist
+uses machine learning technology to provide suggestions to human agents when
+they are in a conversation with a customer. Suggestions are based on the
+client’s own uploaded data and therefore can be tailored to their specific
+business needs.
+
+Agent Assist key features:
+
+- Smart reply: Send custom response suggestions to human agents while they are
+  conversing with a customer
+- Article suggestion: Send article suggestions to human agents during a
+  conversation
+- Summarization: Use AI to automatically summarize customer calls
+- Sentiment analysis: Analyze messages during a conversation to determine
+  emotional intent
+
+The Agent Assist console provides a UI to upload data, train models, and create
+conversation profiles to configure features. The console also includes a
+simulator that allows users to preview these features in action during a
+conversation.
+
+#### The Feature
+
+I developed a graphical UI for Agent Assist's sentiment analysis feature,
+showing live sentiment scores of an agent-customer interaction over time. These
+sentiment scores reflect the emotional intent of the customer, providing agents
+with live feedback and trends during conversations.
+
+The UI primarily involves a line chart of customer sentiment scores. As part of
+the implementation, I contributed to an internal charting library, used by 60+
+teams at Google, to add support for multicolor line charts. This allowed the
+chart to display negative sentiment scores as red and positive sentiment scores
+as green. I also developed a hovercard extension for the chart that displays
+messages, sentiment scores, and conversation metrics.
+
+Unfortunately, this feature is not yet available to the public, so I can’t share
+any images of my project. I anticipate the sentiment analysis UI being released
+in the next few months.
+
+#### The Process
+
+1. Write a design document for the Agent Assist simulator’s sentiment analysis
+   UI
+2. Collaborate with my team’s PM and UX designer to iterate on mockups of the
+   sentiment analysis UI
+3. Write a design document to add multicolor line charts to the internal
+   charting library
+4. Implement multicolor line charts
+5. Implement the sentiment analysis UI (line chart and hovercard extension)

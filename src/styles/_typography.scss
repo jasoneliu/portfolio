@@ -4,6 +4,7 @@
 body {
   color: $text;
   font-family: Satoshi, sans-serif;
+  font-size: 1.125rem;
   font-weight: 400;
   font-feature-settings: 'ss03'; // Alternate 't'
 }
@@ -43,7 +44,5 @@ h4 {
 }
 
 p {
-  line-height: 1.4;
-  color: $subtext1;
-  font-size: 1.125rem;
+  line-height: 1.35;
 }

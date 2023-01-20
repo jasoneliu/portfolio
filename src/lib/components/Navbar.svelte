@@ -156,7 +156,7 @@
 
     &__text {
       display: inline-block;
-      transition: opacity 0.4s;
+      transition: opacity 300ms;
       padding: 0.25rem 0.75rem;
       color: $text;
 

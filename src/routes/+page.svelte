@@ -11,5 +11,7 @@
   />
 </svelte:head>
 
-<Home />
-<Projects />
+<main>
+  <Home />
+  <Projects />
+</main>

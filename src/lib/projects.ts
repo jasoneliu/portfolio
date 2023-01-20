@@ -11,21 +11,21 @@ export interface Project {
   position: string;
   date: string;
   tags: Tag[];
-  link: string;
   image: string;
+  slug: string;
 }
 
-const google: Project = {
+export const google: Project = {
   name: 'Google — Agent Assist',
   description: 'Deliver AI-powered conversations with human agents.',
   position: 'Software Engineering Internship',
   date: 'Fall 2022',
   tags: [tags.typescript, tags.angular, tags.ngrx, tags.jasmine],
-  link: 'https://cloud.google.com/agent-assist',
   image: agentAssistImage,
+  slug: 'google',
 };
 
-const arcxp: Project = {
+export const arcxp: Project = {
   name: 'Arc XP',
   description:
     'The Washington Post’s cloud-native digital experience platform.',
@@ -39,28 +39,28 @@ const arcxp: Project = {
     tags.aws,
     tags.jest,
   ],
-  link: 'https://www.arcxp.com/',
   image: arcXpImage,
+  slug: 'arc-xp',
 };
 
-const bitcamp: Project = {
+export const bitcamp: Project = {
   name: 'Bitcamp',
   description: 'The University of Maryland’s premier hackathon.',
   position: 'Tech Co-director',
   date: 'Fall 2021 – Present',
   tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws],
-  link: 'https://bit.camp/',
   image: bitcampImage,
+  slug: 'bitcamp',
 };
 
-const technica: Project = {
+export const technica: Project = {
   name: 'Technica',
   description: 'The world’s largest hackathon for underrepresented genders.',
   position: 'Tech Organizer',
   date: 'Spring – Fall 2022',
   tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws],
-  link: 'https://www.gotechnica.org/',
   image: technicaImage,
+  slug: 'technica',
 };
 
 export const projects: Project[] = [google, arcxp, bitcamp, technica];
