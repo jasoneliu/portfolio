@@ -1,6 +1,6 @@
 <script lang="ts">
   import LinkButton from '$lib/components/LinkButton.svelte';
-  import Tag from '$lib/components/Tag.svelte';
+  import TagList from '$lib/components/TagList.svelte';
   import type { Project } from '$lib/projects';
 
   export let project: Project;
@@ -15,13 +15,9 @@
       <span class="project-card__position">{project.position}</span>
       <h3 class="project-card__name">{project.name}</h3>
       <p class="project-card__description">{project.description}</p>
-      <div class="project-card__tags">
-        {#each project.tags as tag}
-          <Tag text={tag.text} color={tag.color} />
-        {/each}
-      </div>
+      <TagList tags={project.tags} />
       <div class="project-card__button">
-        <LinkButton text="LEARN MORE" link={project.link} />
+        <LinkButton text="LEARN MORE" link={`/projects/${project.slug}`} />
       </div>
     </div>
   </div>
@@ -74,12 +70,6 @@
 
     &__name {
       margin-bottom: -0.25rem;
-    }
-
-    &__tags {
-      display: flex;
-      flex-flow: row wrap;
-      gap: 0.5rem;
     }
 
     &__button {
