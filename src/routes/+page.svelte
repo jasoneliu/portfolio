@@ -11,7 +11,15 @@
   />
 </svelte:head>
 
-<main>
+<main class="index">
   <Home />
   <Projects />
 </main>
+
+<style lang="scss">
+  .index {
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+  }
+</style>

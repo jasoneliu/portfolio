@@ -42,7 +42,7 @@
 <style lang="scss">
   .home {
     width: 100%;
-    height: 80vh;
+    height: calc(100vh - 8rem);
     padding: 0 max(8vw, 2rem) 12vh;
 
     &__wrapper {

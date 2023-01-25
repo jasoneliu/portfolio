@@ -32,14 +32,11 @@
 
     &__content {
       display: flex;
-      position: relative;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       flex-grow: 1;
-      gap: 10vh;
-      padding-top: 20vh;
-      height: 100%;
+      padding-top: 8rem;
     }
   }
 </style>
