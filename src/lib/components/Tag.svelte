@@ -24,5 +24,6 @@
     border: 1px solid;
     border-radius: 2rem;
     padding: 0.25rem 0.7rem 0.3rem;
+    font-size: 1rem;
   }
 </style>
