@@ -12,7 +12,7 @@
       <img class="project-card__image" src={project.image} alt={project.name} />
     </picture>
     <div class="project-card__info">
-      <span class="project-card__position">{project.position}</span>
+      <span class="project-card__role">{project.role}</span>
       <h3 class="project-card__name">{project.name}</h3>
       <p class="project-card__description">{project.description}</p>
       <TagList tags={project.tags} />
@@ -41,18 +41,19 @@
       column-gap: 3rem;
 
       max-width: 100rem;
-      padding: 2rem;
+      padding: 2rem 8vw;
 
       @media screen and (max-width: $breakpoint-md) {
         grid-template-rows: auto auto;
         grid-template-columns: 1fr;
+        padding: 2rem;
       }
     }
 
     &__image {
       width: 100%;
       border-radius: 0.5rem;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 3 / 2;
       object-fit: cover;
     }
 
@@ -62,7 +63,7 @@
       gap: 1rem;
     }
 
-    &__position {
+    &__role {
       margin-bottom: -0.25rem;
       color: $subtext0;
       font-size: 0.875rem;

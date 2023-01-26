@@ -8,29 +8,39 @@ import technicaImage from '$lib/assets/technica.png';
 export interface Project {
   name: string;
   description: string;
-  position: string;
-  date: string;
+  role: string;
+  timeline: string;
+  skills: string[];
   tags: Tag[];
   image: string;
   slug: string;
+  head?: {
+    title?: string;
+    description?: string;
+  };
 }
 
-export const google: Project = {
+const google: Project = {
   name: 'Google — Agent Assist',
   description: 'Deliver AI-powered conversations with human agents.',
-  position: 'Software Engineering Internship',
-  date: 'Fall 2022',
+  role: 'Software Engineering Internship',
+  timeline: 'Sept. – Dec. 2022',
+  skills: ['Frontend development', 'Writing design documents', 'Testing'],
   tags: [tags.typescript, tags.angular, tags.ngrx, tags.jasmine],
   image: agentAssistImage,
   slug: 'google',
+  head: {
+    title: 'Agent Assist',
+  },
 };
 
-export const arcxp: Project = {
+const arcxp: Project = {
   name: 'Arc XP',
   description:
     'The Washington Post’s cloud-native digital experience platform.',
-  position: 'Software Engineering Internship',
-  date: 'Summer 2022',
+  role: 'Software Engineering Internship',
+  timeline: 'Jun. – Aug. 2022',
+  skills: [],
   tags: [
     tags.typescript,
     tags.react,
@@ -43,24 +53,28 @@ export const arcxp: Project = {
   slug: 'arc-xp',
 };
 
-export const bitcamp: Project = {
+const bitcamp: Project = {
   name: 'Bitcamp',
   description: 'The University of Maryland’s premier hackathon.',
-  position: 'Tech Co-director',
-  date: 'Fall 2021 – Present',
+  role: 'Tech Co-director',
+  timeline: 'Dec. 2021 – Present',
+  skills: [],
   tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws],
   image: bitcampImage,
   slug: 'bitcamp',
 };
 
-export const technica: Project = {
+const technica: Project = {
   name: 'Technica',
   description: 'The world’s largest hackathon for underrepresented genders.',
-  position: 'Tech Organizer',
-  date: 'Spring – Fall 2022',
+  role: 'Tech Organizer',
+  timeline: 'Apr. – Oct. 2022',
+  skills: [],
   tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws],
   image: technicaImage,
   slug: 'technica',
 };
 
-export const projects: Project[] = [google, arcxp, bitcamp, technica];
+export const projects = { google, 'arc-xp': arcxp, bitcamp, technica };
+
+export type ProjectSlug = keyof typeof projects;

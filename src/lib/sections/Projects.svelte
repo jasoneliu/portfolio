@@ -6,7 +6,7 @@
 <section class="projects" id="projects">
   <h2 class="projects__header">Projects</h2>
   <div class="projects__project-list">
-    {#each projects as project}
+    {#each Object.entries(projects) as [_, project]}
       <ProjectCard {project} />
     {/each}
   </div>

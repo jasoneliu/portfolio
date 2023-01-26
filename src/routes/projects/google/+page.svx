@@ -1,19 +1,11 @@
-<script lang="ts">
-  import { google } from '$lib/projects';
-</script>
-
-## {google.name}
-
-<p class="project__description">{google.description}</p>
-
 ### Overview
 
 #### The Product
 
-Agent Assist is Google Cloud’s AI solution for contact centers. Agent Assist
+Agent Assist is Google Cloud's AI solution for contact centers. Agent Assist
 uses machine learning technology to provide suggestions to human agents when
 they are in a conversation with a customer. Suggestions are based on the
-client’s own uploaded data and therefore can be tailored to their specific
+client's own uploaded data and therefore can be tailored to their specific
 business needs.
 
 Agent Assist key features:
@@ -45,15 +37,15 @@ chart to display negative sentiment scores as red and positive sentiment scores
 as green. I also developed a hovercard extension for the chart that displays
 messages, sentiment scores, and conversation metrics.
 
-Unfortunately, this feature is not yet available to the public, so I can’t share
+Unfortunately, this feature is not yet available to the public, so I can't share
 any images of my project. I anticipate the sentiment analysis UI being released
 in the next few months.
 
 #### The Process
 
-1. Write a design document for the Agent Assist simulator’s sentiment analysis
+1. Write a design document for the Agent Assist simulator's sentiment analysis
    UI
-2. Collaborate with my team’s PM and UX designer to iterate on mockups of the
+2. Collaborate with my team's PM and UX designer to iterate on mockups of the
    sentiment analysis UI
 3. Write a design document to add multicolor line charts to the internal
    charting library

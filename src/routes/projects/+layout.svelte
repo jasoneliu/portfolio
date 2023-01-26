@@ -1,61 +1,36 @@
 <script lang="ts">
   import Toc from '$lib/components/Toc.svelte';
+  import ProjectPage from '$lib/components/ProjectPage.svelte';
+  import type { PageData } from './$types';
+
+  export let data: PageData;
+
+  const project = data.project;
 </script>
 
 <Toc />
 
 <main class="project">
-  <slot />
+  <ProjectPage {project}>
+    <slot />
+  </ProjectPage>
 </main>
 
 <style lang="scss">
   .project {
     display: block;
     margin-left: 5rem;
-    max-width: 50rem;
+    width: 60%;
     padding: 0 2rem;
-
-    @media screen and (max-width: $breakpoint-xl) {
-      margin-left: 8rem;
-      max-width: 45rem;
-    }
 
     @media screen and (max-width: $breakpoint-lg) {
       margin: 0;
+      width: 80%;
     }
 
-    & :global(.project__description) {
+    @media screen and (max-width: $breakpoint-md) {
       margin: 0;
-      text-align: center;
-    }
-
-    & :global(h2) {
-      margin-block-start: 0rem;
-      margin-block-end: 1rem;
-      text-align: center;
-    }
-
-    & :global(h3) {
-      margin-block-start: 5rem;
-      margin-block-end: -1rem;
-      text-align: center;
-    }
-
-    & :global(h4) {
-      margin-block-start: 3rem;
-      margin-block-end: 1rem;
-    }
-
-    & :global(p) {
-      margin-block-start: 1rem;
-      margin-block-end: 1rem;
-    }
-
-    & :global(ul),
-    :global(ol) {
-      margin-block-start: 1rem;
-      margin-block-end: 1rem;
-      padding-inline-start: 2rem;
+      width: 100%;
     }
   }
 </style>
