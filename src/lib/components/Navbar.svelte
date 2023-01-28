@@ -182,9 +182,10 @@
 
     @media screen and (max-width: $breakpoint-md) {
       &__hamburger {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         z-index: 10;
-        margin-top: -0.25rem;
         margin-right: 1rem;
         width: 2rem;
         height: 2rem;
