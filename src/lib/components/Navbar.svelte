@@ -73,6 +73,9 @@
 </svelte:head>
 
 <nav class="navbar">
+  <a class="navbar__icon" href="/">
+    <img class="navbar__icon-image" src="/icon.svg" alt="Icon" />
+  </a>
   <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
     <Hamburger
       bind:open={hamburgerOpen}
@@ -131,11 +134,23 @@
   .navbar {
     display: flex;
     position: fixed;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
     z-index: 10;
     margin: 1rem 0;
     width: 100%;
     padding: 1rem;
+
+    &__icon {
+      padding: 0.5rem;
+      padding-left: 0.75rem;
+    }
+
+    &__icon-image {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: -0.5rem 0;
+    }
 
     &__hamburger {
       display: none;

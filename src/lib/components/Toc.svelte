@@ -27,6 +27,7 @@
     padding: inherit;
 
     & :global(nav) {
+      padding: 1rem;
       animation-duration: 0s !important; // Disable svelte transition
     }
 
