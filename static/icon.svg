@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+  width="100mm"
+  height="100mm"
+  viewBox="0 0 100 100"
+  version="1.1"
+  id="svg5"
+  inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+  sodipodi:docname="logo.svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:svg="http://www.w3.org/2000/svg"
+>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      circle,
+      rect,
+      path {
+        fill: #cdd6f4 !important;
+      }
+    }
+  </style>
+  <sodipodi:namedview
+    id="namedview7"
+    pagecolor="#ffffff"
+    bordercolor="#666666"
+    borderopacity="1.0"
+    inkscape:showpageshadow="2"
+    inkscape:pageopacity="0.0"
+    inkscape:pagecheckerboard="0"
+    inkscape:deskcolor="#d1d1d1"
+    inkscape:document-units="mm"
+    showgrid="false"
+    inkscape:zoom="0.78452046"
+    inkscape:cx="-58.634544"
+    inkscape:cy="291.89806"
+    inkscape:window-width="1474"
+    inkscape:window-height="924"
+    inkscape:window-x="13"
+    inkscape:window-y="25"
+    inkscape:window-maximized="0"
+    inkscape:current-layer="layer1-7-0"
+  />
+  <defs id="defs2" />
+  <g
+    inkscape:label="JL"
+    inkscape:groupmode="layer"
+    id="layer1-7-0"
+    transform="translate(-71.395814,14.027859)"
+    style="display: inline"
+  >
+    <g
+      id="g1167-0-2"
+      inkscape:label="L"
+      transform="matrix(1.0869618,0,0,1.0869618,63.786839,3.3632867)"
+    >
+      <circle
+        style="
+          fill: #1e1e2e;
+          fill-opacity: 1;
+          stroke: #ffffff;
+          stroke-width: 0;
+          stroke-dasharray: none;
+        "
+        id="path974-6-9-3"
+        cx="89"
+        cy="50"
+        r="9.999999"
+        inkscape:label="L Circle"
+      />
+      <rect
+        style="
+          display: inline;
+          fill: #1e1e2e;
+          fill-opacity: 1;
+          stroke: #ffffff;
+          stroke-width: 0;
+          stroke-dasharray: none;
+        "
+        id="rect804-3-3-7"
+        width="19.999998"
+        height="60"
+        x="55"
+        y="5.1022278e-07"
+        ry="9.999999"
+        inkscape:label="L Rectangle"
+      />
+    </g>
+    <g
+      id="g1172-6-5"
+      inkscape:label="J"
+      style="fill: #000000; stroke-width: 0; stroke-dasharray: none"
+      transform="translate(65.395572,8.5809982)"
+    >
+      <path
+        id="rect1876-0-9"
+        style="
+          display: inline;
+          fill: #1e1e2e;
+          fill-opacity: 1;
+          stroke: #ffffff;
+          stroke-width: 0;
+          stroke-dasharray: none;
+          paint-order: normal;
+        "
+        inkscape:label="J Rectangle"
+        d="m 42.956857,-5.217712 c -6.021749,0 -10.869516,5.17289877 -10.869516,11.5986075 V 36.086564 a 15.217465,15.217465 0 0 1 -15.217661,15.21766 15.217465,15.217465 0 0 1 -6.53036,-1.485703 23.91316,23.91316 0 0 0 7.617256,6.977475 23.91316,23.91316 0 0 0 23.913386,0 23.91316,23.91316 0 0 0 11.956413,-20.709432 V 6.3808955 c 0,-6.42570873 -4.847766,-11.5986075 -10.869518,-11.5986075 z"
+      />
+      <circle
+        style="
+          display: inline;
+          fill: #1e1e2e;
+          fill-opacity: 1;
+          stroke: #ffffff;
+          stroke-width: 0;
+          stroke-dasharray: none;
+          paint-order: normal;
+        "
+        id="path974-2-1"
+        cx="16.869617"
+        cy="36.086838"
+        r="10.869617"
+        inkscape:label="J Circle"
+      />
+    </g>
+  </g>
+</svg>
