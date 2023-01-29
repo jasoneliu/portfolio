@@ -85,6 +85,7 @@
       --layer-width="1.5rem"
       --layer-height="0.15rem"
       --layer-spacing="0.3rem"
+      --hover-opacity="1"
       on:click={animateHamburger}
     />
   </div>
@@ -179,14 +180,20 @@
         opacity: 0.4;
       }
     }
+  }
 
-    @media screen and (max-width: $breakpoint-md) {
+  @media screen and (max-width: $breakpoint-md) {
+    .navbar {
+      margin-top: 0;
+      background-color: $base;
+      box-shadow: 0 0 0.75rem $crust;
+
       &__hamburger {
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 10;
-        margin-right: 1rem;
+        margin-right: 0.5rem;
         width: 2rem;
         height: 2rem;
 
