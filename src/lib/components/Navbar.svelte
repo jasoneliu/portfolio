@@ -16,6 +16,14 @@
   let mobileLayout: boolean = false;
   $: mobileLayout = innerWidth <= 768; // $breakpoint-md
 
+  // Scroll position
+  let scrollY: number;
+  let prevScrollY: number;
+
+  // Hide navbar when scrolling down
+  let showNavbar: boolean = true;
+  $: showNavbar = !isScrollingDown(scrollY) || mobileLayout;
+
   // Hamburger menu for mobile layout
   let hamburgerOpen: boolean = false;
   let hamburgerAnimating: boolean = false;
@@ -34,6 +42,19 @@
   /** Update which navbar item is hovered. */
   function setHoveredNavItem(navItem: string | null) {
     hoveredNavItem = navItem;
+  }
+
+  /** Detect whether the user is scrolling down. */
+  function isScrollingDown(scrollY: number) {
+    // Not scrolling down on first render
+    if (!prevScrollY) {
+      prevScrollY = scrollY;
+      return false;
+    }
+
+    const scrollDistance = scrollY - prevScrollY;
+    prevScrollY = scrollY;
+    return scrollDistance > 0;
   }
 
   /** Disable clicking on hamburger menu icon while it's animating. */
@@ -58,8 +79,8 @@
   });
 </script>
 
-<!-- Bind screen width -->
-<svelte:window bind:innerWidth />
+<!-- Bind screen width and scroll position -->
+<svelte:window bind:innerWidth bind:scrollY />
 
 <!-- Disable scrolling when hamburger menu is open -->
 <svelte:head>
@@ -72,64 +93,68 @@
   {/if}
 </svelte:head>
 
-<nav class="navbar">
-  <a class="navbar__icon" href="/">
-    <img class="navbar__icon-image" src="/icon.svg" alt="Icon" />
-  </a>
-  <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
-    <Hamburger
-      bind:open={hamburgerOpen}
-      type="spin"
-      --color={colors.text}
-      --padding="0.5rem"
-      --layer-width="1.5rem"
-      --layer-height="0.15rem"
-      --layer-spacing="0.3rem"
-      --hover-opacity="1"
-      on:click={animateHamburger}
-    />
-  </div>
-  <div
-    class="navbar__wrapper"
-    class:open={hamburgerOpen}
-    style:transition-duration={`${hamburgerAnimationDurationMs}ms`}
-  >
-    {#if showNavbarItems}
-      <ul class="navbar__list">
-        {#each navItems as item, itemIndex}
-          <li class="navbar__item">
-            <a
-              class="navbar__link"
-              href={item === 'Resume' ? resumeLink : `/#${item.toLowerCase()}`}
-              rel="noreferrer"
-              target={item === 'Resume' ? '_blank' : null}
-              on:click={closeHamburger}
-            >
-              <span
-                class="navbar__text"
-                class:hovered={hoveredNavItem && hoveredNavItem !== item}
-                on:mouseenter={() => setHoveredNavItem(item)}
-                on:mouseleave={() => setHoveredNavItem(null)}
-                in:fly={mobileLayout
-                  ? {
-                      x: -200,
-                      duration: 500,
-                      delay: 200 + 50 * itemIndex,
-                      easing: cubicOut,
-                    }
-                  : {
-                      duration: 0,
-                    }}
+<header>
+  <nav class="navbar" class:hide={!showNavbar}>
+    <a class="navbar__icon" href="/">
+      <img class="navbar__icon-image" src="/icon.svg" alt="Icon" />
+    </a>
+    <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
+      <Hamburger
+        bind:open={hamburgerOpen}
+        type="spin"
+        --color={colors.text}
+        --padding="0.5rem"
+        --layer-width="1.5rem"
+        --layer-height="0.15rem"
+        --layer-spacing="0.3rem"
+        --hover-opacity="1"
+        on:click={animateHamburger}
+      />
+    </div>
+    <div
+      class="navbar__wrapper"
+      class:open={hamburgerOpen}
+      style:transition-duration={`${hamburgerAnimationDurationMs}ms`}
+    >
+      {#if showNavbarItems}
+        <ul class="navbar__list">
+          {#each navItems as item, itemIndex}
+            <li class="navbar__item">
+              <a
+                class="navbar__link"
+                href={item === 'Resume'
+                  ? resumeLink
+                  : `/#${item.toLowerCase()}`}
+                rel="noreferrer"
+                target={item === 'Resume' ? '_blank' : null}
+                on:click={closeHamburger}
               >
-                {item}
-              </span>
-            </a>
-          </li>
-        {/each}
-      </ul>
-    {/if}
-  </div>
-</nav>
+                <span
+                  class="navbar__text"
+                  class:hovered={hoveredNavItem && hoveredNavItem !== item}
+                  on:mouseenter={() => setHoveredNavItem(item)}
+                  on:mouseleave={() => setHoveredNavItem(null)}
+                  in:fly={mobileLayout
+                    ? {
+                        x: -200,
+                        duration: 500,
+                        delay: 200 + 50 * itemIndex,
+                        easing: cubicOut,
+                      }
+                    : {
+                        duration: 0,
+                      }}
+                >
+                  {item}
+                </span>
+              </a>
+            </li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
+  </nav>
+</header>
 
 <style lang="scss">
   .navbar {
@@ -137,10 +162,15 @@
     position: fixed;
     align-items: center;
     justify-content: space-between;
+    transition: transform 500ms $ease-in-out-quad;
     z-index: 10;
     margin: 1rem 0;
     width: 100%;
     padding: 1rem;
+
+    &.hide {
+      transform: translate3d(0, -100%, 0);
+    }
 
     &__icon {
       padding: 0.5rem;
@@ -207,7 +237,7 @@
         top: 0;
         right: 0;
         transition-property: width;
-        transition-timing-function: $cubic-in-out;
+        transition-timing-function: $ease-in-out-cubic;
         width: 0%;
         height: 100%;
         background-color: $crust;
