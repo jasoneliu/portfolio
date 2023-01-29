@@ -162,7 +162,7 @@
     position: fixed;
     align-items: center;
     justify-content: space-between;
-    transition: transform 500ms $ease-in-out-quad;
+    transition: transform 0.5s $ease-in-out-quad;
     z-index: 10;
     margin: 1rem 0;
     width: 100%;
@@ -202,7 +202,7 @@
 
     &__text {
       display: inline-block;
-      transition: opacity 300ms;
+      transition: opacity 0.3s;
       padding: 0.25rem 0.75rem;
       color: $text;
 

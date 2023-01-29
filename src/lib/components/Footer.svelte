@@ -51,7 +51,7 @@
     }
 
     &__icon {
-      transition: opacity 300ms;
+      transition: opacity 0.3s;
       width: 2.5rem;
       height: 2.5rem;
       padding: 0.25rem;

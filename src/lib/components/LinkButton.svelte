@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
 
-    transition: opacity 300ms;
+    transition: opacity 0.3s;
 
     width: fit-content;
     border: 1px solid;

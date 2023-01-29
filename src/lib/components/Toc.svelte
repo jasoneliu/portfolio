@@ -32,7 +32,7 @@
     }
 
     & :global(li) {
-      transition: color 300ms, font-weight 0ms;
+      transition: color 0.3s, font-weight 0s;
       background-color: transparent;
       color: $subtext0;
       font-weight: 400;
