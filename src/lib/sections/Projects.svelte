@@ -4,7 +4,7 @@
 </script>
 
 <section class="projects" id="projects">
-  <h2 class="projects__header">Projects</h2>
+  <h2>Projects</h2>
   <div class="projects__project-list">
     {#each Object.entries(projects) as [_, project]}
       <ProjectCard {project} />
@@ -14,10 +14,6 @@
 
 <style lang="scss">
   .projects {
-    &__header {
-      text-align: center;
-    }
-
     &__project-list {
       display: flex;
       flex-direction: column;

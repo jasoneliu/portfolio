@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="20mm"
+   height="20mm"
+   viewBox="0 0 20 20"
+   version="1.1"
+   id="svg1563"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="icons.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1565"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="5.3721922"
+     inkscape:cx="-34.529666"
+     inkscape:cy="25.31555"
+     inkscape:window-width="2948"
+     inkscape:window-height="1848"
+     inkscape:window-x="26"
+     inkscape:window-y="51"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1563" />
+  <defs
+     id="defs1560" />
+  <g
+     id="g1539"
+     style="display:inline"
+     transform="matrix(0.40693336,0,0,-0.40693336,10.917472,10.8217)"
+     inkscape:label="Backend">
+    <g
+       id="g286"
+       transform="translate(12.356898,6.1597012)">
+      <path
+         d="m 0,0 c 0,3.714 -3.01,7.004 -6.724,7.004 -0.728,0 -1.428,-0.119 -2.085,-0.334 -0.955,5.151 -5.463,9.053 -10.89,9.053 -4.857,0 -8.974,-3.129 -10.472,-7.477 -0.027,0 -0.053,0.004 -0.081,0.004 -4.057,0 -7.347,-3.502 -7.347,-7.559 0,-3.879 3.008,-6.695 6.817,-7.695"
+         style="fill:none;stroke:#cdd6f4;stroke-width:1.95057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path288" />
+    </g>
+    <path
+       d="m 218.91,123.64 h -38 v 12 h 38 z"
+       style="fill:none;stroke:#cdd6f4;stroke-width:1.95057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       id="path290"
+       transform="translate(-198.1771,-141.4842)" />
+    <g
+       id="g292"
+       transform="translate(-8.2031003,-11.718799)">
+      <path
+         d="m 0,0 c 0,-1.076 -0.872,-1.948 -1.948,-1.948 -1.075,0 -1.947,0.872 -1.947,1.948 0,1.076 0.872,1.948 1.947,1.948 C -0.872,1.948 0,1.076 0,0 Z"
+         style="fill:none;stroke:#cdd6f4;stroke-width:1.95057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path294" />
+    </g>
+    <g
+       id="g296"
+       transform="translate(2.4544276e-6,-11.718799)">
+      <path
+         d="m 0,0 c 0,-1.076 -0.872,-1.948 -1.948,-1.948 -1.075,0 -1.947,0.872 -1.947,1.948 0,1.076 0.872,1.948 1.947,1.948 C -0.872,1.948 0,1.076 0,0 Z"
+         style="fill:none;stroke:#cdd6f4;stroke-width:1.95057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path298" />
+    </g>
+    <path
+       d="m 218.91,135.64 h -38 v 12 h 38 z"
+       style="fill:none;stroke:#cdd6f4;stroke-width:1.95057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       id="path300"
+       transform="translate(-198.1771,-141.4842)" />
+    <g
+       id="g302"
+       transform="translate(-8.2031003)">
+      <path
+         d="m 0,0 c 0,-1.076 -0.872,-1.948 -1.948,-1.948 -1.075,0 -1.947,0.872 -1.947,1.948 0,1.076 0.872,1.948 1.947,1.948 C -0.872,1.948 0,1.076 0,0 Z"
+         style="fill:none;stroke:#cdd6f4;stroke-width:1.95057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         id="path304" />
+    </g>
+    <path
+       d="m 0,0 c 0,-1.076 -0.872,-1.948 -1.948,-1.948 -1.075,0 -1.947,0.872 -1.947,1.948 0,1.076 0.872,1.948 1.947,1.948 C -0.872,1.948 0,1.076 0,0 Z"
+       style="fill:none;stroke:#cdd6f4;stroke-width:1.95057;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       id="path308" />
+  </g>
+</svg>

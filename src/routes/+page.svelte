@@ -1,6 +1,7 @@
 <script lang="ts">
   import Home from '$lib/sections/Home.svelte';
   import Projects from '$lib/sections/Projects.svelte';
+  import Skills from '$lib/sections/Skills.svelte';
 </script>
 
 <svelte:head>
@@ -14,6 +15,7 @@
 <main class="index">
   <Home />
   <Projects />
+  <Skills />
 </main>
 
 <style lang="scss">
@@ -21,5 +23,9 @@
     display: flex;
     flex-direction: column;
     gap: 10vh;
+  }
+
+  :global(h2) {
+    text-align: center;
   }
 </style>

@@ -1,9 +1,9 @@
 import { tags, type Tag } from '$lib/tags';
 
-import agentAssistImage from '$lib/assets/agent-assist.png';
-import arcXpImage from '$lib/assets/arc-xp.png';
-import bitcampImage from '$lib/assets/bitcamp.png';
-import technicaImage from '$lib/assets/technica.png';
+import agentAssistImage from '$lib/assets/projects/agent-assist.png';
+import arcXpImage from '$lib/assets/projects/arc-xp.png';
+import bitcampImage from '$lib/assets/projects/bitcamp.png';
+import technicaImage from '$lib/assets/projects/technica.png';
 
 export interface Project {
   name: string;
