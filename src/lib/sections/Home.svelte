@@ -8,7 +8,7 @@
 <svelte:window bind:scrollY />
 
 <section class="home" id="home">
-  <div class="home__wrapper">
+  <div class="home__container">
     <div
       class="home__info"
       style="transform: translate3d(0, {scrollY * -0.25}px, 0)"
@@ -45,7 +45,7 @@
     height: calc(100vh - 8rem);
     padding: 0 max(8vw, 2rem) 12vh;
 
-    &__wrapper {
+    &__container {
       display: flex;
       position: relative;
       justify-content: center;
