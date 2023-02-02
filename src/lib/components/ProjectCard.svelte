@@ -8,9 +8,15 @@
 
 <div class="project-card">
   <div class="project-card__card">
-    <picture>
-      <img class="project-card__image" src={project.image} alt={project.name} />
-    </picture>
+    <a href={`/projects/${project.slug}`}>
+      <picture>
+        <img
+          class="project-card__image"
+          src={project.image}
+          alt={project.name}
+        />
+      </picture></a
+    >
     <div class="project-card__info">
       <span class="project-card__role">{project.role}</span>
       <h3 class="project-card__name">{project.name}</h3>
