@@ -6,19 +6,19 @@
   const skills = [
     {
       title: 'Software Dev',
-      body: 'Experienced with the entire software development life cycle, including solution design, implementation, testing, and deployment.',
+      body: 'Experienced in working with the entire software development life cycle, including solution design, implementation, testing, and deployment.',
       icon: softwareIcon,
       slug: 'software-dev',
     },
     {
       title: 'Frontend',
-      body: 'Passionate about developing elegant and intuitive UIs. Proficient in HTML/CSS/JS and frontend frameworks including React, Vue, Angular, and Svelte.',
+      body: 'Passionate about developing elegant and intuitive UIs. Proficient in HTML/CSS/JS and frontend frameworks such as React, Vue, Angular, and Svelte.',
       icon: frontendIcon,
       slug: 'frontend',
     },
     {
       title: 'Backend',
-      body: 'Skilled in building Node.js backends involving SQL and NoSQL databases, REST APIs, and serverless architecture with AWS.',
+      body: 'Skilled at building Node.js backends involving SQL and NoSQL databases, REST APIs, and serverless architectures using cloud-computing platforms such as AWS and Google Cloud.',
       icon: backendIcon,
       slug: 'backend',
     },
@@ -36,7 +36,7 @@
             src={skill.icon}
             alt={`${skill.title} Icon`}
           />
-          <h3>{skill.title}</h3>
+          <h3 class={`skills__heading-text ${skill.slug}`}>{skill.title}</h3>
         </div>
         <p>
           {skill.body}
@@ -67,6 +67,32 @@
       align-items: center;
       gap: 1rem;
       margin-bottom: 1rem;
+    }
+
+    &__heading-text {
+      display: flex;
+      flex-direction: column;
+
+      &::after {
+        content: '';
+        opacity: 0.8;
+        z-index: -1;
+        margin-top: -0.85rem;
+        width: 100%;
+        height: 0.5rem;
+      }
+
+      &.software-dev::after {
+        background-color: darken($red, 10%);
+      }
+
+      &.frontend::after {
+        background-color: darken($blue, 10%);
+      }
+
+      &.backend::after {
+        background-color: darken($green, 15%);
+      }
     }
 
     &__icon {
