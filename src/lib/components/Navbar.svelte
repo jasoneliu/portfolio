@@ -3,6 +3,7 @@
   import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
   import { colors } from '$lib/colors';
+  import logo from '$lib/assets/logo.svg';
   import { Hamburger } from 'svelte-hamburgers';
 
   // Navbar items
@@ -96,7 +97,7 @@
 <header>
   <nav class="navbar" class:hide={!showNavbar}>
     <a class="navbar__icon" href="/">
-      <img class="navbar__icon-image" src="/icon.svg" alt="Icon" />
+      <img class="navbar__icon-image" src={logo} alt="Icon" />
     </a>
     <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
       <Hamburger
@@ -173,14 +174,12 @@
     }
 
     &__icon {
+      margin-left: 0.25rem;
       padding: 0.5rem;
-      padding-left: 0.75rem;
     }
 
     &__icon-image {
-      width: 2.5rem;
-      height: 2.5rem;
-      margin: -0.5rem 0;
+      width: 3rem;
     }
 
     &__hamburger {

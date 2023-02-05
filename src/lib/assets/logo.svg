@@ -10,15 +10,6 @@
   xmlns="http://www.w3.org/2000/svg"
   xmlns:svg="http://www.w3.org/2000/svg"
 >
-  <style>
-    @media (prefers-color-scheme: dark) {
-      circle,
-      rect,
-      path {
-        fill: #cdd6f4 !important;
-      }
-    }
-  </style>
   <defs id="defs2" />
   <g
     id="layer1-7-0-2-3"
@@ -33,7 +24,7 @@
       <circle
         style="
           display: inline;
-          fill: #1e1e2e;
+          fill: #cdd6f4;
           fill-opacity: 1;
           stroke: #ffffff;
           stroke-width: 0;
@@ -47,7 +38,7 @@
       <rect
         style="
           display: inline;
-          fill: #1e1e2e;
+          fill: #cdd6f4;
           fill-opacity: 1;
           stroke: #ffffff;
           stroke-width: 0;
@@ -69,7 +60,7 @@
         id="rect1322"
         style="
           display: inline;
-          fill: #1e1e2e;
+          fill: #cdd6f4;
           fill-opacity: 1;
           stroke: #ffffff;
           stroke-width: 0;
@@ -78,7 +69,7 @@
         transform="translate(1.0416667e-6)"
       />
       <circle
-        style="fill: #1e1e2e; fill-opacity: 1; stroke: #ffffff; stroke-width: 0"
+        style="fill: #cdd6f4; fill-opacity: 1; stroke: #ffffff; stroke-width: 0"
         id="path1100"
         cx="81.685448"
         cy="-76.670532"
