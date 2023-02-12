@@ -28,6 +28,7 @@
 
     & :global(nav) {
       padding: 1rem;
+      overflow-y: auto;
       animation-duration: 0s !important; // Disable svelte transition
     }
 
