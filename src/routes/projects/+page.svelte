@@ -1,1 +1,1 @@
-<!-- Redirects to /#projects -->
+<!-- Redirect /projects to /#projects -->
