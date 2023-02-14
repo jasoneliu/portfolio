@@ -70,7 +70,7 @@
       padding: 2rem 8vw;
 
       @media screen and (max-width: $breakpoint-lg) {
-        grid-templat-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr;
       }
     }
