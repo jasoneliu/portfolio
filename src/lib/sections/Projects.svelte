@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import InView from '$lib/components/InView.svelte';
   import ProjectCard from '$lib/components/ProjectCard.svelte';
   import { projects } from '$lib/projects';
   import { projectsAnchor } from '$lib/store';
@@ -12,10 +13,14 @@
 </script>
 
 <section class="projects" bind:this={projectsSection}>
-  <h2>Projects</h2>
+  <InView>
+    <h2>Projects</h2>
+  </InView>
   <div class="projects__project-list">
     {#each Object.entries(projects) as [_, project] (project.slug)}
-      <ProjectCard {project} />
+      <InView>
+        <ProjectCard {project} />
+      </InView>
     {/each}
   </div>
 </section>

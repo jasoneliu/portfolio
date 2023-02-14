@@ -3,6 +3,7 @@
   import backendIcon from '$lib/assets/icons/backend.svg';
   import frontendIcon from '$lib/assets/icons/frontend.svg';
   import softwareIcon from '$lib/assets/icons/software.svg';
+  import InView from '$lib/components/InView.svelte';
   import { skillsAnchor } from '$lib/store';
 
   const skills = [
@@ -34,22 +35,26 @@
 </script>
 
 <section class="skills" bind:this={skillsSection}>
-  <h2>Skills</h2>
+  <InView>
+    <h2>Skills</h2>
+  </InView>
   <div class="skills__container">
     {#each skills as skill, skillIndex}
-      <div class="skills__item">
-        <div class="skills__heading">
-          <img
-            class={`skills__icon ${skill.slug}`}
-            src={skill.icon}
-            alt={`${skill.title} Icon`}
-          />
-          <h3 class={`skills__heading-text ${skill.slug}`}>{skill.title}</h3>
+      <InView delay={skillIndex * 200}>
+        <div class="skills__item">
+          <div class="skills__heading">
+            <img
+              class={`skills__icon ${skill.slug}`}
+              src={skill.icon}
+              alt={`${skill.title} Icon`}
+            />
+            <h3 class={`skills__heading-text ${skill.slug}`}>{skill.title}</h3>
+          </div>
+          <p>
+            {skill.body}
+          </p>
         </div>
-        <p>
-          {skill.body}
-        </p>
-      </div>
+      </InView>
     {/each}
   </div>
 </section>
