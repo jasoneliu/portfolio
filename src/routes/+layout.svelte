@@ -1,7 +1,18 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import Navbar from '$lib/components/Navbar.svelte';
   import Footer from '$lib/components/Footer.svelte';
+  import PageTransition from '$lib/components/PageTransition.svelte';
+  import { loading } from '$lib/store';
   import '../app.scss';
+
+  // Disable loader for non-home pages
+  onMount(() => {
+    if ($page.route.id !== '/') {
+      loading.set(false);
+    }
+  });
 </script>
 
 <svelte:head>
@@ -23,27 +34,21 @@
   <meta property="og:url" content="https://www.jasoneliu.com" />
 </svelte:head>
 
-<div class="page">
-  <Navbar />
-  <div class="page__content">
+<Navbar />
+<PageTransition>
+  <div class="page">
     <slot />
   </div>
   <Footer />
-</div>
+</PageTransition>
 
 <style lang="scss">
   .page {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    min-height: 100dvh;
-
-    &__content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      flex-grow: 1;
-      padding-top: 8rem;
-    }
+    flex-grow: 1;
+    padding-top: 8rem;
   }
 </style>

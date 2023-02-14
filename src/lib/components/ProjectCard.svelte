@@ -15,8 +15,8 @@
           src={project.image}
           alt={project.name}
         />
-      </picture></a
-    >
+      </picture>
+    </a>
     <div class="project-card__info">
       <span class="project-card__role">{project.role}</span>
       <h3 class="project-card__name">{project.name}</h3>
@@ -34,10 +34,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-
-    &:nth-child(even) {
-      background-color: $mantle;
-    }
 
     &__card {
       display: grid;

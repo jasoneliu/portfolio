@@ -1,7 +1,6 @@
 @use 'src/styles/_variables' as *;
 
 html {
-  scroll-behavior: smooth;
   scrollbar-color: $overlay2 $base;
   scrollbar-width: auto;
 }

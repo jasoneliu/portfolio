@@ -2,14 +2,12 @@
   import { onMount } from 'svelte';
   import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
-  import { colors } from '$lib/colors';
   import logo from '$lib/assets/logo.svg';
+  import { colors } from '$lib/colors';
   import { Hamburger } from 'svelte-hamburgers';
 
   // Navbar items
   const navItems: string[] = ['Home', 'Projects', 'Resume'];
-  const resumeLink =
-    'https://drive.google.com/file/d/1839WZa3DpYe1a5eQLdNsCkZ9U_Qb7Xe9/view?usp=sharing';
   let hoveredNavItem: string | null = null;
 
   // Screen width and mobile layout
@@ -123,8 +121,10 @@
             <li class="navbar__item">
               <a
                 class="navbar__link"
-                href={item === 'Resume'
-                  ? resumeLink
+                href={item === 'Home'
+                  ? '/'
+                  : item === 'Resume'
+                  ? '/resume'
                   : `/#${item.toLowerCase()}`}
                 rel="noreferrer"
                 target={item === 'Resume' ? '_blank' : null}
@@ -168,6 +168,7 @@
     margin: 1rem 0;
     width: 100%;
     padding: 1rem;
+    pointer-events: none;
 
     &.hide {
       transform: translate3d(0, -100%, 0);
@@ -176,6 +177,7 @@
     &__icon {
       margin-left: 0.25rem;
       padding: 0.5rem;
+      pointer-events: auto;
     }
 
     &__icon-image {
@@ -197,6 +199,7 @@
 
     &__link {
       text-decoration: none;
+      pointer-events: auto;
     }
 
     &__text {
@@ -216,6 +219,7 @@
       margin-top: 0;
       background-color: $base;
       box-shadow: 0 0 0.75rem $crust;
+      pointer-events: auto;
 
       &__hamburger {
         display: flex;

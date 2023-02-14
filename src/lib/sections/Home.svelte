@@ -7,7 +7,7 @@
 
 <svelte:window bind:scrollY />
 
-<section class="home" id="home">
+<section class="home">
   <div class="home__container">
     <div
       class="home__info"

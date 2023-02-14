@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import backendIcon from '$lib/assets/icons/backend.svg';
   import frontendIcon from '$lib/assets/icons/frontend.svg';
   import softwareIcon from '$lib/assets/icons/software.svg';
+  import { skillsAnchor } from '$lib/store';
 
   const skills = [
     {
@@ -23,12 +25,18 @@
       slug: 'backend',
     },
   ];
+
+  // Set skills section anchor for navigation
+  let skillsSection: HTMLElement;
+  onMount(() => {
+    skillsAnchor.set(skillsSection);
+  });
 </script>
 
-<section id="skills">
+<section class="skills" bind:this={skillsSection}>
   <h2>Skills</h2>
   <div class="skills__container">
-    {#each skills as skill}
+    {#each skills as skill, skillIndex}
       <div class="skills__item">
         <div class="skills__heading">
           <img
@@ -80,6 +88,7 @@
         margin-top: -0.85rem;
         width: 100%;
         height: 0.5rem;
+        transform: width 1s;
       }
 
       &.software-dev::after {
