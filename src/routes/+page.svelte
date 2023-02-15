@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { page, navigating } from '$app/stores';
+  import { page } from '$app/stores';
   import Loader from '$lib/components/Loader.svelte';
   import Home from '$lib/sections/Home.svelte';
   import Projects from '$lib/sections/Projects.svelte';
@@ -17,12 +17,12 @@
     }
 
     // Prevent scroll during page transition
-    if ($page.route.id !== '/') {
+    if ($page.url.pathname !== '/') {
       return;
     }
 
     let scrollTop: number = 0;
-    let scrollBehavior: ScrollBehavior = 'auto';
+    let scrollBehavior: ScrollBehavior = 'smooth';
 
     // Scroll position for projects and skills sections
     if ($page.url.href.endsWith('/#projects')) {
@@ -32,14 +32,12 @@
       scrollTop = $skillsAnchor.offsetTop - window.innerHeight / 10;
     }
 
-    // Smooth scroll behavior within home page
-    console.log($navigating, $page.route.id, $page.url.href);
-    if (!firstRender) {
-      scrollBehavior = 'smooth';
+    // Prevent smooth scroll for page transitions
+    if (firstRender) {
+      scrollBehavior = 'auto';
     }
 
     // Scroll to section
-    console.log('scrolling to', scrollTop, scrollBehavior);
     scrollTo({
       top: scrollTop,
       behavior: scrollBehavior,

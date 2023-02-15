@@ -2,23 +2,15 @@ import { redirect } from '@sveltejs/kit';
 import { projects, type ProjectSlug } from '$lib/projects';
 import type { LayoutServerLoad } from './$types';
 
-interface Route<RouteId extends string | null = string | null> {
-  id: RouteId;
-}
-
-// Return the route's slug
-function getSlug(route: Route) {
-  if (!route.id) {
-    return null;
-  }
-
-  const pathSegments = route.id.split('/');
+/** Return the url's slug. */
+function getSlug(url: URL) {
+  const pathSegments = url.pathname.split('/');
   const slug = pathSegments[pathSegments.length - 1];
   return slug;
 }
 
-export const load = (({ route }: { route: Route }) => {
-  const slug = getSlug(route);
+export const load = (({ url }: { url: URL }) => {
+  const slug = getSlug(url);
 
   // Redirect /projects to /#projects
   if (slug === 'projects') {

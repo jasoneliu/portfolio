@@ -9,7 +9,7 @@
 
   // Disable loader for non-home pages
   onMount(() => {
-    if ($page.route.id !== '/') {
+    if ($page.url.pathname !== '/') {
       loading.set(false);
     }
   });

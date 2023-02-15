@@ -33,17 +33,17 @@
   // Handle page transition when navigation occurs
   beforeNavigate((navigation) => {
     // No page transition for refresh
-    if (!navigation.to?.route) {
+    if (!navigation.to?.url) {
       return;
     }
 
     // No page transition for navigation to current page
-    if (navigation.from?.route.id === navigation.to?.route.id) {
+    if (navigation.from?.url.pathname === navigation.to?.url.pathname) {
       return;
     }
 
     // No page transition for navigation to resume (opens in new tab)
-    if (navigation.to?.route.id === '/resume') {
+    if (navigation.to?.url.pathname === '/resume') {
       return;
     }
 
