@@ -5,10 +5,12 @@
   import logo from '$lib/assets/logo.svg';
   import { colors } from '$lib/colors';
   import { Hamburger } from 'svelte-hamburgers';
+  import { url } from '$lib/store';
 
   // Navbar items
   const navItems: string[] = ['Home', 'Projects', 'Resume'];
   let hoveredNavItem: string | null = null;
+  let navigating: number = 0;
 
   // Screen width and mobile layout
   let innerWidth: number;
@@ -21,7 +23,7 @@
 
   // Hide navbar when scrolling down
   let showNavbar: boolean = true;
-  $: showNavbar = !isScrollingDown(scrollY) || mobileLayout;
+  $: showNavbar = !isScrollingDown(scrollY) || navigating > 0 || mobileLayout;
 
   // Hamburger menu for mobile layout
   let hamburgerOpen: boolean = false;
@@ -43,6 +45,23 @@
     hoveredNavItem = navItem;
   }
 
+  /** Update url hash. */
+  function setUrlHash(navItem: string) {
+    if (navItem === 'Home') {
+      url.set({ ...url, hash: '' });
+    } else if (navItem === 'Projects') {
+      url.set({ ...url, hash: '#projects' });
+    }
+  }
+
+  /** Begin navigation to prevent navbar from hiding. */
+  function beginNavigation() {
+    navigating++;
+    setTimeout(() => {
+      navigating--;
+    }, 750);
+  }
+
   /** Detect whether the user is scrolling down. */
   function isScrollingDown(scrollY: number) {
     // Not scrolling down on first render
@@ -51,6 +70,7 @@
       return false;
     }
 
+    // Set previous scroll position and detect if scrolling down
     const scrollDistance = scrollY - prevScrollY;
     prevScrollY = scrollY;
     return scrollDistance > 0;
@@ -94,7 +114,7 @@
 
 <header>
   <nav class="navbar" class:hide={!showNavbar}>
-    <a class="navbar__icon" href="/">
+    <a class="navbar__icon" href="/" on:click={() => setUrlHash('Home')}>
       <img class="navbar__icon-image" src={logo} alt="Icon" />
     </a>
     <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
@@ -117,36 +137,40 @@
     >
       {#if showNavbarItems}
         <ul class="navbar__list">
-          {#each navItems as item, itemIndex}
+          {#each navItems as navItem, navItemIndex}
             <li class="navbar__item">
               <a
                 class="navbar__link"
-                href={item === 'Home'
+                href={navItem === 'Home'
                   ? '/'
-                  : item === 'Resume'
+                  : navItem === 'Resume'
                   ? '/resume'
-                  : `/#${item.toLowerCase()}`}
+                  : `/#${navItem.toLowerCase()}`}
                 rel="noreferrer"
-                target={item === 'Resume' ? '_blank' : null}
-                on:click={closeHamburger}
+                target={navItem === 'Resume' ? '_blank' : null}
+                on:click={() => {
+                  setUrlHash(navItem);
+                  closeHamburger();
+                  beginNavigation();
+                }}
               >
                 <span
                   class="navbar__text"
-                  class:hovered={hoveredNavItem && hoveredNavItem !== item}
-                  on:mouseenter={() => setHoveredNavItem(item)}
+                  class:hovered={hoveredNavItem && hoveredNavItem !== navItem}
+                  on:mouseenter={() => setHoveredNavItem(navItem)}
                   on:mouseleave={() => setHoveredNavItem(null)}
                   in:fly={mobileLayout
                     ? {
                         x: -200,
                         duration: 500,
-                        delay: 200 + 50 * itemIndex,
+                        delay: 200 + 50 * navItemIndex,
                         easing: cubicOut,
                       }
                     : {
                         duration: 0,
                       }}
                 >
-                  {item}
+                  {navItem}
                 </span>
               </a>
             </li>

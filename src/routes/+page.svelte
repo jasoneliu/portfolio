@@ -5,36 +5,29 @@
   import Home from '$lib/sections/Home.svelte';
   import Projects from '$lib/sections/Projects.svelte';
   import Skills from '$lib/sections/Skills.svelte';
-  import { projectsAnchor, skillsAnchor } from '$lib/store';
+  import { url, projectsAnchor, skillsAnchor } from '$lib/store';
 
   let scrollReady: boolean = false;
+  let scrollBehavior: ScrollBehavior = 'auto';
 
   /** Scroll to home page section based on the page url. */
-  function scrollToSection(firstRender: boolean) {
+  function scrollToSection() {
     // Prevent scroll before first render
     if (!scrollReady) {
       return;
     }
 
-    // Prevent scroll during page transition
+    // Prevent scroll during page transition away from home page
     if ($page.url.pathname !== '/') {
       return;
     }
 
-    let scrollTop: number = 0;
-    let scrollBehavior: ScrollBehavior = 'smooth';
-
     // Scroll position for projects and skills sections
-    if ($page.url.href.endsWith('/#projects')) {
+    let scrollTop: number = 0;
+    if ($url.hash === '#projects') {
       scrollTop = $projectsAnchor.offsetTop - window.innerHeight / 10;
-    }
-    if ($page.url.href.endsWith('/#skills')) {
+    } else if ($url.hash === '#skills') {
       scrollTop = $skillsAnchor.offsetTop - window.innerHeight / 10;
-    }
-
-    // Prevent smooth scroll for page transitions
-    if (firstRender) {
-      scrollBehavior = 'auto';
     }
 
     // Scroll to section
@@ -42,16 +35,19 @@
       top: scrollTop,
       behavior: scrollBehavior,
     });
+
+    // Enable smooth scrolling after initial scroll
+    scrollBehavior = 'smooth';
   }
 
-  // Scroll on first render
+  // Set url for initial scroll
   onMount(() => {
     scrollReady = true;
-    setTimeout(() => scrollToSection(true), 0);
+    url.set({ ...url, hash: $page.url.hash });
   });
 
-  // Scroll within home page
-  $: $page.url.href, scrollToSection(false);
+  // Scroll to home page section
+  $: $url, scrollToSection();
 </script>
 
 <svelte:head>
@@ -60,6 +56,15 @@
     name="description"
     content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
   />
+
+  <!-- Disable scrolling when page is loading -->
+  {#if scrollBehavior === 'smooth'}
+    <style lang="scss">
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  {/if}
 </svelte:head>
 
 <Loader />
