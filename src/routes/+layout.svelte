@@ -4,14 +4,19 @@
   import Navbar from '$lib/components/Navbar.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import PageTransition from '$lib/components/PageTransition.svelte';
-  import { loading } from '$lib/store';
+  import { url, loading } from '$lib/store';
   import '../app.scss';
 
-  // Disable loader for non-home pages
   onMount(() => {
+    // Disable loader for non-home pages
     if ($page.url.pathname !== '/') {
       loading.set(false);
     }
+
+    // Update url hash on navigation
+    window.addEventListener('hashchange', () => {
+      url.set({ ...url, hash: location.hash });
+    });
   });
 </script>
 

@@ -45,13 +45,9 @@
     hoveredNavItem = navItem;
   }
 
-  /** Update url hash. */
-  function setUrlHash(navItem: string) {
-    if (navItem === 'Home') {
-      url.set({ ...url, hash: '' });
-    } else if (navItem === 'Projects') {
-      url.set({ ...url, hash: '#projects' });
-    }
+  /** Remove URL hash for navigation to /. */
+  function removeUrlHash() {
+    url.set({ ...url, hash: '' });
   }
 
   /** Begin navigation to prevent navbar from hiding. */
@@ -114,7 +110,7 @@
 
 <header>
   <nav class="navbar" class:hide={!showNavbar}>
-    <a class="navbar__icon" href="/" on:click={() => setUrlHash('Home')}>
+    <a class="navbar__icon" href="/" on:click={removeUrlHash}>
       <img class="navbar__icon-image" src={logo} alt="Icon" />
     </a>
     <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
@@ -149,9 +145,11 @@
                 rel="noreferrer"
                 target={navItem === 'Resume' ? '_blank' : null}
                 on:click={() => {
-                  setUrlHash(navItem);
                   closeHamburger();
                   beginNavigation();
+                  if (navItem === 'Home') {
+                    removeUrlHash();
+                  }
                 }}
               >
                 <span
