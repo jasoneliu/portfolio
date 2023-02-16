@@ -188,7 +188,7 @@
     transition: transform 0.5s $ease-in-out-quad;
     z-index: 10;
     margin: 1rem 0;
-    width: 100%;
+    width: 100vw;
     padding: 1rem;
     pointer-events: none;
 

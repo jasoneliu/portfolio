@@ -3,17 +3,18 @@
 html {
   scrollbar-color: $overlay2 $base;
   scrollbar-width: auto;
+  scrollbar-gutter: stable;
 }
 
 body {
   &::-webkit-scrollbar {
-    width: 0.7rem;
+    width: 0.5rem;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: $overlay2;
     border-radius: 1rem;
-    border: 0.2rem solid $base;
+    border: 0.125rem solid $base;
   }
 
   &::-webkit-scrollbar-track {
