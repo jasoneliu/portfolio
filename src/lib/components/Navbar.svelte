@@ -5,12 +5,11 @@
   import logo from '$lib/assets/logo.svg';
   import { colors } from '$lib/colors';
   import { Hamburger } from 'svelte-hamburgers';
-  import { url } from '$lib/store';
+  import { url, hashScrolling } from '$lib/store';
 
   // Navbar items
   const navItems: string[] = ['Home', 'Projects', 'Resume'];
   let hoveredNavItem: string | null = null;
-  let navigating: number = 0;
 
   // Screen width and mobile layout
   let innerWidth: number;
@@ -23,7 +22,8 @@
 
   // Hide navbar when scrolling down
   let showNavbar: boolean = true;
-  $: showNavbar = !isScrollingDown(scrollY) || navigating > 0 || mobileLayout;
+  $: showNavbar =
+    !isScrollingDown(scrollY) || $hashScrolling > 0 || mobileLayout;
 
   // Hamburger menu for mobile layout
   let hamburgerOpen: boolean = false;
@@ -48,14 +48,6 @@
   /** Remove URL hash for navigation to /. */
   function removeUrlHash() {
     url.set({ ...url, hash: '' });
-  }
-
-  /** Begin navigation to prevent navbar from hiding. */
-  function beginNavigation() {
-    navigating++;
-    setTimeout(() => {
-      navigating--;
-    }, 750);
   }
 
   /** Detect whether the user is scrolling down. */
@@ -146,7 +138,6 @@
                 target={navItem === 'Resume' ? '_blank' : null}
                 on:click={() => {
                   closeHamburger();
-                  beginNavigation();
                   if (navItem === 'Home') {
                     removeUrlHash();
                   }

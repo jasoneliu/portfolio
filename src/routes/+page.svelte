@@ -5,7 +5,7 @@
   import Home from '$lib/sections/Home.svelte';
   import Projects from '$lib/sections/Projects.svelte';
   import Skills from '$lib/sections/Skills.svelte';
-  import { url, projectsAnchor, skillsAnchor } from '$lib/store';
+  import { url, hashScrolling, projectsAnchor, skillsAnchor } from '$lib/store';
 
   let scrollReady: boolean = false;
   let scrollBehavior: ScrollBehavior = 'auto';
@@ -21,6 +21,12 @@
     if ($page.url.pathname !== '/') {
       return;
     }
+
+    // Prevent navbar from hiding during scroll
+    hashScrolling.update((count) => count + 1);
+    setTimeout(() => {
+      hashScrolling.update((count) => count - 1);
+    }, 750);
 
     // Scroll position for projects and skills sections
     let scrollTop: number = 0;
