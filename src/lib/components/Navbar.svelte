@@ -101,7 +101,10 @@
       <div
         class="navbar__wrapper"
         class:open={hamburgerOpen}
-        transition:slide={$mobileLayout
+        in:slide={$mobileLayout
+          ? { duration: hamburgerAnimationDurationMs, easing: cubicOut }
+          : { duration: 0 }}
+        out:slide={$mobileLayout
           ? { duration: hamburgerAnimationDurationMs, easing: cubicOut }
           : { duration: 0 }}
       >
