@@ -48,9 +48,13 @@
     hoveredNavItem = navItem;
   }
 
-  /** Remove URL hash for navigation to /. */
-  function removeUrlHash() {
-    url.set({ ...url, hash: '' });
+  /** Update URL hash on navigation. */
+  function setUrlHash(navItem: string) {
+    if (navItem === 'Home') {
+      url.set({ ...url, hash: '' });
+    } else if (navItem === 'Projects') {
+      url.set({ ...url, hash: '#projects' });
+    }
   }
 
   /** Detect whether the user is scrolling down. */
@@ -99,7 +103,7 @@
 
 <header>
   <nav class="navbar" class:hide={!showNavbar}>
-    <a class="navbar__icon" href="/" on:click={removeUrlHash}>
+    <a class="navbar__icon" href="/" on:click={() => setUrlHash('Home')}>
       <img class="navbar__icon-image" src={logo} alt="Icon" />
     </a>
     {#key hamburgerOpen}
@@ -126,9 +130,7 @@
                     target={navItem === 'Resume' ? '_blank' : null}
                     on:click={() => {
                       closeHamburger();
-                      if (navItem === 'Home') {
-                        removeUrlHash();
-                      }
+                      setUrlHash(navItem);
                     }}
                   >
                     <span
