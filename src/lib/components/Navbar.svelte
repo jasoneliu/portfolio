@@ -270,6 +270,7 @@
         right: 0;
         width: 100%;
         height: 0;
+        box-shadow: 0 0 0.75rem $crust;
         background-color: $mantle;
 
         &.open {
