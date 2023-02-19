@@ -5,7 +5,13 @@
   import Home from '$lib/sections/Home.svelte';
   import Projects from '$lib/sections/Projects.svelte';
   import Skills from '$lib/sections/Skills.svelte';
-  import { url, hashScrolling, projectsAnchor, skillsAnchor } from '$lib/store';
+  import {
+    mobileLayout,
+    url,
+    hashScrolling,
+    projectsAnchor,
+    skillsAnchor,
+  } from '$lib/store';
 
   let scrollReady: boolean = false;
   let scrollBehavior: ScrollBehavior = 'auto';
@@ -30,10 +36,11 @@
 
     // Scroll position for projects and skills sections
     let scrollTop: number = 0;
+    const marginTop: number = window.innerHeight / ($mobileLayout ? 7 : 10);
     if ($url.hash === '#projects') {
-      scrollTop = $projectsAnchor.offsetTop - window.innerHeight / 10;
+      scrollTop = $projectsAnchor.offsetTop - marginTop;
     } else if ($url.hash === '#skills') {
-      scrollTop = $skillsAnchor.offsetTop - window.innerHeight / 10;
+      scrollTop = $skillsAnchor.offsetTop - marginTop;
     }
 
     // Scroll to section
