@@ -4,8 +4,16 @@
   import Navbar from '$lib/components/Navbar.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import PageTransition from '$lib/components/PageTransition.svelte';
-  import { url, loading } from '$lib/store';
+  import { innerWidth, scrollY, loading, url, mobileLayout } from '$lib/store';
   import '../app.scss';
+
+  let windowInnerWidth: number;
+  let windowScrollY: number;
+
+  // Update window bindings and mobile layout
+  $: innerWidth.set(windowInnerWidth);
+  $: scrollY.set(windowScrollY);
+  $: mobileLayout.set(windowInnerWidth < 768); // $breakpoint-md
 
   onMount(() => {
     // Disable loader for non-home pages
@@ -19,6 +27,12 @@
     });
   });
 </script>
+
+<!-- Bind screen width and scroll position -->
+<svelte:window
+  bind:innerWidth={windowInnerWidth}
+  bind:scrollY={windowScrollY}
+/>
 
 <svelte:head>
   <meta name="author" content="Jason Liu" />

@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { fade, fly } from 'svelte/transition';
-  import { cubicIn, cubicOut, cubicInOut } from 'svelte/easing';
+  import { cubicOut } from 'svelte/easing';
   import { beforeNavigate } from '$app/navigation';
   import logo from '$lib/assets/logo.svg';
   import { colors } from '$lib/colors';
   import { socials } from '$lib/socials';
-  import { url, hashScrolling } from '$lib/store';
+  import { scrollY, mobileLayout, url, hashScrolling } from '$lib/store';
   import { slide, slideHorizontal } from '$lib/transition';
   import { Hamburger } from 'svelte-hamburgers';
 
@@ -14,19 +14,13 @@
   const navItems: string[] = ['Home', 'Projects', 'Resume'];
   let hoveredNavItem: string | null = null;
 
-  // Screen width and mobile layout
-  let innerWidth: number;
-  let mobileLayout: boolean = false;
-  $: mobileLayout = innerWidth < 768; // $breakpoint-md
-
   // Scroll position
-  let scrollY: number;
   let prevScrollY: number;
 
   // Hide navbar when scrolling down
   let showNavbar: boolean = true;
   $: showNavbar =
-    !isScrollingDown(scrollY) || $hashScrolling > 0 || mobileLayout;
+    !isScrollingDown($scrollY) || $hashScrolling > 0 || $mobileLayout;
 
   // Hamburger menu for mobile layout
   let hamburgerOpen: boolean = false;
@@ -36,10 +30,10 @@
   // Show navbar items to trigger svelte transition in
   let showNavbarItems: boolean = true;
   $: showNavbarItems =
-    animationReady && (!mobileLayout || hamburgerOpen || hamburgerAnimating);
+    animationReady && (!$mobileLayout || hamburgerOpen || hamburgerAnimating);
 
   // Close hamburger menu after switching to desktop layout
-  $: if (!mobileLayout && animationReady) {
+  $: if (!$mobileLayout && animationReady) {
     closeHamburger();
   }
 
@@ -98,9 +92,6 @@
   });
 </script>
 
-<!-- Bind screen width and scroll position -->
-<svelte:window bind:innerWidth bind:scrollY />
-
 <header>
   <nav class="navbar" class:hide={!showNavbar}>
     <a class="navbar__icon" href="/" on:click={() => setUrlHash('Home')}>
@@ -110,7 +101,7 @@
       <div
         class="navbar__wrapper"
         class:open={hamburgerOpen}
-        transition:slide={mobileLayout
+        transition:slide={$mobileLayout
           ? { duration: hamburgerAnimationDurationMs, easing: cubicOut }
           : { duration: 0 }}
       >
@@ -139,7 +130,7 @@
                         hoveredNavItem !== navItem}
                       on:mouseenter={() => setHoveredNavItem(navItem)}
                       on:mouseleave={() => setHoveredNavItem(null)}
-                      in:fly={mobileLayout
+                      in:fly={$mobileLayout
                         ? {
                             y: -20,
                             duration: 500,
@@ -156,7 +147,7 @@
                 </li>
               {/each}
             </ul>
-            {#if mobileLayout}
+            {#if $mobileLayout}
               <div
                 class="navbar__mobile-separator"
                 in:slideHorizontal={{
@@ -191,7 +182,7 @@
         {/if}
       </div>
     {/key}
-    {#if mobileLayout}
+    {#if $mobileLayout}
       <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
         <Hamburger
           bind:open={hamburgerOpen}

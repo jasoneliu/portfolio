@@ -1,13 +1,11 @@
 <script lang="ts">
+  import { innerWidth } from '$lib/store';
   import Toc from 'svelte-toc';
 
+  // Hide table of contents for small screen size
   const breakpoint = 992; // $breakpoint-lg
-  let innerWidth: number;
-  $: showToc = innerWidth > breakpoint;
+  $: showToc = $innerWidth > breakpoint;
 </script>
-
-<!-- Bind screen width -->
-<svelte:window bind:innerWidth />
 
 {#if showToc}
   <div class="toc">

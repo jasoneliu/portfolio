@@ -1,17 +1,14 @@
 <script lang="ts">
   import homeBackgroundImage from '$lib/assets/home-background.png';
+  import { scrollY } from '$lib/store';
   import IoMdArrowRoundDown from 'svelte-icons/io/IoMdArrowRoundDown.svelte';
-
-  let scrollY: number;
 </script>
-
-<svelte:window bind:scrollY />
 
 <section class="home">
   <div class="home__container">
     <div
       class="home__info"
-      style="transform: translate3d(0, {scrollY * -0.25}px, 0)"
+      style="transform: translate3d(0, {$scrollY * -0.25}px, 0)"
     >
       <h1 class="home__name">Jason Liu</h1>
       <div class="home__about">
