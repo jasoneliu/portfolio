@@ -273,7 +273,7 @@
         background-color: $mantle;
 
         &.open {
-          height: 16.5rem;
+          height: 15.5rem;
         }
       }
 
@@ -284,7 +284,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: 100%;
-        height: 16.5rem;
+        height: 15.5rem;
         padding: 0.5rem 2rem;
       }
 
@@ -298,7 +298,7 @@
         width: 100%;
         padding: 0.5rem;
         text-align: center;
-        font-size: 2rem;
+        font-size: 1.75rem;
 
         &.hovered {
           opacity: 1;
@@ -314,7 +314,7 @@
       &__mobile-content {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        margin: 1rem -0.5rem;
+        margin: 1rem -0.5rem 0.875rem;
       }
 
       &__link-wrapper {
