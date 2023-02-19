@@ -1,8 +1,6 @@
 <script lang="ts">
   import InView from '$lib/components/InView.svelte';
-  import IoIosMail from 'svelte-icons/io/IoIosMail.svelte';
-  import IoLogoGithub from 'svelte-icons/io/IoLogoGithub.svelte';
-  import IoLogoLinkedin from 'svelte-icons/io/IoLogoLinkedin.svelte';
+  import { socials } from '$lib/socials';
 
   const year = new Date().getFullYear();
 </script>
@@ -11,25 +9,16 @@
   <footer class="footer">
     <p class="footer__text">Designed and developed with ♥</p>
     <div class="footer__icon-list">
-      <a class="footer__icon" href="mailto:jasoneliu03@gmail.com">
-        <IoIosMail />
-      </a>
-      <a
-        class="footer__icon"
-        href="https://github.com/jasoneliu"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <IoLogoGithub />
-      </a>
-      <a
-        class="footer__icon"
-        href="https://www.linkedin.com/in/jasoneliu"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <IoLogoLinkedin />
-      </a>
+      {#each socials as social}
+        <a
+          class="footer__icon"
+          href={social.href}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <svelte:component this={social.icon} />
+        </a>
+      {/each}
     </div>
     <p class="footer__copyright">Jason Liu © {year}</p>
   </footer>

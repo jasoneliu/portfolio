@@ -1,11 +1,14 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fly } from 'svelte/transition';
-  import { cubicOut } from 'svelte/easing';
+  import { fade, fly } from 'svelte/transition';
+  import { cubicIn, cubicOut, cubicInOut } from 'svelte/easing';
+  import { beforeNavigate } from '$app/navigation';
   import logo from '$lib/assets/logo.svg';
   import { colors } from '$lib/colors';
-  import { Hamburger } from 'svelte-hamburgers';
+  import { socials } from '$lib/socials';
   import { url, hashScrolling } from '$lib/store';
+  import { slide, slideHorizontal } from '$lib/transition';
+  import { Hamburger } from 'svelte-hamburgers';
 
   // Navbar items
   const navItems: string[] = ['Home', 'Projects', 'Resume'];
@@ -14,7 +17,7 @@
   // Screen width and mobile layout
   let innerWidth: number;
   let mobileLayout: boolean = false;
-  $: mobileLayout = innerWidth <= 768; // $breakpoint-md
+  $: mobileLayout = innerWidth < 768; // $breakpoint-md
 
   // Scroll position
   let scrollY: number;
@@ -28,7 +31,7 @@
   // Hamburger menu for mobile layout
   let hamburgerOpen: boolean = false;
   let hamburgerAnimating: boolean = false;
-  const hamburgerAnimationDurationMs: number = 750;
+  const hamburgerAnimationDurationMs: number = 500;
 
   // Show navbar items to trigger svelte transition in
   let showNavbarItems: boolean = true;
@@ -79,6 +82,11 @@
     hoveredNavItem = null;
   }
 
+  // Close hamburger before navigating
+  beforeNavigate(() => {
+    closeHamburger();
+  });
+
   // Run svelte transitions on first render
   let animationReady: boolean = false;
   onMount(() => {
@@ -89,84 +97,114 @@
 <!-- Bind screen width and scroll position -->
 <svelte:window bind:innerWidth bind:scrollY />
 
-<!-- Disable scrolling when hamburger menu is open -->
-<svelte:head>
-  {#if hamburgerOpen}
-    <style lang="scss">
-      body {
-        overflow: hidden;
-      }
-    </style>
-  {/if}
-</svelte:head>
-
 <header>
   <nav class="navbar" class:hide={!showNavbar}>
     <a class="navbar__icon" href="/" on:click={removeUrlHash}>
       <img class="navbar__icon-image" src={logo} alt="Icon" />
     </a>
-    <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
-      <Hamburger
-        bind:open={hamburgerOpen}
-        type="spin"
-        --color={colors.text}
-        --padding="0.5rem"
-        --layer-width="1.5rem"
-        --layer-height="0.15rem"
-        --layer-spacing="0.3rem"
-        --hover-opacity="1"
-        on:click={animateHamburger}
-      />
-    </div>
-    <div
-      class="navbar__wrapper"
-      class:open={hamburgerOpen}
-      style:transition-duration={`${hamburgerAnimationDurationMs}ms`}
-    >
-      {#if showNavbarItems}
-        <ul class="navbar__list">
-          {#each navItems as navItem, navItemIndex}
-            <li class="navbar__item">
-              <a
-                class="navbar__link"
-                href={navItem === 'Home'
-                  ? '/'
-                  : navItem === 'Resume'
-                  ? '/resume'
-                  : `/#${navItem.toLowerCase()}`}
-                rel="noreferrer"
-                target={navItem === 'Resume' ? '_blank' : null}
-                on:click={() => {
-                  closeHamburger();
-                  if (navItem === 'Home') {
-                    removeUrlHash();
-                  }
-                }}
-              >
-                <span
-                  class="navbar__text"
-                  class:hovered={hoveredNavItem && hoveredNavItem !== navItem}
-                  on:mouseenter={() => setHoveredNavItem(navItem)}
-                  on:mouseleave={() => setHoveredNavItem(null)}
-                  in:fly={mobileLayout
-                    ? {
-                        x: -200,
-                        duration: 500,
-                        delay: 200 + 50 * navItemIndex,
-                        easing: cubicOut,
+    {#key hamburgerOpen}
+      <div
+        class="navbar__wrapper"
+        class:open={hamburgerOpen}
+        transition:slide={mobileLayout
+          ? { duration: hamburgerAnimationDurationMs, easing: cubicOut }
+          : { duration: 0 }}
+      >
+        {#if showNavbarItems}
+          <div class="navbar__content-wrapper">
+            <ul class="navbar__content">
+              {#each navItems as navItem, navItemIndex}
+                <li class="navbar__item">
+                  <a
+                    class="navbar__link"
+                    href={navItem === 'Home'
+                      ? '/'
+                      : navItem === 'Resume'
+                      ? '/resume'
+                      : `/#${navItem.toLowerCase()}`}
+                    rel="noreferrer"
+                    target={navItem === 'Resume' ? '_blank' : null}
+                    on:click={() => {
+                      closeHamburger();
+                      if (navItem === 'Home') {
+                        removeUrlHash();
                       }
-                    : {
-                        duration: 0,
-                      }}
-                >
-                  {navItem}
-                </span>
-              </a>
-            </li>
-          {/each}
-        </ul>
-      {/if}
-    </div>
+                    }}
+                  >
+                    <span
+                      class="navbar__text"
+                      class:hovered={hoveredNavItem &&
+                        hoveredNavItem !== navItem}
+                      on:mouseenter={() => setHoveredNavItem(navItem)}
+                      on:mouseleave={() => setHoveredNavItem(null)}
+                      in:fly={mobileLayout
+                        ? {
+                            y: -20,
+                            duration: 500,
+                            delay: 200 + 100 * navItemIndex,
+                            easing: cubicOut,
+                          }
+                        : {
+                            duration: 0,
+                          }}
+                    >
+                      {navItem}
+                    </span>
+                  </a>
+                </li>
+              {/each}
+            </ul>
+            {#if mobileLayout}
+              <div
+                class="navbar__mobile-separator"
+                in:slideHorizontal={{
+                  duration: 500,
+                  delay: 500,
+                  easing: cubicOut,
+                }}
+              />
+              <div class="navbar__mobile-content">
+                {#each socials as social, socialIndex}
+                  <div
+                    class="navbar__link-wrapper"
+                    in:fade={{
+                      duration: 500,
+                      delay: 500 + 100 * socialIndex,
+                      easing: cubicOut,
+                    }}
+                  >
+                    <a
+                      class="navbar__link"
+                      href={social.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <span class="navbar__social-text">{social.name}</span>
+                    </a>
+                  </div>
+                {/each}
+              </div>
+            {/if}
+          </div>
+        {/if}
+      </div>
+    {/key}
+    {#if mobileLayout}
+      <div class="navbar__hamburger" class:disabled={hamburgerAnimating}>
+        <Hamburger
+          bind:open={hamburgerOpen}
+          type="spin"
+          --color={colors.text}
+          --padding="0.5rem"
+          --layer-width="1.5rem"
+          --layer-height="0.15rem"
+          --layer-spacing="0.3rem"
+          --hover-opacity="1"
+          on:click={animateHamburger}
+        />
+      </div>
+      <div class="navbar__background" />
+    {/if}
   </nav>
 </header>
 
@@ -180,6 +218,7 @@
     z-index: 10;
     margin: 1rem 0;
     width: 100vw;
+    height: 4.5rem;
     padding: 1rem;
     pointer-events: none;
 
@@ -188,6 +227,7 @@
     }
 
     &__icon {
+      z-index: 10;
       margin-left: 0.25rem;
       padding: 0.5rem;
       pointer-events: auto;
@@ -197,11 +237,7 @@
       width: 3rem;
     }
 
-    &__hamburger {
-      display: none;
-    }
-
-    &__list {
+    &__content {
       display: flex;
       flex-direction: row;
     }
@@ -212,6 +248,7 @@
 
     &__link {
       text-decoration: none;
+      color: $text;
       pointer-events: auto;
     }
 
@@ -219,7 +256,6 @@
       display: inline-block;
       transition: opacity 0.3s;
       padding: 0.25rem 0.75rem;
-      color: $text;
 
       &.hovered {
         opacity: 0.4;
@@ -230,9 +266,77 @@
   @media screen and (max-width: $breakpoint-md) {
     .navbar {
       margin-top: 0;
-      background-color: $base;
-      box-shadow: 0 0 0.75rem $crust;
       pointer-events: auto;
+
+      &__wrapper {
+        position: fixed;
+        top: 4.5rem;
+        right: 0;
+        width: 100%;
+        height: 0;
+        background-color: $mantle;
+
+        &.open {
+          height: 16.5rem;
+        }
+      }
+
+      &__content-wrapper {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 16.5rem;
+        padding: 0.5rem 2rem;
+      }
+
+      &__content {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+      }
+
+      &__text {
+        width: 100%;
+        padding: 0.5rem;
+        text-align: center;
+        font-size: 2rem;
+
+        &.hovered {
+          opacity: 1;
+        }
+      }
+
+      &__mobile-separator {
+        width: 100%;
+        height: 1px;
+        background-color: $text;
+      }
+
+      &__mobile-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 1rem -0.5rem;
+      }
+
+      &__link-wrapper {
+        &:nth-child(1) {
+          text-align: left;
+        }
+        &:nth-child(2) {
+          text-align: center;
+        }
+        &:nth-child(3) {
+          text-align: right;
+        }
+      }
+
+      &__social-text {
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
 
       &__hamburger {
         display: flex;
@@ -248,42 +352,15 @@
         }
       }
 
-      &__wrapper {
+      &__background {
         position: fixed;
         top: 0;
-        right: 0;
-        transition-property: width;
-        transition-timing-function: $ease-in-out-cubic;
-        width: 0%;
-        height: 100%;
-        background-color: $crust;
-
-        &.open {
-          left: 0;
-          width: 100%;
-        }
-      }
-
-      &__list {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        left: 0;
+        z-index: 5;
         width: 100%;
-        height: 100%;
-        padding: 0 10vw;
-      }
-
-      &__item {
-        font-size: 8vw;
-
-        &:not(:last-child) {
-          border-bottom: 1px solid $surface2;
-        }
-      }
-
-      &__text {
-        margin: 0 -0.75rem;
-        padding: 1rem;
+        height: 4.5rem;
+        box-shadow: 0 0 0.75rem $crust;
+        background-color: $base;
       }
     }
   }
