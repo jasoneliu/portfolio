@@ -2,9 +2,9 @@
   import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import Loader from '$lib/components/Loader.svelte';
-  import Home from '$lib/sections/Home.svelte';
-  import Projects from '$lib/sections/Projects.svelte';
-  import Skills from '$lib/sections/Skills.svelte';
+  import Home from '$lib/components/sections/Home.svelte';
+  import Projects from '$lib/components/sections/Projects.svelte';
+  import Skills from '$lib/components/sections/Skills.svelte';
   import {
     mobileLayout,
     url,
