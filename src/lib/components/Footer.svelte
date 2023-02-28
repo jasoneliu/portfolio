@@ -5,24 +5,26 @@
   const year = new Date().getFullYear();
 </script>
 
-<InView>
-  <footer class="footer">
-    <p class="footer__text">Designed and developed with ♥</p>
-    <div class="footer__icon-list">
-      {#each socials as social}
-        <a
-          class="footer__icon"
-          href={social.href}
-          rel="noreferrer"
-          target="_blank"
-        >
-          <svelte:component this={social.icon} />
-        </a>
-      {/each}
+<footer>
+  <InView>
+    <div class="footer">
+      <p class="footer__text">Designed and developed with ♥</p>
+      <div class="footer__icon-list">
+        {#each socials as social}
+          <a
+            class="footer__icon"
+            href={social.href}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <svelte:component this={social.icon} />
+          </a>
+        {/each}
+      </div>
+      <p class="footer__copyright">Jason Liu © {year}</p>
     </div>
-    <p class="footer__copyright">Jason Liu © {year}</p>
-  </footer>
-</InView>
+  </InView>
+</footer>
 
 <style lang="scss">
   .footer {
