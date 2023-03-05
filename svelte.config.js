@@ -3,7 +3,6 @@ import sveltePreprocess from 'svelte-preprocess';
 import { preprocessThrelte } from '@threlte/preprocess';
 import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-auto';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -17,8 +16,7 @@ const config = {
     }),
     preprocessThrelte({
       extensions: {
-        // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-        // 'three/examples/jsm/controls/OrbitControls': [OrbitControls],
+        'three/examples/jsm/controls/OrbitControls': ['OrbitControls'],
       },
     }),
     mdsvex(),

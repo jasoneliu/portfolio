@@ -1,13 +1,13 @@
 <script lang="ts">
-  import Bubbles from '$lib/components/Bubbles.svelte';
+  import Bubbles from '$lib/components/bubbles/Bubbles.svelte';
   import { scrollY } from '$lib/store';
   import IoMdArrowRoundDown from 'svelte-icons/io/IoMdArrowRoundDown.svelte';
 </script>
 
-<section class="home" style:opacity={(750 - ($scrollY ^ 2)) / 750}>
+<section class="home" style:opacity={(750 - $scrollY) / 750}>
   <div
     class="home__info"
-    style:transform={`translate3d(0, ${$scrollY * 0.25}px, 0)`}
+    style:transform={`translate3d(0, ${$scrollY * 0.5}px, 0)`}
   >
     <h1 class="home__name">Jason Liu</h1>
     <div class="home__about">
@@ -71,13 +71,6 @@
 
     &__scroll-text {
       letter-spacing: 0.1rem;
-    }
-
-    &__bubbles {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 100%;
     }
   }
 
