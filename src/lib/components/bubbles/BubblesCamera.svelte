@@ -27,7 +27,7 @@
 
   /** Update camera on scroll. */
   function handleScroll() {
-    if (cameraReady) {
+    if (cameraReady && $scrollY <= 750) {
       cameraZoom = (750 - $scrollY) / 750;
       cameraRotationX.set(-$scrollY / 500);
       cameraRotationY.set(-$scrollY / 500);
@@ -36,8 +36,7 @@
 
   /** Update camera on mouse move. */
   function handleMouseMove(event: MouseEvent) {
-    // $breakpoint-sm
-    if ($innerWidth >= 576) {
+    if ($scrollY <= 750 && $innerWidth >= 576) {
       cameraRotationX.set(
         mapLinear(1 - event.clientY / window.innerHeight, 0, 1, -0.5, 0.5)
       );
