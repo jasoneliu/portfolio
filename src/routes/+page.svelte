@@ -97,4 +97,9 @@
   :global(h2) {
     text-align: center;
   }
+
+  // Make everything appear over Bubbles
+  :global(section, footer) {
+    z-index: 0;
+  }
 </style>

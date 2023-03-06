@@ -35,9 +35,11 @@
 
     &__info {
       display: flex;
+      position: relative;
       flex-direction: column;
       justify-content: center;
       gap: 3rem;
+      z-index: 5;
       padding: 4rem 2rem 0;
     }
 
