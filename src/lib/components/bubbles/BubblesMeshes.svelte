@@ -7,7 +7,7 @@
     SphereGeometry,
     Vector3,
   } from 'three';
-  import { T, InteractiveObject, useFrame } from '@threlte/core';
+  import { InteractiveObject, T, useFrame } from '@threlte/core';
   import { Environment, Float } from '@threlte/extras';
   import { createNoise3D } from 'simplex-noise';
 
@@ -163,13 +163,9 @@
         color={new Color('hsl(255, 100%, 20%))')}
         metalness={0.3}
         roughness={0}
-        reflectivity={1}
-        ior={1.5}
+        transmission={0.6}
+        clearcoat={0.5}
         envMapIntensity={10}
-        transmission={0.7}
-        specularIntensity={1}
-        specularColor={new Color(0xffffff)}
-        opacity={1}
         side={BackSide}
         transparent
       />
@@ -185,5 +181,5 @@
 <!-- Shadow plane -->
 <T.Mesh position.y={-120} rotation.x={-Math.PI / 2} receiveShadow>
   <T.PlaneGeometry args={[1000, 1000]} />
-  <T.ShadowMaterial color={new Color(0x000000)} opacity={0.25} />
+  <T.ShadowMaterial opacity={0.25} />
 </T.Mesh>
