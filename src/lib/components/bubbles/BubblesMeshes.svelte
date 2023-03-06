@@ -1,12 +1,20 @@
 <script lang="ts">
   import { scrollY } from '$lib/store';
-  import { BackSide, Color, Vector3 } from 'three';
+  import {
+    BackSide,
+    BufferAttribute,
+    Color,
+    SphereGeometry,
+    Vector3,
+  } from 'three';
   import { T, InteractiveObject, useFrame } from '@threlte/core';
   import { Environment, Float } from '@threlte/extras';
+  import { createNoise3D } from 'simplex-noise';
 
   interface Bubble {
     id: number;
-    position: THREE.Vector3;
+    geometry: SphereGeometry;
+    position: Vector3;
     scale: number;
     randomness: number;
   }
@@ -14,6 +22,10 @@
   // Bubble configuration
   const numBubbles: number = 10;
   const bubbleRadius: number = 8;
+  const bubbleGeometry = new SphereGeometry(bubbleRadius, 64, 32);
+
+  // Noise for bubble geometry
+  const noise3D = createNoise3D();
 
   // Bubbles
   let bubbles: Bubble[] = [];
@@ -37,6 +49,9 @@
       id = bubbles[bubbles.length - 1].id + 1;
     }
 
+    // Geometry
+    const geometry = bubbleGeometry.clone() as SphereGeometry;
+
     // Starting position
     const position = new Vector3(0, 0, 0);
 
@@ -46,8 +61,9 @@
     // Random movement
     const randomness = randomInRange(0, 1);
 
-    // Add to scene
-    bubbles.push({ id, position, scale, randomness });
+    // Add bubble to scene
+    const bubble: Bubble = { id, geometry, position, scale, randomness };
+    bubbles.push(bubble);
   }
 
   /** Remove a bubble from the scene. */
@@ -59,30 +75,75 @@
     setTimeout(() => addBubble(), 1000);
   }
 
-  /** Move each bubble. */
-  function updateBubblePositions(delta: number) {
-    // Update
-    elapsedTime += delta;
+  /** Morph bubble shape. */
+  function morphBubble(bubble: Bubble) {
+    // Get position vectors of bubble geometry
+    let originalPosition = bubbleGeometry.attributes
+      .position as BufferAttribute;
+    let newPosition = bubble.geometry.attributes.position as BufferAttribute;
 
-    // Update bubble positions
+    // Morph position vectors
+    for (
+      let vectorIndex = 0;
+      vectorIndex < originalPosition.count;
+      vectorIndex++
+    ) {
+      // Get original position vector
+      const x = originalPosition.getX(vectorIndex);
+      const y = originalPosition.getY(vectorIndex);
+      const z = originalPosition.getZ(vectorIndex);
+
+      // Compute noise
+      const noise = noise3D(
+        x * 0.025 + elapsedTime * 0.1 + bubble.randomness,
+        y * 0.025 + elapsedTime * 0.1 + bubble.randomness,
+        z * 0.025 + elapsedTime * 0.1 + bubble.randomness
+      );
+      const scale = 1 + noise * 0.25;
+
+      // Add noise to position vector
+      newPosition.setXYZ(vectorIndex, x * scale, y * scale, z * scale);
+    }
+
+    // Update bubble geometry
+    bubble.geometry.computeVertexNormals();
+    newPosition.needsUpdate = true;
+  }
+
+  /** Move bubble. */
+  function moveBubble(bubble: Bubble) {
+    // Movement configuration
+    const speed = 0.05 + 0.1 * bubble.randomness;
+    const phi = elapsedTime * speed + 50 * bubble.randomness;
+    const theta = elapsedTime * -speed + 50 * bubble.randomness * 0.5;
+
+    // Update position
+    bubble.position.x = 200 * Math.cos(theta) * Math.sin(phi);
+    bubble.position.y = 75 * Math.sin(theta) * Math.sin(phi);
+    bubble.position.z = 75 * Math.cos(phi);
+  }
+
+  /** Update bubbles. */
+  function updateBubbles() {
+    // Morph and move bubbles
     for (const bubble of bubbles) {
-      const speed = 0.05 + 0.1 * bubble.randomness;
-      const phi = elapsedTime * speed + 50 * bubble.randomness;
-      const theta = elapsedTime * -speed + 50 * bubble.randomness * 0.5;
-
-      bubble.position.x = 200 * Math.cos(theta) * Math.sin(phi);
-      bubble.position.y = 75 * Math.sin(theta) * Math.sin(phi);
-      bubble.position.z = 75 * Math.cos(phi);
+      morphBubble(bubble);
+      moveBubble(bubble);
     }
 
     // Rerender bubbles
     bubbles = bubbles;
   }
 
-  // Move bubbles on every frame
+  // Animate bubbles
   useFrame((_, delta) => {
+    // Only animate when scene is visible
     if ($scrollY <= 750) {
-      updateBubblePositions(delta);
+      // Update clock
+      elapsedTime += delta;
+
+      // Update bubbles
+      updateBubbles();
     }
   });
 </script>
@@ -93,11 +154,11 @@
   <Float speed={2} floatIntensity={10} floatingRange={[-1, 1]}>
     <T.Mesh
       let:ref
+      geometry={bubble.geometry}
       position={bubble.position.toArray()}
       scale={bubble.scale}
       castShadow
     >
-      <T.SphereGeometry args={[bubbleRadius, 64, 32]} />
       <T.MeshPhysicalMaterial
         color={new Color('hsl(255, 100%, 20%))')}
         metalness={0.3}
