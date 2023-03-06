@@ -29,8 +29,8 @@
         right={100}
         bottom={-100}
         top={100}
-        near={-100}
-        far={200}
+        near={-1000}
+        far={5000}
       />
     </T.DirectionalLight>
 
