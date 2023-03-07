@@ -19,7 +19,7 @@
     randomness: number;
   }
 
-  // Bubble configuration
+  // Bubble parameters
   const numBubbles: number = 10;
   const bubbleRadius: number = 8;
   const bubbleGeometry = new SphereGeometry(bubbleRadius, 64, 32);
@@ -27,7 +27,7 @@
   // Noise for bubble geometry
   const noise3D = createNoise3D();
 
-  // Bubbles
+  // Populate list of bubbles
   let bubbles: Bubble[] = [];
   while (bubbles.length < numBubbles) {
     addBubble();
@@ -112,7 +112,7 @@
 
   /** Move bubble. */
   function moveBubble(bubble: Bubble) {
-    // Movement configuration
+    // Movement parameters
     const speed = 0.05 + 0.1 * bubble.randomness;
     const phi = elapsedTime * speed + 50 * bubble.randomness;
     const theta = elapsedTime * -speed + 50 * bubble.randomness * 0.5;
@@ -181,5 +181,5 @@
 <!-- Shadow plane -->
 <T.Mesh position.y={-120} rotation.x={-Math.PI / 2} receiveShadow>
   <T.PlaneGeometry args={[1000, 1000]} />
-  <T.ShadowMaterial opacity={0.25} />
+  <T.ShadowMaterial opacity={0.2} />
 </T.Mesh>
