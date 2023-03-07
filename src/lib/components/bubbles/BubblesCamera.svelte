@@ -5,6 +5,7 @@
   import { PerspectiveCamera, Vector3 } from 'three';
   import { mapLinear } from 'three/src/math/MathUtils';
   import { T, useFrame, useThrelte } from '@threlte/core';
+  import { onMount } from 'svelte';
 
   // Camera ref
   let camera: PerspectiveCamera;
@@ -39,6 +40,12 @@
 
   /** Run intro animation. */
   function animateIntro() {
+    // Avoid intro animation if scrolled down
+    if ($scrollY > 750) {
+      introAnimating = false;
+      return;
+    }
+
     // Intro animation parameters
     const animationDurationMs = 3000;
     const animationEasing = quadInOut;
@@ -65,12 +72,12 @@
     setTimeout(() => (introAnimating = false), animationDurationMs);
   }
 
-  // Aanimate camera on scroll
+  // Animate camera on scroll
   $: $scrollY, handleScroll();
 
   /** Update camera position and zoom on scroll. */
   function handleScroll() {
-    if (!introAnimating && $scrollY <= 750) {
+    if (cameraReady && $scrollY <= 750) {
       phi.set(initialPhi - $scrollY / 500);
       theta.set(-$scrollY / 500);
       zoom.set((750 - $scrollY) / 750);
@@ -100,6 +107,12 @@
       );
     }
   }
+
+  // Prevent re-render on first render
+  let cameraReady: boolean = false;
+  onMount(() => {
+    cameraReady = true;
+  });
 
   // Camera always looks at origin
   useFrame(() => {
