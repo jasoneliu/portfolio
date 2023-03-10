@@ -11,6 +11,9 @@
   import { Environment, Float } from '@threlte/extras';
   import { createNoise3D } from 'simplex-noise';
 
+  // Clock
+  let elapsedTime: number = 0;
+
   interface Bubble {
     id: number;
     geometry: SphereGeometry;
@@ -27,14 +30,12 @@
   // Noise for bubble geometry
   const noise3D = createNoise3D();
 
-  // Populate list of bubbles
+  // Initialize list of bubbles
   let bubbles: Bubble[] = [];
   while (bubbles.length < numBubbles) {
     addBubble();
   }
-
-  // Clock
-  let elapsedTime: number = 0;
+  updateBubbles();
 
   /** Generate a random number in a given range. */
   function randomInRange(min: number, max: number) {
