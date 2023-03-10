@@ -11,14 +11,14 @@
   let camera: PerspectiveCamera;
 
   // Camera position (spherical coordinates) and zoom
-  const radius = 275;
+  const radius: number = 275;
   const initialPhi: number = Math.PI / 2 - Math.PI / 16;
   let phi = tweened<number>(initialPhi + Math.PI / 4);
   let theta = tweened<number>(-Math.PI);
   let zoom = tweened<number>(0.5);
 
   // Intro animation options
-  const introAnimationDurationMs = 3000;
+  const introAnimationDurationMs: number = 3000;
   const introAnimationEasing = quadInOut;
   const introAnimationOptions = {
     duration: introAnimationDurationMs,
@@ -26,8 +26,9 @@
   };
 
   // Scroll animation options
-  const scrollAnimationOptions = {
-    duration: 0,
+  let scrollAnimationOptions = {
+    duration: 3000,
+    easing: quintOut,
   };
 
   // Mousemove animation options
@@ -46,6 +47,7 @@
   function animateIntro() {
     // Avoid intro animation if scrolled down
     if ($scrollY > 750) {
+      scrollAnimationOptions.duration = 1000;
       introAnimating = false;
       return;
     }
@@ -66,7 +68,10 @@
     });
 
     // Enable mousemove animations
-    setTimeout(() => (introAnimating = false), introAnimationDurationMs);
+    setTimeout(() => {
+      scrollAnimationOptions.duration = 1000;
+      introAnimating = false;
+    }, introAnimationDurationMs);
   }
 
   // Animate camera on scroll
@@ -76,7 +81,7 @@
   function handleScroll() {
     if (cameraReady && $scrollY <= 750) {
       phi.set(initialPhi - $scrollY / 1000, scrollAnimationOptions);
-      theta.set(-$scrollY / 750, scrollAnimationOptions);
+      theta.set($scrollY / 750, scrollAnimationOptions);
       zoom.set((750 - $scrollY * 0.5) / 750, scrollAnimationOptions);
     }
   }
@@ -107,7 +112,7 @@
     }
   }
 
-  // Prevent re-render on first render
+  // Prevent scroll animation on first render
   let cameraReady: boolean = false;
   onMount(() => {
     cameraReady = true;
