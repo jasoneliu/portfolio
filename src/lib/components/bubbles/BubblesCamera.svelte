@@ -13,9 +13,9 @@
   // Camera position (spherical coordinates) and zoom
   const radius: number = 275;
   const initialPhi: number = Math.PI / 2 - Math.PI / 16;
-  let phi = tweened<number>(initialPhi + Math.PI / 4);
-  let theta = tweened<number>(-Math.PI);
-  let zoom = tweened<number>(0.5);
+  let phi = tweened<number>(initialPhi);
+  let theta = tweened<number>(0);
+  let zoom = tweened<number>(1);
 
   // Intro animation options
   const introAnimationDurationMs: number = 3000;
@@ -42,15 +42,22 @@
   $: if (!$loading) {
     animateIntro();
   }
+  $: if (!introAnimating) {
+    scrollAnimationOptions.duration = 1000;
+  }
 
   /** Run intro animation. */
   function animateIntro() {
     // Avoid intro animation if scrolled down
     if ($scrollY > 750) {
-      scrollAnimationOptions.duration = 1000;
       introAnimating = false;
       return;
     }
+
+    // Initialize camera position
+    phi.set(initialPhi + Math.PI / 4, { duration: 0 });
+    theta.set(-Math.PI, { duration: 0 });
+    zoom.set(0.5, { duration: 0 });
 
     // Animate camera position
     phi.set(initialPhi, introAnimationOptions);
@@ -69,7 +76,6 @@
 
     // Enable mousemove animations
     setTimeout(() => {
-      scrollAnimationOptions.duration = 1000;
       introAnimating = false;
     }, introAnimationDurationMs);
   }
@@ -79,10 +85,11 @@
 
   /** Update camera position and zoom on scroll. */
   function handleScroll() {
-    if (cameraReady && $scrollY <= 750) {
-      phi.set(initialPhi - $scrollY / 1000, scrollAnimationOptions);
-      theta.set($scrollY / 750, scrollAnimationOptions);
-      zoom.set((750 - $scrollY * 0.5) / 750, scrollAnimationOptions);
+    if ((scrollReady && $scrollY <= 750) || (!scrollReady && $scrollY > 750)) {
+      const cameraScrollY = Math.min($scrollY, 750);
+      phi.set(initialPhi - cameraScrollY / 1000, scrollAnimationOptions);
+      theta.set(cameraScrollY / 750, scrollAnimationOptions);
+      zoom.set((750 - cameraScrollY * 0.5) / 750, scrollAnimationOptions);
     }
   }
 
@@ -113,9 +120,9 @@
   }
 
   // Prevent scroll animation on first render
-  let cameraReady: boolean = false;
+  let scrollReady: boolean = false;
   onMount(() => {
-    cameraReady = true;
+    setTimeout(() => (scrollReady = true), 500);
   });
 
   // Camera always looks at origin
