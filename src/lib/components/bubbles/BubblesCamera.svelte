@@ -1,36 +1,40 @@
 <script lang="ts">
-  import { linear, quadInOut, quintOut } from 'svelte/easing';
+  import { onMount } from 'svelte';
+  import { quadInOut, quintOut } from 'svelte/easing';
   import { tweened } from 'svelte/motion';
   import { innerWidth, scrollY, loading } from '$lib/store';
   import { PerspectiveCamera, Vector3 } from 'three';
   import { mapLinear } from 'three/src/math/MathUtils';
   import { T, useFrame, useThrelte } from '@threlte/core';
-  import { onMount } from 'svelte';
 
   // Camera ref
   let camera: PerspectiveCamera;
 
-  // Camera animation
-  const positionAnimationDurationMs: number = 3000;
-  const positionAnimationEasing = quintOut;
-
-  // Camera position (spherical coordinates)
-  const radius = 300;
+  // Camera position (spherical coordinates) and zoom
+  const radius = 275;
   const initialPhi: number = Math.PI / 2 - Math.PI / 16;
-  let phi = tweened<number>(initialPhi + Math.PI / 4, {
-    duration: positionAnimationDurationMs,
-    easing: positionAnimationEasing,
-  });
-  let theta = tweened<number>(-Math.PI, {
-    duration: positionAnimationDurationMs,
-    easing: positionAnimationEasing,
-  });
+  let phi = tweened<number>(initialPhi + Math.PI / 4);
+  let theta = tweened<number>(-Math.PI);
+  let zoom = tweened<number>(0.5);
 
-  // Camera zoom
-  let zoom = tweened<number>(0.5, {
-    duration: 250,
-    easing: linear,
-  });
+  // Intro animation options
+  const introAnimationDurationMs = 3000;
+  const introAnimationEasing = quadInOut;
+  const introAnimationOptions = {
+    duration: introAnimationDurationMs,
+    easing: introAnimationEasing,
+  };
+
+  // Scroll animation options
+  const scrollAnimationOptions = {
+    duration: 0,
+  };
+
+  // Mousemove animation options
+  const mousemoveAnimationOptions = {
+    duration: 3000,
+    easing: quintOut,
+  };
 
   // Run intro animation after load
   let introAnimating: boolean = true;
@@ -46,30 +50,23 @@
       return;
     }
 
-    // Intro animation parameters
-    const animationDurationMs = 3000;
-    const animationEasing = quadInOut;
-
     // Animate camera position
-    phi.set(initialPhi, {
-      duration: animationDurationMs,
-      easing: animationEasing,
-    });
-    theta.set(0, { duration: animationDurationMs, easing: animationEasing });
+    phi.set(initialPhi, introAnimationOptions);
+    theta.set(0, introAnimationOptions);
 
     // Zoom in and out
     zoom.set(1.25, {
-      duration: animationDurationMs / 2,
-      easing: animationEasing,
+      duration: introAnimationDurationMs / 2,
+      easing: introAnimationEasing,
     });
     zoom.set(1, {
-      duration: animationDurationMs / 2,
-      delay: animationDurationMs / 2,
-      easing: animationEasing,
+      duration: introAnimationDurationMs / 2,
+      delay: introAnimationDurationMs / 2,
+      easing: introAnimationEasing,
     });
 
-    // Enable scroll and mousemove animations
-    setTimeout(() => (introAnimating = false), animationDurationMs);
+    // Enable mousemove animations
+    setTimeout(() => (introAnimating = false), introAnimationDurationMs);
   }
 
   // Animate camera on scroll
@@ -78,9 +75,9 @@
   /** Update camera position and zoom on scroll. */
   function handleScroll() {
     if (cameraReady && $scrollY <= 750) {
-      phi.set(initialPhi - $scrollY / 500);
-      theta.set(-$scrollY / 500);
-      zoom.set((750 - $scrollY) / 750);
+      phi.set(initialPhi - $scrollY / 1000, scrollAnimationOptions);
+      theta.set(-$scrollY / 750, scrollAnimationOptions);
+      zoom.set((750 - $scrollY * 0.5) / 750, scrollAnimationOptions);
     }
   }
 
@@ -94,7 +91,8 @@
           1,
           initialPhi - Math.PI / 8,
           initialPhi + Math.PI / 8
-        )
+        ),
+        mousemoveAnimationOptions
       );
       theta.set(
         mapLinear(
@@ -103,7 +101,8 @@
           1,
           -Math.PI / 8,
           Math.PI / 8
-        )
+        ),
+        mousemoveAnimationOptions
       );
     }
   }
