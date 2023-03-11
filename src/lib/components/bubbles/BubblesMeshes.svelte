@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { scrollY } from '$lib/store';
+  import { scrollY, loading } from '$lib/store';
   import {
     BackSide,
     BufferAttribute,
@@ -41,6 +41,15 @@
     addBubble();
   }
   updateBubbles();
+
+  // Fade in bubbles during intro animation
+  let introFadingIn = false;
+  $: if (!$loading) {
+    fadeInBubbles();
+  }
+  $: if (introFadingIn && $scrollY > 0) {
+    introFadingIn = false;
+  }
 
   /** Generate a random number in a given range. */
   function randomInRange(min: number, max: number) {
@@ -94,6 +103,16 @@
 
     // Re-add bubble
     setTimeout(() => addBubble(), 1000);
+  }
+
+  /** Fade in bubbles. */
+  function fadeInBubbles() {
+    if ($scrollY <= maxScrollY) {
+      introFadingIn = true;
+      setTimeout(() => {
+        introFadingIn = false;
+      }, 2500);
+    }
   }
 
   /** Morph bubble shape. */
@@ -188,11 +207,13 @@
         clearcoat={0.5}
         envMapIntensity={10}
         side={BackSide}
-        opacity={Math.min(
-          (bubble.opacityScrollEnd - $scrollY) /
-            (bubble.opacityScrollEnd - bubble.opacityScrollStart),
-          1
-        )}
+        opacity={introFadingIn
+          ? Math.min(elapsedTime - bubble.randomness - 1.5, 1)
+          : Math.min(
+              (bubble.opacityScrollEnd - $scrollY) /
+                (bubble.opacityScrollEnd - bubble.opacityScrollStart),
+              1
+            )}
         transparent
       />
       <!-- <InteractiveObject
