@@ -6,10 +6,13 @@
     afterNavigate,
     disableScrollHandling,
   } from '$app/navigation';
-  import { pageTransitioning } from '$lib/store';
+  import { pageTransitioning, url } from '$lib/store';
 
   // Page transition state
   let transitioningOut = false;
+
+  // Animate page fly in
+  let animatePageIn = true;
 
   // Animation timing
   const pageAnimationDurationMs: number = 500;
@@ -45,6 +48,13 @@
     // No page transition for navigation to resume (opens in new tab)
     if (navigation.to?.url.pathname === '/resume') {
       return;
+    }
+
+    // Animate page fly in
+    animatePageIn = true;
+    if (navigation.to?.url.pathname === '/' && $url.hash === '') {
+      // No animation for home page (bubbles scene)
+      animatePageIn = false;
     }
 
     // Begin page transition
@@ -95,7 +105,7 @@
     class="page-transition"
     in:fly={{
       y: 200,
-      duration: pageAnimationDurationMs,
+      duration: animatePageIn ? pageAnimationDurationMs : 0,
       delay: slideAnimationDelayMs + slideAnimationDurationMs / 2,
       easing: cubicOut,
     }}
