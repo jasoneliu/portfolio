@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fade, fly, slide } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
   import { beforeNavigate } from '$app/navigation';
   import logo from '$lib/assets/logo.svg';
   import { colors } from '$lib/colors';
   import { socials } from '$lib/socials';
   import { scrollY, mobileLayout, url, hashScrolling } from '$lib/store';
+  import { slide } from '$lib/transition';
   import { Hamburger } from 'svelte-hamburgers';
 
   // Navbar items

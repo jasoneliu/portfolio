@@ -1,10 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fly, slide } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
   import { cubicOut, cubicInOut } from 'svelte/easing';
   import { tweened } from 'svelte/motion';
   import logo from '$lib/assets/logo.svg';
   import { pageLoading } from '$lib/store';
+  import { slide } from '$lib/transition';
 
   // Animation timing
   const loadingAnimationDurationMs: number = 750;

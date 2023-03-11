@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fade, fly, slide } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
   import { cubicIn, cubicOut } from 'svelte/easing';
   import {
     beforeNavigate,
@@ -7,6 +7,7 @@
     disableScrollHandling,
   } from '$app/navigation';
   import { pageTransitioning, url } from '$lib/store';
+  import { slide } from '$lib/transition';
 
   // Page transition state
   let transitioningOut = false;
