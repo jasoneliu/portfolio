@@ -5,8 +5,9 @@ export const innerWidth = writable<number>();
 export const scrollY = writable<number>();
 export const mobileLayout = writable<boolean>();
 
-// Home page loader
-export const loading = writable<boolean>(true);
+// Home page loader and page transition
+export const pageLoading = writable<boolean>(true);
+export const pageTransitioning = writable<boolean>(false);
 
 // Url hash
 // Svelte's $page store doesn't consistently update url hash

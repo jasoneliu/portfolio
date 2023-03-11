@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { scrollY, loading } from '$lib/store';
+  import { scrollY, pageLoading, pageTransitioning } from '$lib/store';
   import {
     BackSide,
     BufferAttribute,
@@ -44,7 +44,7 @@
 
   // Fade in bubbles during intro animation
   let introFadingIn = false;
-  $: if (!$loading) {
+  $: if (!$pageLoading && !$pageTransitioning) {
     fadeInBubbles();
   }
   $: if (introFadingIn && $scrollY > 0) {
@@ -112,7 +112,7 @@
       introFadingIn = true;
       setTimeout(() => {
         introFadingIn = false;
-      }, 2500);
+      }, 2000);
     }
   }
 
@@ -179,7 +179,7 @@
   // Animate bubbles
   useFrame((_, delta) => {
     // Only animate when scene is visible
-    if ($scrollY <= maxScrollY) {
+    if ($scrollY <= maxScrollY && !$pageLoading && !$pageTransitioning) {
       // Update clock
       elapsedTime += delta;
 
@@ -209,7 +209,7 @@
         envMapIntensity={10}
         side={BackSide}
         opacity={introFadingIn
-          ? Math.min(elapsedTime - bubble.randomness - 1.5, 1)
+          ? Math.min(elapsedTime - 0.5 * bubble.randomness, 1)
           : Math.min(
               (bubble.opacityScrollEnd - $scrollY) /
                 (bubble.opacityScrollEnd - bubble.opacityScrollStart),

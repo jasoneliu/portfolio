@@ -4,7 +4,13 @@
   import Navbar from '$lib/components/Navbar.svelte';
   import Footer from '$lib/components/Footer.svelte';
   import PageTransition from '$lib/components/PageTransition.svelte';
-  import { innerWidth, scrollY, loading, url, mobileLayout } from '$lib/store';
+  import {
+    innerWidth,
+    scrollY,
+    pageLoading,
+    url,
+    mobileLayout,
+  } from '$lib/store';
   import '../app.scss';
 
   let windowInnerWidth: number;
@@ -18,7 +24,7 @@
   onMount(() => {
     // Disable loader for non-home pages
     if ($page.url.pathname !== '/') {
-      loading.set(false);
+      pageLoading.set(false);
     }
 
     // Update url hash on navigation

@@ -2,7 +2,12 @@
   import { onMount } from 'svelte';
   import { quadInOut, quintOut } from 'svelte/easing';
   import { tweened } from 'svelte/motion';
-  import { innerWidth, scrollY, loading } from '$lib/store';
+  import {
+    innerWidth,
+    scrollY,
+    pageLoading,
+    pageTransitioning,
+  } from '$lib/store';
   import { PerspectiveCamera, Vector3 } from 'three';
   import { mapLinear } from 'three/src/math/MathUtils';
   import { T, useFrame, useThrelte } from '@threlte/core';
@@ -42,7 +47,7 @@
 
   // Run intro animation after load
   let introAnimating: boolean = true;
-  $: if (!$loading) {
+  $: if (!$pageLoading && !$pageTransitioning) {
     animateIntro();
   }
   $: if (!introAnimating) {

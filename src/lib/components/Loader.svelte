@@ -4,7 +4,7 @@
   import { cubicOut, cubicInOut } from 'svelte/easing';
   import { tweened } from 'svelte/motion';
   import logo from '$lib/assets/logo.svg';
-  import { loading } from '$lib/store';
+  import { pageLoading } from '$lib/store';
 
   // Animation timing
   const loadingAnimationDurationMs: number = 750;
@@ -39,7 +39,7 @@
     // Begin loader outro animation
     await new Promise<void>((resolve) =>
       setTimeout(() => {
-        loading.set(false);
+        pageLoading.set(false);
         resolve();
       }, loadingAnimationDurationMs + loadingAnimationDelayMs)
     );
@@ -48,7 +48,7 @@
 
 <!-- Disable scrolling when page is loading -->
 <svelte:head>
-  {#if $loading}
+  {#if $pageLoading}
     <style lang="scss">
       body {
         overflow: hidden;
@@ -57,7 +57,7 @@
   {/if}
 </svelte:head>
 
-{#if $loading}
+{#if $pageLoading}
   <div
     class="loader"
     out:slide={{ duration: outroAnimationDurationMs, easing: cubicOut }}

@@ -6,6 +6,7 @@
     afterNavigate,
     disableScrollHandling,
   } from '$app/navigation';
+  import { pageTransitioning } from '$lib/store';
 
   // Page transition state
   let transitioningOut = false;
@@ -48,6 +49,7 @@
 
     // Begin page transition
     transitioningOut = true;
+    pageTransitioning.set(true);
   });
 
   // Prevent scroll during page transition
@@ -81,7 +83,12 @@
       delay: slideAnimationDelayMs,
       easing: cubicIn,
     }}
-    on:introend={() => (transitioningOut = false)}
+    on:introend={() => {
+      transitioningOut = false;
+    }}
+    on:outrostart={() => {
+      setTimeout(() => pageTransitioning.set(false), slideAnimationDelayMs);
+    }}
   />
 {:else}
   <div
