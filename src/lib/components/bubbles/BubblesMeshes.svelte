@@ -11,6 +11,9 @@
   import { Environment, Float } from '@threlte/extras';
   import { createNoise3D } from 'simplex-noise';
 
+  // Scene is visible when $scrollY <= maxScrollY
+  export let maxScrollY: number;
+
   // Clock
   let elapsedTime: number = 0;
 
@@ -19,6 +22,8 @@
     geometry: SphereGeometry;
     position: Vector3;
     scale: number;
+    opacityScrollStart: number;
+    opacityScrollEnd: number;
     randomness: number;
   }
 
@@ -59,11 +64,26 @@
     // Size
     const scale = randomInRange(1, 3);
 
+    // Scroll positions at which bubbles fade from scene
+    const opacityScrollStartScale = randomInRange(0.1, 0.7);
+    const opacityScrollStart = maxScrollY * opacityScrollStartScale;
+    const opacityScrollEnd =
+      maxScrollY *
+      randomInRange(Math.max(opacityScrollStartScale + 0.2, 0.4), 1);
+
     // Random movement
     const randomness = randomInRange(0, 1);
 
     // Add bubble to scene
-    const bubble: Bubble = { id, geometry, position, scale, randomness };
+    const bubble: Bubble = {
+      id,
+      geometry,
+      position,
+      scale,
+      opacityScrollStart,
+      opacityScrollEnd,
+      randomness,
+    };
     bubbles.push(bubble);
   }
 
@@ -139,7 +159,7 @@
   // Animate bubbles
   useFrame((_, delta) => {
     // Only animate when scene is visible
-    if ($scrollY <= 750) {
+    if ($scrollY <= maxScrollY) {
       // Update clock
       elapsedTime += delta;
 
@@ -168,6 +188,11 @@
         clearcoat={0.5}
         envMapIntensity={10}
         side={BackSide}
+        opacity={Math.min(
+          (bubble.opacityScrollEnd - $scrollY) /
+            (bubble.opacityScrollEnd - bubble.opacityScrollStart),
+          1
+        )}
         transparent
       />
       <!-- <InteractiveObject
@@ -182,5 +207,5 @@
 <!-- Shadow plane -->
 <T.Mesh position.y={-120} rotation.x={-Math.PI / 2} receiveShadow>
   <T.PlaneGeometry args={[1000, 1000]} />
-  <T.ShadowMaterial opacity={0.2} />
+  <T.ShadowMaterial opacity={0.2 - 0.2 * ($scrollY / maxScrollY)} />
 </T.Mesh>

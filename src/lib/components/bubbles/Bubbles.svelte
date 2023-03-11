@@ -3,12 +3,15 @@
   import BubblesMeshes from '$lib/components/bubbles/BubblesMeshes.svelte';
   import { PCFShadowMap } from 'three';
   import { Canvas, T } from '@threlte/core';
+
+  // Scene is visible when $scrollY <= maxScrollY
+  const maxScrollY: number = 850;
 </script>
 
 <div class="bubbles">
   <Canvas shadowMapType={PCFShadowMap}>
     <!-- Camera -->
-    <BubblesCamera />
+    <BubblesCamera {maxScrollY} />
 
     <!-- Helpers -->
     <!-- <T.AxesHelper args={[250]} />
@@ -35,7 +38,7 @@
     </T.DirectionalLight>
 
     <!-- Bubbles -->
-    <BubblesMeshes />
+    <BubblesMeshes {maxScrollY} />
   </Canvas>
 </div>
 

@@ -4,9 +4,10 @@
   import IoMdArrowRoundDown from 'svelte-icons/io/IoMdArrowRoundDown.svelte';
 </script>
 
-<section class="home" style:opacity={(750 - $scrollY) / 750}>
+<section class="home">
   <div
     class="home__info"
+    style:opacity={(750 - $scrollY) / 750}
     style:transform={`translate3d(0, ${$scrollY * 0.5}px, 0)`}
   >
     <h1 class="home__name">Jason Liu</h1>

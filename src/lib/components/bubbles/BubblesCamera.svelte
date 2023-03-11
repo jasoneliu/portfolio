@@ -7,6 +7,9 @@
   import { mapLinear } from 'three/src/math/MathUtils';
   import { T, useFrame, useThrelte } from '@threlte/core';
 
+  // Scene is visible when $scrollY <= maxScrollY
+  export let maxScrollY: number;
+
   // Camera ref
   let camera: PerspectiveCamera;
 
@@ -49,7 +52,7 @@
   /** Run intro animation. */
   function animateIntro() {
     // Avoid intro animation if scrolled down
-    if ($scrollY > 750) {
+    if ($scrollY > maxScrollY) {
       introAnimating = false;
       return;
     }
@@ -85,17 +88,23 @@
 
   /** Update camera position and zoom on scroll. */
   function handleScroll() {
-    if ((scrollReady && $scrollY <= 750) || (!scrollReady && $scrollY > 750)) {
-      const cameraScrollY = Math.min($scrollY, 750);
+    if (
+      (scrollReady && $scrollY <= maxScrollY) ||
+      (!scrollReady && $scrollY > maxScrollY)
+    ) {
+      const cameraScrollY = Math.min($scrollY, maxScrollY);
       phi.set(initialPhi - cameraScrollY / 1000, scrollAnimationOptions);
-      theta.set(cameraScrollY / 750, scrollAnimationOptions);
-      zoom.set((750 - cameraScrollY * 0.5) / 750, scrollAnimationOptions);
+      theta.set(cameraScrollY / maxScrollY, scrollAnimationOptions);
+      zoom.set(
+        (maxScrollY - cameraScrollY * 0.5) / maxScrollY,
+        scrollAnimationOptions
+      );
     }
   }
 
   /** Update camera position on mouse move. */
   function handleMouseMove(event: MouseEvent) {
-    if (!introAnimating && $scrollY <= 750 && $innerWidth >= 576) {
+    if (!introAnimating && $scrollY <= maxScrollY && $innerWidth >= 576) {
       phi.set(
         mapLinear(
           1 - event.clientY / window.innerHeight,
