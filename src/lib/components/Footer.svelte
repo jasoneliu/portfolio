@@ -11,12 +11,7 @@
       <p class="footer__text">Designed and developed with ♥</p>
       <div class="footer__icon-list">
         {#each socials as social}
-          <a
-            class="footer__icon"
-            href={social.href}
-            rel="noreferrer"
-            target="_blank"
-          >
+          <a class="footer__icon" href={social.href} target="_blank">
             <svelte:component this={social.icon} />
           </a>
         {/each}

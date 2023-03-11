@@ -119,7 +119,6 @@
                       : navItem === 'Resume'
                       ? '/resume'
                       : `/#${navItem.toLowerCase()}`}
-                    rel="noreferrer"
                     target={navItem === 'Resume' ? '_blank' : null}
                     on:click={() => {
                       closeHamburger();
@@ -169,12 +168,7 @@
                       easing: cubicOut,
                     }}
                   >
-                    <a
-                      class="navbar__link"
-                      href={social.href}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
+                    <a class="navbar__link" href={social.href} target="_blank">
                       <span class="navbar__social-text">{social.name}</span>
                     </a>
                   </div>
