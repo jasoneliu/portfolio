@@ -97,8 +97,9 @@
   }
 
   /** Remove a bubble from the scene. */
-  function popBubble(bubbleIndex: number) {
+  function popBubble(bubbleId: number) {
     // Remove bubble
+    const bubbleIndex = bubbles.findIndex((bubble) => bubble.id === bubbleId);
     bubbles.splice(bubbleIndex, 1);
 
     // Re-add bubble
@@ -219,7 +220,7 @@
       <!-- <InteractiveObject
         object={ref}
         interactive
-        on:click={() => popBubble(bubbleIndex)}
+        on:click={() => popBubble(bubble.id)}
       /> -->
     </T.Mesh>
   </Float>
