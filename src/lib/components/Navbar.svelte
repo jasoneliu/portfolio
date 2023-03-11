@@ -1,13 +1,12 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fade, fly } from 'svelte/transition';
+  import { fade, fly, slide } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
   import { beforeNavigate } from '$app/navigation';
   import logo from '$lib/assets/logo.svg';
   import { colors } from '$lib/colors';
   import { socials } from '$lib/socials';
   import { scrollY, mobileLayout, url, hashScrolling } from '$lib/store';
-  import { slide, slideHorizontal } from '$lib/transition';
   import { Hamburger } from 'svelte-hamburgers';
 
   // Navbar items
@@ -153,10 +152,11 @@
             {#if $mobileLayout}
               <div
                 class="navbar__mobile-separator"
-                in:slideHorizontal={{
+                in:slide={{
                   duration: 500,
                   delay: 500,
                   easing: cubicOut,
+                  axis: 'x',
                 }}
               />
               <div class="navbar__mobile-content">

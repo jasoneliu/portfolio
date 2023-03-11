@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { fade, fly } from 'svelte/transition';
+  import { fade, fly, slide } from 'svelte/transition';
   import { cubicIn, cubicOut } from 'svelte/easing';
   import {
     beforeNavigate,
     afterNavigate,
     disableScrollHandling,
   } from '$app/navigation';
-  import { slide } from '$lib/transition';
 
   // Page transition state
   let transitioningOut = false;
