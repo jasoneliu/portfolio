@@ -2,11 +2,11 @@
 
 #### The Product
 
-Agent Assist is Google Cloud's AI solution for contact centers. Agent Assist
-uses machine learning technology to provide suggestions to human agents when
-they are in a conversation with a customer. Suggestions are based on the
-client's own uploaded data and therefore can be tailored to their specific
-business needs.
+[Agent Assist](https://cloud.google.com/agent-assist) is Google Cloud's AI
+solution for contact centers. Agent Assist uses **machine learning technology to
+provide suggestions to human agents** when they are in a conversation with a
+customer. Suggestions are based on the client's own uploaded data and therefore
+can be tailored to their specific business needs.
 
 Agent Assist key features:
 
@@ -18,21 +18,21 @@ Agent Assist key features:
 - Sentiment analysis: Analyze messages during a conversation to determine
   emotional intent
 
-The Agent Assist console provides a UI to upload data, train models, and create
-conversation profiles to configure features. The console also includes a
-simulator that allows users to preview these features in action during a
-conversation.
+The [Agent Assist console](https://agentassist.cloud.google.com) provides a UI
+to upload data, train models, and create conversation profiles to configure
+features. The console also includes a **simulator that allows users to preview
+these features** in action during a conversation.
 
 #### The Feature
 
 I developed a graphical UI for Agent Assist's sentiment analysis feature,
-showing live sentiment scores of an agent-customer interaction over time. These
-sentiment scores reflect the emotional intent of the customer, providing agents
-with live feedback and trends during conversations.
+showing **live sentiment scores of an agent-customer interaction** over time.
+These sentiment scores reflect the emotional intent of the customer, providing
+agents with **live feedback and trends during conversations**.
 
 The UI primarily involves a line chart of customer sentiment scores. As part of
-the implementation, I contributed to an internal charting library, used by 60+
-teams at Google, to add support for multicolor line charts. This allowed the
+the implementation, I **contributed to an internal charting library, used by 60+
+teams at Google, to add support for multicolor line charts**. This allowed the
 chart to display negative sentiment scores as red and positive sentiment scores
 as green. I also developed a hovercard extension for the chart that displays
 messages, sentiment scores, and conversation metrics.

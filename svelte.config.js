@@ -19,7 +19,9 @@ const config = {
         'three/examples/jsm/controls/OrbitControls': ['OrbitControls'],
       },
     }),
-    mdsvex(),
+    mdsvex({
+      layout: './src/lib/components/mdsvex/Layout.svelte',
+    }),
   ]),
 
   extensions: ['.svelte', '.svx'],
