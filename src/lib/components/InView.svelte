@@ -36,7 +36,7 @@
     }, 500);
 
     // Visible (no animation) if above viewport
-    if (inViewRef && inViewRef.getBoundingClientRect().bottom < 200) {
+    if (inViewRef && inViewRef.getBoundingClientRect().bottom < 250) {
       aboveViewport = true;
     }
   }

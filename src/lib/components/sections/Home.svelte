@@ -22,8 +22,11 @@
   {#if animationReady}
     <div
       class="home__info"
-      style:opacity={(750 - $scrollY) / 750}
-      style:transform={`translate3d(0, ${$scrollY * 0.5}px, 0)`}
+      style:opacity={(700 - $scrollY) / 700}
+      style:transform={`translate3d(0, ${Math.min(
+        $scrollY * 0.5,
+        700 * 0.5
+      )}px, 0)`}
     >
       <h1 class="home__name">
         <InView delay={nameDelayMs} inline overflowHidden>
