@@ -1,31 +1,77 @@
 <script lang="ts">
   import Bubbles from '$lib/components/bubbles/Bubbles.svelte';
-  import { scrollY } from '$lib/store';
+  import InView from '$lib/components/InView.svelte';
+  import { scrollY, pageLoading, pageTransitioning } from '$lib/store';
   import IoMdArrowRoundDown from 'svelte-icons/io/IoMdArrowRoundDown.svelte';
+
+  // Animation timing
+  const nameDelayMs: number = 600;
+  const headlineDelayMs: number = 900;
+  const schoolDelayMs: number = 1300;
+  const scrollDelayMs: number = 2200;
+  const wordDelayMs: number = 100;
+
+  // Start animation when done loading / transitioning
+  let animationReady: boolean = false;
+  $: if (!$pageLoading && !$pageTransitioning) {
+    animationReady = true;
+  }
 </script>
 
 <section class="home">
-  <div
-    class="home__info"
-    style:opacity={(750 - $scrollY) / 750}
-    style:transform={`translate3d(0, ${$scrollY * 0.5}px, 0)`}
-  >
-    <h1 class="home__name">Jason Liu</h1>
-    <div class="home__about">
-      <p>Full-stack web developer</p>
-      <p>
-        Studying computer science and mathematics at
-        <br />
-        the University of Maryland
-      </p>
-    </div>
-    <div class="home__scroll">
-      <div class="home__scroll-icon">
-        <IoMdArrowRoundDown />
+  {#if animationReady}
+    <div
+      class="home__info"
+      style:opacity={(750 - $scrollY) / 750}
+      style:transform={`translate3d(0, ${$scrollY * 0.5}px, 0)`}
+    >
+      <h1 class="home__name">
+        <InView delay={nameDelayMs} inline overflowHidden>
+          <span>Jason</span>
+        </InView>
+        <InView delay={nameDelayMs + wordDelayMs} inline overflowHidden>
+          <span> Liu</span>
+        </InView>
+      </h1>
+      <div class="home__about">
+        <p>
+          <InView delay={headlineDelayMs} inline overflowHidden>
+            Full-stack
+          </InView>
+          <InView delay={headlineDelayMs + wordDelayMs} inline overflowHidden>
+            web developer
+          </InView>
+        </p>
+        <p>
+          <InView delay={schoolDelayMs} inline overflowHidden>Studying</InView>
+          <InView delay={schoolDelayMs + wordDelayMs} inline overflowHidden>
+            computer science
+          </InView>
+          <InView delay={schoolDelayMs + 2 * wordDelayMs} inline overflowHidden>
+            and
+          </InView>
+          <InView delay={schoolDelayMs + 3 * wordDelayMs} inline overflowHidden>
+            mathematics
+          </InView>
+          <InView delay={schoolDelayMs + 4 * wordDelayMs} inline overflowHidden>
+            at
+          </InView>
+          <br />
+          <InView delay={schoolDelayMs + 5 * wordDelayMs} inline overflowHidden>
+            the University of Maryland
+          </InView>
+        </p>
       </div>
-      <span class="home__scroll-text">SCROLL</span>
+      <InView delay={scrollDelayMs} inline overflowHidden>
+        <div class="home__scroll">
+          <span class="home__scroll-text">SCROLL</span>
+          <div class="home__scroll-icon">
+            <IoMdArrowRoundDown />
+          </div>
+        </div>
+      </InView>
     </div>
-  </div>
+  {/if}
   <Bubbles />
 </section>
 
@@ -70,6 +116,7 @@
       width: 1rem;
       height: 1rem;
       animation: scrollIconLoop 3s ease infinite;
+      animation-delay: 1s;
     }
 
     &__scroll-text {

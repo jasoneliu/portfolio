@@ -13,7 +13,7 @@
 </script>
 
 <section class="projects" bind:this={projectsSection}>
-  <InView>
+  <InView overflowHidden>
     <h2>Projects</h2>
   </InView>
   <div class="projects__project-list">

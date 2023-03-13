@@ -35,7 +35,7 @@
 </script>
 
 <section class="skills" bind:this={skillsSection}>
-  <InView>
+  <InView overflowHidden>
     <h2>Skills</h2>
   </InView>
   <div class="skills__container">
