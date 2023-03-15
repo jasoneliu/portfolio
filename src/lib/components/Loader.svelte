@@ -106,6 +106,7 @@
     z-index: 20;
     width: 100vw;
     height: 100dvh;
+    padding: 2rem;
     overflow: hidden;
     background-color: $crust;
 
@@ -117,6 +118,7 @@
       position: relative;
       display: block;
       width: 20rem;
+      max-width: 100%;
       height: 0.2rem;
     }
 
