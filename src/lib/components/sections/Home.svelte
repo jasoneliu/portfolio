@@ -1,7 +1,12 @@
 <script lang="ts">
   import Bubbles from '$lib/components/bubbles/Bubbles.svelte';
   import InView from '$lib/components/InView.svelte';
-  import { scrollY, pageLoading, pageTransitioning } from '$lib/store';
+  import {
+    innerWidth,
+    scrollY,
+    pageLoading,
+    pageTransitioning,
+  } from '$lib/store';
   import IoMdArrowRoundDown from 'svelte-icons/io/IoMdArrowRoundDown.svelte';
 
   // Animation timing
@@ -50,6 +55,9 @@
           <InView delay={schoolDelayMs + wordDelayMs} inline overflowHidden>
             computer science
           </InView>
+          {#if $innerWidth <= 576}
+            <br />
+          {/if}
           <InView delay={schoolDelayMs + 2 * wordDelayMs} inline overflowHidden>
             and
           </InView>
