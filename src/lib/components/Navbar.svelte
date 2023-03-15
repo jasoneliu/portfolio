@@ -226,6 +226,7 @@
 
     &__icon-image {
       width: 3rem;
+      height: 2rem;
     }
 
     &__content {
