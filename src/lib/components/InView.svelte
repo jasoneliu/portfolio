@@ -48,7 +48,7 @@
   class:inline
   class:overflow-hidden={overflowHidden}
   use:inview={options}
-  on:change={({ detail }) => {
+  on:inview_change={({ detail }) => {
     inView = detail.inView;
     scrollDirection = detail.scrollDirection;
   }}
