@@ -80,8 +80,11 @@
 
 <style lang="scss">
   .home {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    height: 110vh;
+    height: calc(100vh - 16rem);
+    margin-bottom: calc(10vh + 16rem);
 
     &__info {
       display: flex;
@@ -90,7 +93,7 @@
       justify-content: center;
       gap: 3rem;
       z-index: 5;
-      padding: 4rem 2rem 0;
+      padding: 0 2rem;
     }
 
     &__name {
@@ -110,7 +113,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
       overflow: hidden;
       color: $subtext1;
     }
