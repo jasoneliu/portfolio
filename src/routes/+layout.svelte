@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import Navbar from '$lib/components/Navbar.svelte';
   import Footer from '$lib/components/Footer.svelte';
@@ -11,6 +12,7 @@
     url,
     mobileLayout,
   } from '$lib/store';
+  import { webVitals } from '$lib/vitals';
   import '../app.scss';
 
   let windowInnerWidth: number;
@@ -20,6 +22,16 @@
   $: innerWidth.set(windowInnerWidth);
   $: scrollY.set(windowScrollY);
   $: mobileLayout.set(windowInnerWidth < 768); // $breakpoint-md
+
+  // Vercel analytics
+  let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
+  $: if (browser && analyticsId) {
+    webVitals({
+      path: $page.url.pathname,
+      params: $page.params,
+      analyticsId,
+    });
+  }
 
   onMount(() => {
     // Disable loader for non-home pages

@@ -10,6 +10,12 @@ const config = {
   // for more information about preprocessors
   preprocess: sequence([
     sveltePreprocess({
+      replace: [
+        [
+          'import.meta.env.VERCEL_ANALYTICS_ID',
+          JSON.stringify(process.env.VERCEL_ANALYTICS_ID),
+        ],
+      ],
       scss: {
         prependData: `@use 'src/styles/_variables.scss' as *;`,
       },
