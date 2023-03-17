@@ -12,7 +12,7 @@
       <div class="footer__icon-list">
         {#each socials as social}
           <a class="footer__icon" href={social.href} target="_blank">
-            <svelte:component this={social.icon} />
+            <svelte:component this={social.icon} title={social.name} />
           </a>
         {/each}
       </div>
