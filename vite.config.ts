@@ -8,15 +8,11 @@ export default defineConfig({
     // Minimize three.js bundle size
     { ...threeMinifier(), enforce: 'pre' },
 
-    // Convert images to webp
+    // Generate srcset for .avif and .webp images
     imagetools({
       defaultDirectives: (url) => {
-        const extension = url.pathname.substring(
-          url.pathname.lastIndexOf('.') + 1
-        );
-        if (['jpg', 'png'].includes(extension)) {
+        if (url.searchParams.toString().length > 0) {
           return new URLSearchParams({
-            format: 'webp',
             srcset: 'true',
             width: '500;1000;2000',
           });

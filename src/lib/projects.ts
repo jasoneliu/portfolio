@@ -1,9 +1,17 @@
 import { tags, type Tag } from '$lib/tags';
 
-import agentAssistImage from '$lib/assets/projects/agent-assist.png';
-import arcXpImage from '$lib/assets/projects/arc-xp.png';
-import bitcampImage from '$lib/assets/projects/bitcamp.png';
-import technicaImage from '$lib/assets/projects/technica.png';
+import agentAssistImageAvif from '$lib/assets/projects/agent-assist.png?avif';
+import agentAssistImageWebp from '$lib/assets/projects/agent-assist.png?webp';
+import agentAssistImageFallback from '$lib/assets/projects/agent-assist.png';
+import arcXpImageAvif from '$lib/assets/projects/arc-xp.png?avif';
+import arcXpImageWebp from '$lib/assets/projects/arc-xp.png?webp';
+import arcXpImageFallback from '$lib/assets/projects/arc-xp.png';
+import bitcampImageAvif from '$lib/assets/projects/bitcamp.png?avif';
+import bitcampImageWebp from '$lib/assets/projects/bitcamp.png?webp';
+import bitcampImageFallback from '$lib/assets/projects/bitcamp.png';
+import technicaImageAvif from '$lib/assets/projects/technica.png?avif';
+import technicaImageWebp from '$lib/assets/projects/technica.png?webp';
+import technicaImageFallback from '$lib/assets/projects/technica.png';
 
 export interface Project {
   name: string;
@@ -12,7 +20,11 @@ export interface Project {
   timeline: string;
   skills: string[];
   tags: Tag[];
-  image: string;
+  image: {
+    avif: string;
+    webp: string;
+    fallback: string;
+  };
   slug: string;
   head?: {
     title?: string;
@@ -31,7 +43,11 @@ const google: Project = {
     'Unit and Integration Testing',
   ],
   tags: [tags.typescript, tags.angular, tags.ngrx, tags.jasmine],
-  image: agentAssistImage,
+  image: {
+    avif: agentAssistImageAvif,
+    webp: agentAssistImageWebp,
+    fallback: agentAssistImageFallback,
+  },
   slug: 'google',
   head: {
     title: 'Agent Assist',
@@ -53,7 +69,11 @@ const arcxp: Project = {
     tags.aws,
     tags.jest,
   ],
-  image: arcXpImage,
+  image: {
+    avif: arcXpImageAvif,
+    webp: arcXpImageWebp,
+    fallback: arcXpImageFallback,
+  },
   slug: 'arc-xp',
 };
 
@@ -64,7 +84,11 @@ const bitcamp: Project = {
   timeline: 'Dec. 2021 – Apr. 2023',
   skills: ['Full-Stack Development', 'Product Management'],
   tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws],
-  image: bitcampImage,
+  image: {
+    avif: bitcampImageAvif,
+    webp: bitcampImageWebp,
+    fallback: bitcampImageFallback,
+  },
   slug: 'bitcamp',
 };
 
@@ -75,7 +99,11 @@ const technica: Project = {
   timeline: 'Apr. – Oct. 2022',
   skills: ['Frontend Development'],
   tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws],
-  image: technicaImage,
+  image: {
+    avif: technicaImageAvif,
+    webp: technicaImageWebp,
+    fallback: technicaImageFallback,
+  },
   slug: 'technica',
 };
 
