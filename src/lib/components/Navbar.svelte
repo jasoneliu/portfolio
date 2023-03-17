@@ -94,7 +94,15 @@
 
 <header>
   <nav class="navbar" class:hide={!showNavbar}>
-    <a class="navbar__icon" href="/" on:click={() => setUrlHash('Home')}>
+    <a
+      class="navbar__icon"
+      href="/"
+      on:click={(event) => {
+        if (!event.ctrlKey) {
+          setUrlHash('Home');
+        }
+      }}
+    >
       <img class="navbar__icon-image" src={logo} alt="Icon" />
     </a>
     {#key hamburgerOpen}
@@ -121,9 +129,11 @@
                       ? '/resume'
                       : `/#${navItem.toLowerCase()}`}
                     target={navItem === 'Resume' ? '_blank' : null}
-                    on:click={() => {
-                      closeHamburger();
-                      setUrlHash(navItem);
+                    on:click={(event) => {
+                      if (!event.ctrlKey) {
+                        closeHamburger();
+                        setUrlHash(navItem);
+                      }
                     }}
                   >
                     <span
