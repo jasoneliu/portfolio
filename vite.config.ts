@@ -17,6 +17,8 @@ export default defineConfig({
         if (['jpg', 'png'].includes(extension)) {
           return new URLSearchParams({
             format: 'webp',
+            srcset: 'true',
+            width: '500;1000;2000',
           });
         }
         return new URLSearchParams();

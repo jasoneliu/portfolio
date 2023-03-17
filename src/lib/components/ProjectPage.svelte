@@ -19,7 +19,10 @@
 <div class="project__head">
   <h2 class="project__head__title">{project.name}</h2>
   <p class="project__head__description">{project.description}</p>
-  <img class="project__head__image" src={project.image} alt={project.name} />
+  <picture>
+    <source srcset="${project.image}" type="image/webp" />
+    <img class="project__head__image" alt={project.name} />
+  </picture>
 </div>
 
 <div class="project__info">

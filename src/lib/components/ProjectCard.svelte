@@ -10,11 +10,8 @@
   <div class="project-card__card">
     <a href={`/projects/${project.slug}`}>
       <picture>
-        <img
-          class="project-card__image"
-          src={project.image}
-          alt={project.name}
-        />
+        <source srcset="${project.image}" type="image/webp" />
+        <img class="project-card__image" alt={project.name} />
       </picture>
     </a>
     <div class="project-card__info">
