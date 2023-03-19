@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from '$app/stores';
   import InView from '$lib/components/InView.svelte';
   import { socials } from '$lib/socials';
 
@@ -6,7 +7,7 @@
 </script>
 
 <footer>
-  <InView>
+  <InView duration={$page.url.pathname !== '/' ? 0 : undefined}>
     <div class="footer">
       <p class="footer__text">Designed and developed with ♥</p>
       <div class="footer__icon-list">
