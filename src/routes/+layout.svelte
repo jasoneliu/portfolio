@@ -54,7 +54,7 @@
 
 <svelte:head>
   <meta name="author" content="Jason Liu" />
-  <meta property="og:image" content="" />
+  <meta property="og:image" content="/og-image.png" />
   <meta property="og:site_name" content="Jason Liu" />
   <meta property="og:type" content="website" />
   <meta
