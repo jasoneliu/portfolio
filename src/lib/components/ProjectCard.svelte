@@ -8,7 +8,7 @@
 
 <div class="project-card">
   <div class="project-card__card">
-    <a href={`/projects/${project.slug}`}>
+    <a href="/projects/{project.slug}">
       <picture>
         <source srcset={project.image.avif} type="image/avif" />
         <source srcset={project.image.webp} type="image/webp" />
@@ -25,7 +25,7 @@
       <p class="project-card__description">{project.description}</p>
       <TagList tags={project.tags} />
       <div class="project-card__button">
-        <LinkButton text="LEARN MORE" link={`/projects/${project.slug}`} />
+        <LinkButton text="LEARN MORE" link="/projects/{project.slug}" />
       </div>
     </div>
   </div>

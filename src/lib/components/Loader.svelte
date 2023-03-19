@@ -86,7 +86,7 @@
         <div
           class="loader__bar"
           class:outro={loadingDone}
-          style:width={`${$loadingPercentage}%`}
+          style:width="{$loadingPercentage}%"
         />
       </div>
     {/if}

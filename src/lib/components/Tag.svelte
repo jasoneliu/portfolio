@@ -12,7 +12,7 @@
 
 <span
   class="tag"
-  style:background-color={`${colors[color]}${backgroundColorAlphaHex}`}
+  style:background-color="{colors[color]}{backgroundColorAlphaHex}"
   style:border-color={colors[color]}
   style:color={colors[color]}
 >

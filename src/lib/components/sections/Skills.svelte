@@ -44,11 +44,11 @@
         <div class="skills__item">
           <div class="skills__heading">
             <img
-              class={`skills__icon ${skill.slug}`}
+              class="skills__icon {skill.slug}"
               src={skill.icon}
-              alt={`${skill.title} Icon`}
+              alt="{skill.title} Icon"
             />
-            <h3 class={`skills__heading-text ${skill.slug}`}>{skill.title}</h3>
+            <h3 class="skills__heading-text {skill.slug}">{skill.title}</h3>
           </div>
           <p>
             {skill.body}
