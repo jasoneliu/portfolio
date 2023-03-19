@@ -8,6 +8,11 @@
     name="description"
     content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
   />
+  <meta property="og:title" content="Oops — Jason Liu" />
+  <meta
+    property="og:description"
+    content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
+  />
 </svelte:head>
 
 <div class="error">

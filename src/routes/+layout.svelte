@@ -54,21 +54,19 @@
 
 <svelte:head>
   <meta name="author" content="Jason Liu" />
+  <meta property="og:image" content="" />
+  <meta property="og:site_name" content="Jason Liu" />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:url"
+    content="https://www.jasoneliu.com{$page.url.pathname}"
+  />
 
   <!-- https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-
-  <meta property="og:title" content="Jason Liu — Web Developer" />
-  <meta
-    property="og:description"
-    content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="" />
-  <meta property="og:url" content="https://www.jasoneliu.com" />
 </svelte:head>
 
 <Navbar />

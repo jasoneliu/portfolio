@@ -4,16 +4,16 @@
 
   export let project: Project;
 
-  const projectTitle: string = project.head?.title ?? project.name;
+  const headProjectTitle: string = project.head?.title ?? project.name;
+  const headProjectDescription: string =
+    project.head?.description ?? `${headProjectTitle}: ${project.description}`;
 </script>
 
 <svelte:head>
-  <title>{projectTitle} — Jason Liu</title>
-  <meta
-    name="description"
-    content={project.head?.description ??
-      `${projectTitle}. ${project.description}`}
-  />
+  <title>{headProjectTitle} — Jason Liu</title>
+  <meta name="description" content={headProjectDescription} />
+  <meta property="og:title" content="{headProjectTitle} — Jason Liu" />
+  <meta property="og:description" content={headProjectDescription} />
 </svelte:head>
 
 <div class="project__head">

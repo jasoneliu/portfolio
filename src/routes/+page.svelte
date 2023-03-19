@@ -69,6 +69,11 @@
     name="description"
     content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
   />
+  <meta property="og:title" content="Jason Liu — Web Developer" />
+  <meta
+    property="og:description"
+    content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
+  />
 
   <!-- Enable smooth scrolling after initial scroll -->
   {#if scrollBehavior === 'smooth'}
