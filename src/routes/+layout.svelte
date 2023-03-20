@@ -23,6 +23,15 @@
   $: scrollY.set(windowScrollY);
   $: mobileLayout.set(windowInnerWidth < 768); // $breakpoint-md
 
+  // Disable loader for non-home pages
+  if ($page.url.pathname !== '/') {
+    pageLoading.set(false);
+  }
+
+  // Set Open Graph url pathname without trailing slash
+  let ogUrlPathname: string;
+  $: ogUrlPathname = $page.url.pathname === '/' ? '' : $page.url.pathname;
+
   // Vercel analytics
   let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
   $: if (browser && analyticsId) {
@@ -33,13 +42,8 @@
     });
   }
 
+  // Update url hash on navigation
   onMount(() => {
-    // Disable loader for non-home pages
-    if ($page.url.pathname !== '/') {
-      pageLoading.set(false);
-    }
-
-    // Update url hash on navigation
     window.addEventListener('hashchange', () => {
       url.set({ ...url, hash: location.hash });
     });
@@ -57,10 +61,7 @@
   <meta property="og:image" content="/og-image.png" />
   <meta property="og:site_name" content="Jason Liu" />
   <meta property="og:type" content="website" />
-  <meta
-    property="og:url"
-    content="https://www.jasoneliu.com{$page.url.pathname}"
-  />
+  <meta property="og:url" content="https://www.jasoneliu.com{ogUrlPathname}" />
 
   <!-- https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
