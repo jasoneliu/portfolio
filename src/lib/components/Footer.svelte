@@ -7,7 +7,7 @@
 </script>
 
 <footer>
-  <InView duration={$page.url.pathname !== '/' ? 0 : undefined}>
+  <InView disabled={$page.url.pathname !== '/'}>
     <div class="footer">
       <p class="footer__text">Designed and developed with ♥</p>
       <div class="footer__icon-list">

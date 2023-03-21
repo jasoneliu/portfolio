@@ -10,6 +10,9 @@
     unobserveOnEnter: true,
   };
 
+  // Option to disable inview (always show component)
+  export let disabled: boolean = false;
+
   // Transition options
   export let y: number = 100;
   export let duration: number = 500;
@@ -53,10 +56,11 @@
     scrollDirection = detail.scrollDirection;
   }}
 >
-  {#if inView || aboveViewport}
+  {#if inView || aboveViewport || disabled}
     <div
       class="in-view--show"
       in:fly={!aboveViewport &&
+      !disabled &&
       (firstRender || scrollDirection.vertical === 'up')
         ? { y, duration, delay, easing: cubicOut }
         : { duration: 0 }}
