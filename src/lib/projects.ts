@@ -32,7 +32,7 @@ export interface Project {
   };
 }
 
-const google: Project = {
+const agentAssist: Project = {
   name: 'Google — Agent Assist',
   description: 'Deliver AI-powered conversations with human agents.',
   role: 'Software Engineering Internship',
@@ -48,7 +48,7 @@ const google: Project = {
     webp: agentAssistImageWebp,
     fallback: agentAssistImageFallback,
   },
-  slug: 'google',
+  slug: 'agent-assist',
   head: {
     title: 'Agent Assist',
   },
@@ -107,6 +107,11 @@ const technica: Project = {
   slug: 'technica',
 };
 
-export const projects = { google, 'arc-xp': arcxp, bitcamp, technica };
+export const projects = {
+  'agent-assist': agentAssist,
+  'arc-xp': arcxp,
+  bitcamp,
+  technica,
+};
 
 export type ProjectSlug = keyof typeof projects;
