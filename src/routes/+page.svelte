@@ -64,12 +64,12 @@
 </script>
 
 <svelte:head>
-  <title>Jason Liu — Web Developer</title>
+  <title>Jason Liu</title>
   <meta
     name="description"
     content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
   />
-  <meta property="og:title" content="Jason Liu — Web Developer" />
+  <meta property="og:title" content="Jason Liu" />
   <meta
     property="og:description"
     content="Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland."
