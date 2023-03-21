@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { threeMinifier } from '@yushijinhun/three-minifier-rollup';
 import { imagetools } from 'vite-imagetools';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 
 export default defineConfig({
   plugins: [
@@ -22,6 +23,46 @@ export default defineConfig({
     }),
 
     sveltekit(),
+
+    // PWA
+    SvelteKitPWA({
+      registerType: 'autoUpdate',
+      manifest: {
+        name: 'Jason Liu',
+        short_name: 'Jason Liu',
+        description:
+          'Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland.',
+        icons: [
+          {
+            src: '/icon-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any',
+          },
+          {
+            src: '/icon-maskable-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+          {
+            src: '/icon-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any',
+          },
+          {
+            src: '/icon-maskable-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+        ],
+        display: 'standalone',
+        background_color: '#1e1e2e',
+        theme_color: '#1e1e2e',
+      },
+    }),
   ],
 
   ssr: {

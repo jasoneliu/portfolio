@@ -13,6 +13,7 @@
     mobileLayout,
   } from '$lib/store';
   import { webVitals } from '$lib/vitals';
+  import { pwaInfo } from 'virtual:pwa-info';
   import '../app.scss';
 
   let windowInnerWidth: number;
@@ -42,11 +43,30 @@
     });
   }
 
-  // Update url hash on navigation
-  onMount(() => {
+  // PWA web app manifest
+  $: webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : '';
+
+  onMount(async () => {
+    // Update url hash on navigation
     window.addEventListener('hashchange', () => {
       url.set({ ...url, hash: location.hash });
     });
+
+    // Register PWA service worker
+    if (pwaInfo) {
+      const { registerSW } = await import('virtual:pwa-register');
+      registerSW({
+        immediate: true,
+        onRegistered(registration: ServiceWorkerRegistration | undefined) {
+          // Check for updates every 24 hours
+          if (registration) {
+            setInterval(() => {
+              registration.update();
+            }, 1000 * 60 * 60 * 24);
+          }
+        },
+      });
+    }
   });
 </script>
 
@@ -67,7 +87,10 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- PWA web app manifest -->
+  {@html webManifest}
+  <meta name="theme-color" content="#1e1e2e" />
 </svelte:head>
 
 <Navbar />
