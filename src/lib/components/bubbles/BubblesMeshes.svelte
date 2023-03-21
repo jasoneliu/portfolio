@@ -190,7 +190,7 @@
 </script>
 
 <!-- Bubbles -->
-<Environment path="/" files="bubble-envmap.hdr" />
+<Environment path="/" files="bubble-envmap.png" />
 {#each bubbles as bubble (bubble.id)}
   <Float speed={2} floatIntensity={10} floatingRange={[-1, 1]}>
     <T.Mesh
