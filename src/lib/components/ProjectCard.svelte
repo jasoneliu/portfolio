@@ -1,5 +1,6 @@
 <script lang="ts">
   import LinkButton from '$lib/components/LinkButton.svelte';
+  import ProjectImage from '$lib/components/ProjectImage.svelte';
   import TagList from '$lib/components/TagList.svelte';
   import type { Project } from '$lib/projects';
 
@@ -9,15 +10,7 @@
 <div class="project-card">
   <div class="project-card__card">
     <a href="/projects/{project.slug}">
-      <picture>
-        <source srcset={project.image.avif} type="image/avif" />
-        <source srcset={project.image.webp} type="image/webp" />
-        <img
-          class="project-card__image"
-          src={project.image.fallback}
-          alt={project.name}
-        />
-      </picture>
+      <ProjectImage {project} />
     </a>
     <div class="project-card__info">
       <span class="project-card__role">{project.role}</span>
@@ -52,13 +45,6 @@
         grid-template-columns: 1fr;
         padding: 2rem;
       }
-    }
-
-    &__image {
-      width: 100%;
-      border-radius: 0.5rem;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
     }
 
     &__info {

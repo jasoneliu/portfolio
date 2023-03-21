@@ -1,9 +1,11 @@
 <script lang="ts">
+  import ProjectImage from '$lib/components/ProjectImage.svelte';
   import TagList from '$lib/components/TagList.svelte';
   import type { Project } from '$lib/projects';
 
   export let project: Project;
 
+  // Project title and description for meta tags
   const headProjectTitle: string = project.head?.title ?? project.name;
   const headProjectDescription: string =
     project.head?.description ?? `${headProjectTitle}: ${project.description}`;
@@ -19,15 +21,9 @@
 <div class="project__head">
   <h2 class="project__head__title">{project.name}</h2>
   <p class="project__head__description">{project.description}</p>
-  <picture>
-    <source srcset={project.image.avif} type="image/avif" />
-    <source srcset={project.image.webp} type="image/webp" />
-    <img
-      class="project__head__image"
-      src={project.image.fallback}
-      alt={project.name}
-    />
-  </picture>
+  <div class="project__head__image">
+    <ProjectImage {project} />
+  </div>
 </div>
 
 <div class="project__info">
@@ -64,8 +60,7 @@
   .project {
     &__head {
       &__title {
-        /* margin-block-start: 0rem; */
-        margin-block-end: 0.5rem;
+        margin-bottom: 0.5rem;
         text-align: center;
       }
 
@@ -74,11 +69,7 @@
       }
 
       &__image {
-        margin-top: 2rem;
-        width: 100%;
-        border-radius: 0.5rem;
-        aspect-ratio: 3 / 2;
-        object-fit: cover;
+        margin: 2rem 0;
       }
     }
 
@@ -87,7 +78,6 @@
       grid-template-rows: auto auto;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      margin-top: 2rem;
 
       h4 {
         margin-bottom: 0.25rem;
