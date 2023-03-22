@@ -26,7 +26,6 @@ export default defineConfig({
 
     // PWA
     SvelteKitPWA({
-      registerType: 'autoUpdate',
       manifest: {
         name: 'Jason Liu',
         short_name: 'Jason Liu',

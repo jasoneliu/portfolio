@@ -20,7 +20,7 @@
     "@types/three": "^0.149.0",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
-    "@vite-pwa/sveltekit": "^0.1.3",
+    "@vite-pwa/sveltekit": "^0.2.0",
     "@yushijinhun/three-minifier-rollup": "^0.4.0",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
