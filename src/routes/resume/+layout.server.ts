@@ -1,5 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 
+// Disable prerender since /resume redirects to an external link
+export const prerender = false;
+
 // Redirect /resume to resume link
 export function load() {
   throw redirect(
