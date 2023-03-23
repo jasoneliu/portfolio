@@ -28,6 +28,8 @@ export default defineConfig({
     SvelteKitPWA({
       strategies: 'generateSW',
       registerType: 'autoUpdate',
+      base: '/',
+      scope: '/',
       manifest: {
         name: 'Jason Liu',
         short_name: 'Jason Liu',
