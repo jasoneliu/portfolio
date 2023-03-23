@@ -26,11 +26,18 @@ export default defineConfig({
 
     // PWA
     SvelteKitPWA({
+      strategies: 'generateSW',
+      registerType: 'autoUpdate',
       manifest: {
         name: 'Jason Liu',
         short_name: 'Jason Liu',
         description:
           'Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland.',
+        start_url: '/',
+        scope: '/',
+        display: 'standalone',
+        background_color: '#1e1e2e',
+        theme_color: '#1e1e2e',
         icons: [
           {
             src: '/icon-192.png',
@@ -57,9 +64,6 @@ export default defineConfig({
             purpose: 'maskable',
           },
         ],
-        display: 'standalone',
-        background_color: '#1e1e2e',
-        theme_color: '#1e1e2e',
       },
     }),
   ],
