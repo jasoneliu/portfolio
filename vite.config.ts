@@ -30,6 +30,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       base: '/',
       scope: '/',
+      workbox: {
+        // Exclude /resume from sw precache
+        navigateFallbackDenylist: [/\/resume/],
+      },
       manifest: {
         name: 'Jason Liu',
         short_name: 'Jason Liu',
