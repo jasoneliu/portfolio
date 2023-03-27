@@ -52,6 +52,11 @@
       url.set({ ...url, hash: location.hash });
     });
 
+    // Disable "Add to Home Screen" mini-infobar on mobile
+    window.addEventListener('beforeinstallprompt', (event: Event) => {
+      event.preventDefault();
+    });
+
     // Register PWA service worker
     if (pwaInfo) {
       const { registerSW } = await import('virtual:pwa-register');
