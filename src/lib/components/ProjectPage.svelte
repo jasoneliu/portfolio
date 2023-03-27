@@ -121,6 +121,14 @@
       & :global(strong) {
         font-weight: 700;
       }
+
+      & :global(code) {
+        padding: 0.1rem 0.3rem 0.15rem;
+        border-radius: 0.25rem;
+        background-color: rgba($lavender, 0.3);
+        font-family: Iosevka, monospace;
+        font-size: 0.875rem;
+      }
     }
   }
 </style>

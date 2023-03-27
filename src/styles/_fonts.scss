@@ -32,3 +32,47 @@
   font-display: swap;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Iosevka';
+  font-style: normal;
+  font-weight: normal;
+  src: url('$lib/assets/fonts/iosevka/iosevka-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-style: italic;
+  font-weight: normal;
+  src: url('$lib/assets/fonts/iosevka/iosevka-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-style: oblique;
+  font-weight: normal;
+  src: url('$lib/assets/fonts/iosevka/iosevka-oblique.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-style: normal;
+  font-weight: bold;
+  src: url('$lib/assets/fonts/iosevka/iosevka-bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-style: italic;
+  font-weight: bold;
+  src: url('$lib/assets/fonts/iosevka/iosevka-bolditalic.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-style: oblique;
+  font-weight: bold;
+  src: url('$lib/assets/fonts/iosevka/iosevka-boldoblique.ttf')
+    format('truetype');
+}
