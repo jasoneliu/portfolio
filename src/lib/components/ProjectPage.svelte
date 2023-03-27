@@ -117,6 +117,10 @@
         margin-block-end: 1rem;
         padding-inline-start: 2rem;
       }
+
+      & :global(strong) {
+        font-weight: 700;
+      }
     }
   }
 </style>
