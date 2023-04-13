@@ -1,6 +1,6 @@
 <script lang="ts">
   import LinkButton from '$lib/components/LinkButton.svelte';
-  import ProjectImage from '$lib/components/ProjectImage.svelte';
+  import ProjectThumbnail from '$lib/components/ProjectThumbnail.svelte';
   import TagList from '$lib/components/TagList.svelte';
   import type { Project } from '$lib/projects';
 
@@ -10,7 +10,7 @@
 <div class="project-card">
   <div class="project-card__card">
     <a href="/projects/{project.slug}">
-      <ProjectImage {project} />
+      <ProjectThumbnail image={project.image} alt={project.name} />
     </a>
     <div class="project-card__info">
       <span class="project-card__role">{project.role}</span>
@@ -42,7 +42,7 @@
 
       @media screen and (max-width: $breakpoint-md) {
         grid-template-rows: auto auto;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1far;
         padding: 2rem;
       }
     }

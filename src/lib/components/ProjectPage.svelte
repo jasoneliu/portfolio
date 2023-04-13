@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ProjectImage from '$lib/components/ProjectImage.svelte';
+  import ProjectThumbnail from '$lib/components/ProjectThumbnail.svelte';
   import TagList from '$lib/components/TagList.svelte';
   import type { Project } from '$lib/projects';
 
@@ -22,7 +22,7 @@
   <h2 class="project__head__title">{project.name}</h2>
   <p class="project__head__description">{project.description}</p>
   <div class="project__head__image">
-    <ProjectImage {project} />
+    <ProjectThumbnail image={project.image} alt={project.name} />
   </div>
 </div>
 

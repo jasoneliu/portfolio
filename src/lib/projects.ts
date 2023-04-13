@@ -1,3 +1,4 @@
+import type { Image } from '$lib/image';
 import { tags, type Tag } from '$lib/tags';
 
 import agentAssistImageAvif from '$lib/assets/projects/agent-assist.png?avif';
@@ -20,11 +21,7 @@ export interface Project {
   timeline: string;
   skills: string[];
   tags: Tag[];
-  image: {
-    avif: string;
-    webp: string;
-    fallback: string;
-  };
+  image: Image;
   slug: string;
   head?: {
     title?: string;
