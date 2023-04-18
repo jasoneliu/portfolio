@@ -1,1 +1,5 @@
-### 🚧 Work in Progress 🚧
+### Overview
+
+[Bitcamp](https://bit.camp) is the University of Maryland's premier hackathon.
+
+🚧 Work in Progress 🚧

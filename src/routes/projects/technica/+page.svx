@@ -1,1 +1,6 @@
-### 🚧 Work in Progress 🚧
+### Overview
+
+[Technica](https://gotechnica.org) is the world's largest hackathon for
+underrepresented genders.
+
+🚧 Work in Progress 🚧

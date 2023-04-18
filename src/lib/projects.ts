@@ -84,7 +84,14 @@ const bitcamp: Project = {
   role: 'Tech Co-Director',
   timeline: 'Dec. 2021 – Apr. 2023',
   skills: ['Full-Stack Development', 'Product Management'],
-  tags: [tags.typescript, tags.reactnative, tags.vue, tags.nuxt, tags.aws],
+  tags: [
+    tags.typescript,
+    tags.reactnative,
+    tags.expo,
+    tags.vue,
+    tags.nuxt,
+    tags.aws,
+  ],
   image: {
     avif: bitcampImageAvif,
     webp: bitcampImageWebp,
@@ -99,7 +106,7 @@ const technica: Project = {
   role: 'Tech Organizer',
   timeline: 'Apr. – Oct. 2022',
   skills: ['Frontend Development'],
-  tags: [tags.javascript, tags.vue, tags.nuxt, tags.aws],
+  tags: [tags.typescript, tags.vue, tags.nuxt, tags.aws],
   image: {
     avif: technicaImageAvif,
     webp: technicaImageWebp,
