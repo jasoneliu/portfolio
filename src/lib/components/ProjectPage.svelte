@@ -95,10 +95,16 @@
     }
 
     &__content {
+      margin-bottom: 3rem;
+
       & :global(h3) {
-        margin-block-start: 5rem;
-        margin-block-end: -1rem;
+        margin-block-start: 6rem;
+        margin-block-end: 2rem;
         text-align: center;
+
+        & + :global(h4) {
+          margin-block-start: 2rem;
+        }
       }
 
       & :global(h4) {
@@ -113,9 +119,13 @@
 
       & :global(ul),
       :global(ol) {
-        margin-block-start: 1rem;
-        margin-block-end: 1rem;
+        margin-block-start: 0.75rem;
+        margin-block-end: 0.75rem;
         padding-inline-start: 2rem;
+      }
+
+      & :global(li) {
+        margin: 0.25rem 0;
       }
 
       & :global(strong) {
@@ -123,9 +133,10 @@
       }
 
       & :global(code) {
+        display: inline-block;
         padding: 0.1rem 0.3rem 0.15rem;
         border-radius: 0.25rem;
-        background-color: rgba($lavender, 0.3);
+        background-color: rgba($lavender, 0.2);
         font-family: Iosevka, monospace;
         font-size: 0.875rem;
       }

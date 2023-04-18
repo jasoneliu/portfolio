@@ -1,1 +1,190 @@
-### 🚧 Work in Progress 🚧
+<script lang="ts">
+  import ProjectPageImage from '$lib/components/ProjectPageImage.svelte';
+  import type { Image } from '$lib/image';
+
+  import projectListImageAvif from '$lib/assets/projects/arc-xp/project-list.png?avif';
+  import projectListImageWebp from '$lib/assets/projects/arc-xp/project-list.png?webp';
+  import projectListImageFallback from '$lib/assets/projects/arc-xp/project-list.png';
+  import newProjectDialogImageAvif from '$lib/assets/projects/arc-xp/new-project-dialog.png?avif';
+  import newProjectDialogImageWebp from '$lib/assets/projects/arc-xp/new-project-dialog.png?webp';
+  import newProjectDialogImageFallback from '$lib/assets/projects/arc-xp/new-project-dialog.png';
+
+  const projectListImage: Image = {
+    avif: projectListImageAvif,
+    webp: projectListImageWebp,
+    fallback: projectListImageFallback,
+  }
+
+  const newProjectDialogImage: Image = {
+    avif: newProjectDialogImageAvif,
+    webp: newProjectDialogImageWebp,
+    fallback: newProjectDialogImageFallback,
+  }
+</script>
+
+### Overview
+
+[Arc XP](https://www.arcxp.com/) is The Washington Post's cloud-native digital
+experience platform that helps enterprise companies, retail brands and media
+organizations create and distribute content, drive digital commerce, and deliver
+powerful multichannel experiences. One of Arc XP's core products is Arc XP
+Content, serving as an **API-first agile content management system (CMS)** that
+streamlines content creation and simplifies content management.
+
+Clients looking to **migrate from legacy CMS to Arc XP** use a service called
+Migration Center. Migration Center is responsible for transforming their data
+into [ANS](https://github.com/washingtonpost/ans-schema) (Arc Native
+Specification), a collection of schema documents that comprise the Washington
+Post's definition of "content". These documents include content such as stories,
+videos, and images.
+
+As a software engineering intern on the Arc Migration Center team, I split my
+time working on Migration Center's serverless microservices architecture and ANS
+Mapper, a new GUI that streamlines migration projects.
+
+### Migration Center
+
+Migration Center performs migrations through an asynchronous and transactional
+process using AWS Step Functions and Queues.
+
+1. The user calls the Migration Center API
+2. API Gateway triggers a Lambda function that publishes the message to an SNS
+   topic
+3. SQS queues for each ANS content type receive messages from SNS
+4. A poller service running in an ECS container retrieves messages from SQS and
+   submits them to a step function for the corresponding ANS content type
+5. The step function handles migration and submission to Arc
+
+#### Dead Letter Queue
+
+SNS occasionally fails to send a message to SQS. This could occur when there is
+a bug in Migration Center or a client incorrectly uses the API, such as
+providing an invalid request parameter or body that results in a
+`422 Unprocessable Entity` response status code. When a message fails to send,
+the unconsumed message gets lost, which makes debugging and retries quite
+difficult.
+
+To resolve this issue, I added a **dead letter queue (DLQ) that would capture
+unconsumed messages**. I also configured a CloudWatch alarm to alert the team
+when the number of messages in the DLQ exceeded a certain threshold. These
+changes were made in CloudFormation templates, so that every client was
+provisioned their own isolated DLQ that could handle all ANS types.
+
+The DLQ ensured that the team would always have access to unconsumed messages,
+making it much **easier to debug errors**. After bug fixes, the DLQ also enabled
+developers and clients to **move unconsumed messages back to SNS in order to
+complete the migration process**.
+
+#### Optimizing Lambdas
+
+While implementing the DLQ, I noticed that each Lambda function had a
+surprisingly large deployment package size. After some investigation, I
+discovered that each deployment package included the entire `aws-sdk` package,
+causing it take much longer to download and unpack the deployment package ahead
+of invocation. Across over 30 Lambda functions, this significantly slowed down
+cold starts for the Migration Center API.
+
+To reduce the deployment package size, I used the Serverless framework to create
+a Lambda layer, which allows the `aws-sdk` package to be shared across all
+Lambda functions. I also reorganized Lambda functions into separate directories
+and configured Serverless to
+[package functions individually](https://www.serverless.com/framework/docs/providers/aws/guide/packaging#packaging-functions-separately),
+allowing webpack to more effectively treeshake the project.
+
+As a result, each Lambda function would have its own deployment package that
+only included the individual AWS services necessary for that function. In total,
+I managed to **reduce the average lambda package size from over 40 MB to just 1
+MB**.
+
+#### API Testing
+
+Before each new release, the team would hold a bug bash. We would go through a
+list of existing core features and new features for the release (such as the DLQ
+and Lambda changes), ensuring that all of the functionality behaved as expected.
+We used Postman to test the Migration Center API.
+
+### ANS Mapper
+
+Client developers using Migration Center did not have a way to preview ANS
+before migration, which forced them to write a lot of transform code without
+being able to test its validity. ANS Mapper is a new tool that improves the
+process of transforming source content into ANS. It allows developers to use
+templates to create transformations with minimal code, then preview the mapped
+content in a GUI before migrating it to Arc.
+
+#### CI/CD
+
+After creating a new Next.js project, I started by setting up the project with
+CI/CD. We used husky to create a pre-commit hook that **formats, lints, and
+tests code**. We then used AWS CodePipeline and CodeBuild to **install
+dependencies, build the app, and deploy the app** to S3 and CloudFront.
+
+#### UI Components
+
+Ideally, we would have used components from
+[Arc Design System](https://design.arcxp.com/). However, many core components
+were not available yet and did not have a roadmap for completion. To continue
+development on ANS Mapper while maintaining a consistent user experience across
+the Arc platform, I **built UI components following standards set by Arc Design
+System**, with the intent to later contribute to it. Therefore, components were
+built using the following technologies:
+
+- [React Aria](https://react-spectrum.adobe.com/react-aria/index.html):
+  Accessible UI primitives for design systems
+- [React Stately](https://react-spectrum.adobe.com/react-stately/index.html):
+  Cross-platform state management for design systems
+- [Stitches](https://stitches.dev/): CSS-in-JS and design system tokens (color,
+  spacing, typography)
+- [Storybook](https://storybook.js.org/): Component development, testing, and
+  documentation
+
+I began with development of the ANS Mapper home page. The core functionality on
+this page was a `ListView` component that supports **lazy loading of migration
+projects**. The component would initially load 10 projects, then load additional
+projects when the user scrolls to the bottom of the `ListView`. Once loaded,
+data would be kept in a Redux store so that it could be detached from the
+component.
+
+<ProjectPageImage
+  image={projectListImage}
+  alt="ANS Mapper: Project List"
+  caption="ANS Mapper: Project List"
+/>
+
+I also worked on a `NewProjectDialog` component that appears when the "New
+Project" button on the home page is clicked. After all required fields are
+filled and the user clicks the "Start Project" button, the component calls the
+API to create a new project, then redirects the user to a Project Details view.
+For this dialog, I had to create these additional components: ` TextField`,
+`TextArea`, `Checkbox`, `CheckboxGroup`, `Icon`.
+
+<ProjectPageImage
+  image={newProjectDialogImage}
+  alt="ANS Mapper: New Project Dialog"
+  caption="ANS Mapper: New Project Dialog"
+/>
+
+#### API Specification
+
+ANS Mapper required a separate API to manage migrations projects, involving
+templates and source data. I defined a CRUD API specification for ANS Mapper
+domain objects using the
+[OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification). This
+specification serves as documentation to developers and clients using the API.
+
+The specification defines schemas for the following domain objects:
+
+- Project Model: A migration project in ANS Mapper
+- Map Model: A map (data transformation) used in a migration project
+- Map History: A map's version history
+
+For each request, the **specification defines any request parameters, request
+bodies, and responses (status, description, body)**. For example, the Project
+Model API includes the following requests:
+
+- Get list of projects: `GET /project`
+- Get a single project: `GET /project/{projectId}`
+- Create project: `POST /project`
+- Update project: `PUT /project/{projectId}`
+- Update fields in project: `PATCH /project/{projectId}`
+- Delete a project: `DELETE /project/{projectId}`

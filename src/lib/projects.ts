@@ -57,7 +57,11 @@ const arcxp: Project = {
     'The Washington Post’s cloud-native digital experience platform.',
   role: 'Software Engineering Internship',
   timeline: 'Jun. – Aug. 2022',
-  skills: ['Full-Stack Development'],
+  skills: [
+    'Full-Stack Development',
+    'Design Systems',
+    'Microservices Architectures',
+  ],
   tags: [
     tags.typescript,
     tags.react,
