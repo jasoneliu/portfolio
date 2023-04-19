@@ -1,18 +1,18 @@
 import type { Image } from '$lib/image';
 import { tags, type Tag } from '$lib/tags';
 
-import agentAssistImageAvif from '$lib/assets/projects/agent-assist.png?avif';
-import agentAssistImageWebp from '$lib/assets/projects/agent-assist.png?webp';
-import agentAssistImageFallback from '$lib/assets/projects/agent-assist.png';
-import arcXpImageAvif from '$lib/assets/projects/arc-xp.png?avif';
-import arcXpImageWebp from '$lib/assets/projects/arc-xp.png?webp';
-import arcXpImageFallback from '$lib/assets/projects/arc-xp.png';
-import bitcampImageAvif from '$lib/assets/projects/bitcamp.png?avif';
-import bitcampImageWebp from '$lib/assets/projects/bitcamp.png?webp';
-import bitcampImageFallback from '$lib/assets/projects/bitcamp.png';
-import technicaImageAvif from '$lib/assets/projects/technica.png?avif';
-import technicaImageWebp from '$lib/assets/projects/technica.png?webp';
-import technicaImageFallback from '$lib/assets/projects/technica.png';
+import agentAssistImageAvif from '$lib/assets/projects/agent-assist/agent-assist.png?avif';
+import agentAssistImageWebp from '$lib/assets/projects/agent-assist/agent-assist.png?webp';
+import agentAssistImageFallback from '$lib/assets/projects/agent-assist/agent-assist.png';
+import arcXpImageAvif from '$lib/assets/projects/arc-xp/arc-xp.png?avif';
+import arcXpImageWebp from '$lib/assets/projects/arc-xp/arc-xp.png?webp';
+import arcXpImageFallback from '$lib/assets/projects/arc-xp/arc-xp.png';
+import bitcampImageAvif from '$lib/assets/projects/bitcamp/bitcamp.png?avif';
+import bitcampImageWebp from '$lib/assets/projects/bitcamp/bitcamp.png?webp';
+import bitcampImageFallback from '$lib/assets/projects/bitcamp/bitcamp.png';
+import technicaImageAvif from '$lib/assets/projects/technica/technica.png?avif';
+import technicaImageWebp from '$lib/assets/projects/technica/technica.png?webp';
+import technicaImageFallback from '$lib/assets/projects/technica/technica.png';
 
 export interface Project {
   name: string;
