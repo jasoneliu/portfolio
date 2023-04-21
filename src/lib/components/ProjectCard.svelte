@@ -42,7 +42,7 @@
 
       @media screen and (max-width: $breakpoint-md) {
         grid-template-rows: auto auto;
-        grid-template-columns: 1far;
+        grid-template-columns: 1fr;
         padding: 2rem;
       }
     }
