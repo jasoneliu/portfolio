@@ -1,7 +1,5 @@
 ### Overview
 
-#### The Product
-
 [Agent Assist](https://cloud.google.com/agent-assist) is Google Cloud's AI
 solution for contact centers. Agent Assist uses **machine learning technology to
 provide suggestions to human agents** when they are in a conversation with a
@@ -10,12 +8,12 @@ can be tailored to their specific business needs.
 
 Agent Assist key features:
 
-- Smart reply: Send custom response suggestions to human agents while they are
+- Smart Reply: Send custom response suggestions to human agents while they are
   conversing with a customer
-- Article suggestion: Send article suggestions to human agents during a
+- Article Suggestion: Send article suggestions to human agents during a
   conversation
 - Summarization: Use AI to automatically summarize customer calls
-- Sentiment analysis: Analyze messages during a conversation to determine
+- Sentiment Analysis: Analyze messages during a conversation to determine
   emotional intent
 
 The [Agent Assist console](https://agentassist.cloud.google.com) provides a UI
@@ -23,7 +21,12 @@ to upload data, train models, and create conversation profiles to configure
 features. The console also includes a **simulator that allows users to preview
 these features** in action during a conversation.
 
-#### The Feature
+As a frontend software engineering intern on the Agent Assist console team, I
+was the primary developer for the sentiment analysis UI.
+
+### Sentiment Analysis UI
+
+#### Feature
 
 I developed a graphical UI for Agent Assist's sentiment analysis feature,
 showing **live sentiment scores of an agent-customer interaction** over time.
@@ -41,7 +44,7 @@ Unfortunately, this feature is not yet available to the public, so I can't share
 any images of my project. I anticipate the sentiment analysis UI being released
 in the next few months.
 
-#### The Process
+#### Timeline
 
 1. Write a design document for the Agent Assist simulator's sentiment analysis
    UI
@@ -51,3 +54,102 @@ in the next few months.
    charting library
 4. Implement multicolor line charts
 5. Implement the sentiment analysis UI (line chart and hovercard extension)
+
+### Takeaways
+
+#### Trunk-Based Development
+
+Google follows
+[trunk-based development](https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development)
+using a Mercurial-based version control system. In trunk-based development,
+developers frequently merge small changes into the main branch. As a result, it
+enables continuous integration by reducing long-lived branches, limiting merge
+conflicts, and making the code review process easier.
+
+For example, I created many CLs (changelists) for the sentiment analysis line
+chart, including separate CLs to scaffold the component, set up the charting
+library, process sentiment data, build and style the UI, and write tests. Since
+each CL was a small, self-contained unit, I could expect to receive a review
+from my team within minutes. Across just 3 months, I was able to merge in 32
+CLs, demonstrating the efficiency of development at Google.
+
+My previous development experience with Git has primarily followed a feature
+branch workflow, where branches often include days or weeks of work that result
+in significant merge conflicts. I've since tried to more closely follow
+trunk-based development principles, making small commits and limiting branches
+when possible. In the process, I've been able to improve my productivity as a
+developer.
+
+#### Accessibility
+
+Although I've worked with accessibility before, this was the first time I've
+seen it play such a big role in both technical and business decisions. Aside
+from just creating accessible software for all users, accessibility was a top
+priority for CAIIS (Cloud AI & Industry Solutions). Clients in sectors such as
+education or government require certain accessibility standards to be met,
+meaning accessibility could be the reason a client chooses Agent Assist instead
+of a competitor.
+
+For my intern project, accessibility was the primary reason that our team ruled
+out common charting libraries like Google Charts and D3. The internal library we
+chose allows keyboard and screen reader users to navigate charts using arrow
+keys, meeting the required accessibility standards. Through this internship,
+I've learned more about how people with disabilities interact with the web,
+making it clear that I should continue to prioritize accessibility in future
+projects.
+
+#### Cross-Functional Teams
+
+Working in a collaborative, cross-functional team was an incredibly insightful
+experience, providing me a clear view of the entire software development
+process. As a frontend developer, it was particularly rewarding to consistently
+collaborate with our team's UX designer and project manager. I observed user
+interviews, learned about product requirements from clients, and iterated on
+mocks to determine how information is displayed in the UI. Through this process,
+we ultimately reached a product that met all of our users' needs.
+
+#### Design Documents
+
+Google requires writing a design document for large features. Design documents
+are used to design a solution before implementation, taking into account factors
+like technologies and libraries used, alternatives approaches, cost of
+migration, and accessibility. It also gives all team members an opportunity give
+valuable feedback, offering perspectives from design, product, and engineering.
+
+My first design document outlined the sentiment analysis UI. Using this
+document, our UX designer tweaked designs to account for limitations in the
+charting library, our project manager suggested changes to better meet the needs
+of our clients, and other engineers on my team provided insights into
+implementation.
+
+My second design document outlined the use cases of multicolor line charts as
+well as two approaches to implementation. After review and discussions with the
+charting library team, we came to a decision on the best approach that minimized
+migration for teams already using the library.
+
+Design documents also effectively serve as documentation. There were numerous
+times where I found previous design documents to gain insights into why certain
+decisions were made. When choosing between charting libraries, I cited a
+previous design document that performed accessibility research into charting
+libraries commonly used at Google. When designing the multicolor line chart, I
+found an design document detailing the core principles and implementation of the
+charting library, which provided me with a standard to follow.
+
+#### Testing
+
+At at huge company like Google, I learned just how important it is to
+consistently write tests. Google uses an automated testing infrastructure with
+presubmit analyses to run tests across its codebase for each new CL, which
+detects any bugs introduced by the CL. When working with the charting library,
+there were a few instances where one of my changes would have broken code in
+other teams' codebases, but these errors were quickly detected and I was able to
+fix them before merging the changes.
+
+This was the first time I properly wrote comprehensive frontend tests. Using
+Angular, I created
+[component harnesses](https://material.angular.io/guide/using-component-harnesses)
+to interact with and read the state of DOM elements, allowing unit and
+integration tests to ensure that all interactions and user flows behave as
+expected. I also mocked input data, such as the sentiment scores passed into the
+line chart. For the multicolor line chart feature, I also used snapshot testing
+to ensure that the chart is rendered consistently.
