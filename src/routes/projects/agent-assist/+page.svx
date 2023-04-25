@@ -135,6 +135,51 @@ libraries commonly used at Google. When designing the multicolor line chart, I
 found an design document detailing the core principles and implementation of the
 charting library, which provided me with a standard to follow.
 
+#### Angular
+
+Angular has a [bad reputation](https://2022.stateofjs.com/en-US/libraries/), but
+I enjoyed working with it. Angular is an opinionated framework, meaning it
+pushes developers to follow a certain way of doing things, including conventions
+and design patterns. It also provides first-party libraries that cover a wide
+variety of features, such as routing, forms management, and client-server
+communication.
+
+Opinionated frameworks can speed up development by reducing the number of
+decisions you need to make. With a library like React, its ecosystem provides
+multiple library options for most features necessary to build an application.
+For example, React state management libraries include Redux, Zustand, MobX, and
+Recoil. With Angular, [NgRx](https://ngrx.io/) is the clear choice for state
+management. As a result, Angular streamlines development and creates clean,
+maintainable code.
+
+However, Angular's opinionation can be a dealbreaker for some developers. For
+example, Angular's project file structure highly encourages splitting components
+into separate files. In Agent Assist's codebase, a typical component has 5-7
+files: an HTML template, CSS stylesheet, TypeScript component, NgModule,
+component harness, route guard, and tests.
+
+This file structure can certainly feel cumbersome at times, but I found that the
+organization really helped me when working with a large codebase with complex
+components. Angular provides tools to quickly scaffold components, making the
+boilerplate less of an issue. Angular v14 also introduced
+[standalone components](https://angular.io/guide/standalone-components) that
+reduce the need to create separate NgModule files.
+
+It can also take some time getting used to Angular's design patterns. Angular is
+tightly integrated with [RxJS](https://rxjs.dev/), a library for reactive
+programming using observables that makes it easier to compose asynchronous or
+callback-based code. While RxJS is incredibly powerful, effectively using it
+requires a shift in paradigm toward functional reactive programming. Angular
+also uses object oriented programming, which is rarely seen in other frontend
+frameworks like React, Vue, and Svelte.
+
+Personally, I work primarily on smaller projects in my free time. As a result, I
+prefer single file components, simpler syntax for reactivity, and freedom to
+explore new technologies. This typically leads me to frameworks like Svelte and
+Vue. For large enterprise applications that value maintainability, Angular
+certainly has its advantages and I would be excited to continue working with
+Angular in the future.
+
 #### Testing
 
 At at huge company like Google, I learned just how important it is to
@@ -149,7 +194,7 @@ This was the first time I properly wrote comprehensive frontend tests. Using
 Angular, I created
 [component harnesses](https://material.angular.io/guide/using-component-harnesses)
 to interact with and read the state of DOM elements, allowing unit and
-integration tests to ensure that all interactions and user flows behave as
-expected. I also mocked input data, such as the sentiment scores passed into the
-line chart. For the multicolor line chart feature, I also used snapshot testing
-to ensure that the chart is rendered consistently.
+integration tests to ensure that all user behaviors work as expected. I also
+mocked input data, such as the sentiment scores passed into the line chart. In
+addition, I used snapshot testing for the multicolor line chart feature to
+ensure that the chart is rendered consistently.
