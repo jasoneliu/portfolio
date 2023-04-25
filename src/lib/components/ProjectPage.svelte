@@ -95,7 +95,7 @@
     }
 
     &__content {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
 
       & :global(h3) {
         margin-block-start: 6rem;
