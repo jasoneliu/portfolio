@@ -76,3 +76,11 @@
   src: url('$lib/assets/fonts/iosevka/iosevka-boldoblique.ttf')
     format('truetype');
 }
+
+@font-face {
+  font-family: 'Icomoon';
+  src: url('$lib/assets/fonts/icomoon/icomoon.woff') format('woff'),
+    url('$lib/assets/fonts/icomoon/icomoon.ttf') format('truetype');
+  font-display: swap;
+  font-style: normal;
+}

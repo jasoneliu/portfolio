@@ -9,7 +9,9 @@
 <footer>
   <InView disabled={$page.url.pathname !== '/'}>
     <div class="footer">
-      <p class="footer__text">Designed and developed with ♥</p>
+      <p class="footer__text">
+        Designed and developed with <span class="heart">&#xe9da;</span>
+      </p>
       <div class="footer__icon-list">
         {#each socials as social}
           <a class="footer__icon" href={social.href} target="_blank">
@@ -33,6 +35,11 @@
     &__text {
       color: $subtext1;
       font-size: 0.875rem;
+
+      & .heart {
+        font-family: Icomoon;
+        font-size: 0.75rem;
+      }
     }
 
     &__icon-list {
