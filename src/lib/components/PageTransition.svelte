@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { fade, fly } from 'svelte/transition';
   import { cubicIn, cubicOut } from 'svelte/easing';
+  import { fade, fly } from 'svelte/transition';
   import {
     beforeNavigate,
     afterNavigate,

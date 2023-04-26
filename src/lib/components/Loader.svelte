@@ -1,8 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fly } from 'svelte/transition';
   import { cubicOut, cubicInOut } from 'svelte/easing';
   import { tweened } from 'svelte/motion';
+  import { fly } from 'svelte/transition';
   import logo from '$lib/assets/logo.svg';
   import { pageLoading } from '$lib/store';
   import { slide } from '$lib/transition';

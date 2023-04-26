@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { fade, fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
+  import { fade, fly } from 'svelte/transition';
   import { beforeNavigate } from '$app/navigation';
   import logo from '$lib/assets/logo.svg';
   import { colors } from '$lib/colors';

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
+  import { fly } from 'svelte/transition';
   import { inview, type Options, type ScrollDirection } from 'svelte-inview';
   import { pageLoading, pageTransitioning } from '$lib/store';
 
