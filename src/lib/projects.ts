@@ -32,7 +32,7 @@ export interface Project {
 const agentAssist: Project = {
   name: 'Google — Agent Assist',
   description: 'Deliver AI-powered conversations with human agents.',
-  role: 'Software Engineering Internship',
+  role: 'Software Engineering Intern',
   timeline: 'Sept. – Dec. 2022',
   skills: [
     'Frontend Development',
@@ -55,7 +55,7 @@ const arcXp: Project = {
   name: 'Arc XP',
   description:
     'The Washington Post’s cloud-native digital experience platform.',
-  role: 'Software Engineering Internship',
+  role: 'Software Engineering Intern',
   timeline: 'Jun. – Aug. 2022',
   skills: [
     'Full-Stack Development',
