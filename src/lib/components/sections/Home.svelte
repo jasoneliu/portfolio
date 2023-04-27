@@ -97,7 +97,7 @@
           </InView>
         </p>
       </div>
-      <InView delay={scrollDelayMs} inlineBlock overflowHidden>
+      <InView delay={scrollDelayMs} overflowHidden>
         <div class="home__scroll">
           <span class="home__scroll-text">SCROLL</span>
           <div class="home__scroll-icon">

@@ -48,7 +48,7 @@
   }
 </script>
 
-<div
+<span
   bind:this={inViewRef}
   class="in-view"
   class:inline
@@ -61,7 +61,7 @@
   }}
 >
   {#if inView || aboveViewport || disabled}
-    <div
+    <span
       class="in-view__content--show"
       in:fly={!aboveViewport &&
       !disabled &&
@@ -70,16 +70,25 @@
         : { duration: 0 }}
     >
       <slot {inView} />
-    </div>
+    </span>
   {:else}
-    <div class="in-view__content--hide">
+    <span class="in-view__content--hide">
       <slot {inView} />
-    </div>
+    </span>
   {/if}
-</div>
+</span>
 
 <style lang="scss">
   .in-view {
+    &:not(.inline, .inline-block) {
+      display: block;
+
+      & .in-view__content--show,
+      .in-view__content--hide {
+        display: block;
+      }
+    }
+
     &.inline {
       display: inline;
 
@@ -92,6 +101,11 @@
     &.inline-block {
       display: inline-block;
       vertical-align: top;
+
+      & .in-view__content--show,
+      .in-view__content--hide {
+        display: inline-block;
+      }
     }
 
     &.overflow-hidden {
