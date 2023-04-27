@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Catppuccin Mocha
 // https://github.com/catppuccin/catppuccin
 $rosewater: #f5e0dc;
@@ -27,6 +29,12 @@ $base: #1e1e2e;
 $mantle: #181825;
 $crust: #11111b;
 
+// Project text highlight
+$agent-assist: color.scale($blue, $lightness: -10%, $alpha: -70%);
+$arc-xp: color.scale($teal, $lightness: -10%, $alpha: -70%);
+$bitcamp: color.scale($peach, $lightness: -10%, $alpha: -70%);
+$technica: color.scale($pink, $lightness: -10%, $alpha: -70%);
+
 :export {
   rosewater: $rosewater;
   flamingo: $flamingo;
@@ -54,4 +62,9 @@ $crust: #11111b;
   base: $base;
   mantle: $mantle;
   crust: $crust;
+
+  agent-assist: $agent-assist;
+  arc-xp: $arc-xp;
+  bitcamp: $bitcamp;
+  technica: $technica;
 }

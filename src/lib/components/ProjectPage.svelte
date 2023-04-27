@@ -128,10 +128,6 @@
         margin: 0.25rem 0;
       }
 
-      & :global(strong) {
-        font-weight: 700;
-      }
-
       & :global(code) {
         display: inline-block;
         padding: 0.1rem 0.3rem 0.15rem;

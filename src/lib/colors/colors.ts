@@ -1,3 +1,5 @@
+import type { ProjectSlug } from '$lib/projects';
+
 export type Color =
   | 'rosewater'
   | 'flamingo'
@@ -24,4 +26,5 @@ export type Color =
   | 'surface0'
   | 'base'
   | 'mantle'
-  | 'crust';
+  | 'crust'
+  | ProjectSlug;

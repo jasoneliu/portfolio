@@ -34,46 +34,70 @@
       )}px, 0)`}
     >
       <h1 class="home__name">
-        <InView delay={nameDelayMs} inline overflowHidden>
-          <span>Jason</span>
-        </InView>
-        <InView delay={nameDelayMs + wordDelayMs} inline overflowHidden>
-          <span> Liu</span>
+        <InView delay={nameDelayMs} inlineBlock overflowHidden>Jason</InView>
+        <InView delay={nameDelayMs + wordDelayMs} inlineBlock overflowHidden>
+          Liu
         </InView>
       </h1>
       <div class="home__about">
         <p>
-          <InView delay={headlineDelayMs} inline overflowHidden>
+          <InView delay={headlineDelayMs} inlineBlock overflowHidden>
             Full-stack
           </InView>
-          <InView delay={headlineDelayMs + wordDelayMs} inline overflowHidden>
+          <InView
+            delay={headlineDelayMs + wordDelayMs}
+            inlineBlock
+            overflowHidden
+          >
             web developer
           </InView>
         </p>
         <p>
-          <InView delay={schoolDelayMs} inline overflowHidden>Studying</InView>
-          <InView delay={schoolDelayMs + wordDelayMs} inline overflowHidden>
+          <InView delay={schoolDelayMs} inlineBlock overflowHidden
+            >Studying</InView
+          >
+          <InView
+            delay={schoolDelayMs + wordDelayMs}
+            inlineBlock
+            overflowHidden
+          >
             computer science
           </InView>
           {#if $innerWidth <= 576}
             <br />
           {/if}
-          <InView delay={schoolDelayMs + 2 * wordDelayMs} inline overflowHidden>
+          <InView
+            delay={schoolDelayMs + 2 * wordDelayMs}
+            inlineBlock
+            overflowHidden
+          >
             and
           </InView>
-          <InView delay={schoolDelayMs + 3 * wordDelayMs} inline overflowHidden>
+          <InView
+            delay={schoolDelayMs + 3 * wordDelayMs}
+            inlineBlock
+            overflowHidden
+          >
             mathematics
           </InView>
-          <InView delay={schoolDelayMs + 4 * wordDelayMs} inline overflowHidden>
+          <InView
+            delay={schoolDelayMs + 4 * wordDelayMs}
+            inlineBlock
+            overflowHidden
+          >
             at
           </InView>
           <br />
-          <InView delay={schoolDelayMs + 5 * wordDelayMs} inline overflowHidden>
+          <InView
+            delay={schoolDelayMs + 5 * wordDelayMs}
+            inlineBlock
+            overflowHidden
+          >
             the University of Maryland
           </InView>
         </p>
       </div>
-      <InView delay={scrollDelayMs} inline overflowHidden>
+      <InView delay={scrollDelayMs} inlineBlock overflowHidden>
         <div class="home__scroll">
           <span class="home__scroll-text">SCROLL</span>
           <div class="home__scroll-icon">

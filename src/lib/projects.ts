@@ -51,7 +51,7 @@ const agentAssist: Project = {
   },
 };
 
-const arcxp: Project = {
+const arcXp: Project = {
   name: 'Arc XP',
   description:
     'The Washington Post’s cloud-native digital experience platform.',
@@ -117,7 +117,7 @@ const technica: Project = {
 
 export const projects = {
   'agent-assist': agentAssist,
-  'arc-xp': arcxp,
+  'arc-xp': arcXp,
   bitcamp,
   technica,
 };

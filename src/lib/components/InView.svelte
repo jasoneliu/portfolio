@@ -5,9 +5,11 @@
   import { pageLoading, pageTransitioning } from '$lib/store';
 
   // svelte-inview options
-  export let options: Options = {
-    rootMargin: '-100px',
-    unobserveOnEnter: true,
+  export let rootMargin: string = '-15%';
+  export let unobserveOnEnter: boolean = true;
+  const options: Options = {
+    rootMargin,
+    unobserveOnEnter,
   };
 
   // Option to disable inview (always show component)
@@ -18,6 +20,7 @@
   export let duration: number = 500;
   export let delay: number = 0;
   export let inline: boolean = false;
+  export let inlineBlock: boolean = false;
   export let overflowHidden: boolean = false;
 
   // InView component
@@ -47,8 +50,9 @@
 
 <div
   bind:this={inViewRef}
-  class="in-view-wrapper"
+  class="in-view"
   class:inline
+  class:inline-block={inlineBlock}
   class:overflow-hidden={overflowHidden}
   use:inview={options}
   on:inview_change={({ detail }) => {
@@ -58,37 +62,46 @@
 >
   {#if inView || aboveViewport || disabled}
     <div
-      class="in-view--show"
+      class="in-view__content--show"
       in:fly={!aboveViewport &&
       !disabled &&
       (firstRender || scrollDirection.vertical === 'up')
         ? { y, duration, delay, easing: cubicOut }
         : { duration: 0 }}
     >
-      <slot />
+      <slot {inView} />
     </div>
   {:else}
-    <div class="in-view--hide">
-      <slot />
+    <div class="in-view__content--hide">
+      <slot {inView} />
     </div>
   {/if}
 </div>
 
 <style lang="scss">
   .in-view {
-    &-wrapper {
-      &.inline {
-        display: inline-block;
-        vertical-align: top;
-      }
+    &.inline {
+      display: inline;
 
-      &.overflow-hidden {
-        overflow: hidden;
+      & .in-view__content--show,
+      .in-view__content--hide {
+        display: inline;
       }
     }
 
-    &--hide {
-      opacity: 0;
+    &.inline-block {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    &.overflow-hidden {
+      overflow: hidden;
+    }
+
+    &__content {
+      &--hide {
+        opacity: 0;
+      }
     }
   }
 </style>
