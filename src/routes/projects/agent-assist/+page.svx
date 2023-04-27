@@ -13,13 +13,13 @@ Agent Assist key features:
 - Article Suggestion: Send article suggestions to human agents during a
   conversation
 - Summarization: Use AI to automatically summarize customer calls
-- Sentiment Analysis: Analyze messages during a conversation to determine
-  emotional intent
+- **Sentiment Analysis: Analyze messages during a conversation to determine
+  emotional intent**
 
 The [Agent Assist console](https://agentassist.cloud.google.com) provides a UI
 to upload data, train models, and create conversation profiles to configure
-features. The console also includes a **simulator that allows users to preview
-these features** in action during a conversation.
+features. The console also includes a simulator that allows users to preview
+these features in action during a conversation.
 
 As a frontend software engineering intern on the Agent Assist console team, I
 was the primary developer for the sentiment analysis UI.
@@ -33,16 +33,15 @@ showing **live sentiment scores of an agent-customer interaction** over time.
 These sentiment scores reflect the emotional intent of the customer, providing
 agents with **live feedback and trends during conversations**.
 
-The UI primarily involves a line chart of customer sentiment scores. As part of
-the implementation, I **contributed to an internal charting library, used by 60+
-teams at Google, to add support for multicolor line charts**. This allowed the
-chart to display negative sentiment scores as red and positive sentiment scores
-as green. I also developed a hovercard extension for the chart that displays
-messages, sentiment scores, and conversation metrics.
+The primary component of the UI is a line chart of customer sentiment scores. As
+part of the implementation, **I contributed to an internal charting library,
+used by 60+ teams at Google, to add support for multicolor line charts**. This
+allowed the chart to display negative sentiment scores as red and positive
+sentiment scores as green. I also developed a hovercard extension for the chart
+that displays messages, sentiment scores, and conversation metrics.
 
 Unfortunately, this feature is not yet available to the public, so I can't share
-any images of my project. I anticipate the sentiment analysis UI being released
-in the next few months.
+any images of my project. Check back in a few months for an update!
 
 #### Timeline
 
@@ -57,21 +56,58 @@ in the next few months.
 
 ### Takeaways
 
+#### Cross-Functional Teams
+
+Working in a collaborative, cross-functional team was an incredibly insightful
+experience, providing me with a clear view of the entire software development
+process. As a frontend developer, it was particularly rewarding to consistently
+collaborate with our team's UX designer and project manager. **I observed user
+interviews, learned about product requirements from clients, and iterated on
+mocks to determine how information is displayed in the UI**. Through this
+process, we ultimately reached a product that met all of our users' needs.
+
+#### Design Documents
+
+Google requires writing a design document for large features. Design documents
+are used to design a solution before implementation, taking into account factors
+like technologies and libraries used, alternative approaches, cost of migration,
+and accessibility. It also allows all team members to give valuable feedback,
+offering perspectives from design, product, and engineering.
+
+**My first design document outlined the sentiment analysis UI, including a table
+of tradeoffs between charting library options**. Using this document, our UX
+designer tweaked designs to account for limitations in the charting library, our
+project manager suggested changes to better meet the needs of our clients, and
+other engineers on my team provided insights into implementation.
+
+**My second design document outlined the use cases of multicolor line charts and
+two approaches to implementation**. After review and discussions with the
+charting library team, we decided on the best approach that minimized migration
+for teams already using the library.
+
+Design documents also effectively serve as documentation. There were numerous
+times when I found previous design documents to gain insights into why certain
+decisions were made. When choosing between charting libraries, I cited a
+previous design document that performed accessibility research into charting
+libraries commonly used at Google. When designing the multicolor line chart, I
+found a design document detailing the core principles and implementation of the
+charting library, which provided me with a standard to follow.
+
 #### Trunk-Based Development
 
 Google follows
 [trunk-based development](https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development)
 using a Mercurial-based version control system. In trunk-based development,
 developers frequently merge small changes into the main branch. As a result, it
-enables continuous integration by reducing long-lived branches, limiting merge
-conflicts, and making the code review process easier.
+enables continuous integration by **reducing long-lived branches, limiting merge
+conflicts, and encouraging quick code reviews**.
 
 For example, I created many CLs (changelists) for the sentiment analysis line
 chart, including separate CLs to scaffold the component, set up the charting
 library, process sentiment data, build and style the UI, and write tests. Since
 each CL was a small, self-contained unit, I could expect to receive a review
-from my team within minutes. Across just 3 months, I was able to merge in 32
-CLs, demonstrating the efficiency of development at Google.
+from my team within minutes. **Across just 3 months, I was able to merge 32
+CLs**, demonstrating the efficiency of development at Google.
 
 My previous development experience with Git has primarily followed a feature
 branch workflow, where branches often include days or weeks of work that result
@@ -84,56 +120,38 @@ developer.
 
 Although I've worked with accessibility before, this was the first time I've
 seen it play such a big role in both technical and business decisions. Aside
-from just creating accessible software for all users, accessibility was a top
-priority for CAIIS (Cloud AI & Industry Solutions). Clients in sectors such as
+from just creating accessible software for all users, **accessibility was a top
+priority for CAIIS** (Cloud AI & Industry Solutions). Clients in sectors such as
 education or government require certain accessibility standards to be met,
 meaning accessibility could be the reason a client chooses Agent Assist instead
 of a competitor.
 
-For my intern project, accessibility was the primary reason that our team ruled
-out common charting libraries like Google Charts and D3. The internal library we
-chose allows keyboard and screen reader users to navigate charts using arrow
-keys, meeting the required accessibility standards. Through this internship,
-I've learned more about how people with disabilities interact with the web,
-making it clear that I should continue to prioritize accessibility in future
-projects.
+For my intern project, **accessibility was the primary reason that our team
+ruled out common charting libraries like Google Charts and D3**. The internal
+library we chose allows keyboard and screen reader users to navigate charts
+using arrow keys, meeting the required accessibility standards. Through this
+internship, I've learned more about how people with disabilities interact with
+the web, making it clear that I should continue to prioritize accessibility in
+future projects.
 
-#### Cross-Functional Teams
+#### Testing
 
-Working in a collaborative, cross-functional team was an incredibly insightful
-experience, providing me a clear view of the entire software development
-process. As a frontend developer, it was particularly rewarding to consistently
-collaborate with our team's UX designer and project manager. I observed user
-interviews, learned about product requirements from clients, and iterated on
-mocks to determine how information is displayed in the UI. Through this process,
-we ultimately reached a product that met all of our users' needs.
+At a huge company like Google, I learned just how important it is to
+consistently write tests. Google uses an automated testing infrastructure with
+presubmit analyses to run tests across its codebase for each new CL, which
+detects any bugs introduced by the CL. When working with the charting library,
+there were a few instances where one of my changes would have broken code in
+other teams' codebases, but these errors were quickly detected and I was able to
+fix them before merging the changes.
 
-#### Design Documents
-
-Google requires writing a design document for large features. Design documents
-are used to design a solution before implementation, taking into account factors
-like technologies and libraries used, alternatives approaches, cost of
-migration, and accessibility. It also gives all team members an opportunity give
-valuable feedback, offering perspectives from design, product, and engineering.
-
-My first design document outlined the sentiment analysis UI. Using this
-document, our UX designer tweaked designs to account for limitations in the
-charting library, our project manager suggested changes to better meet the needs
-of our clients, and other engineers on my team provided insights into
-implementation.
-
-My second design document outlined the use cases of multicolor line charts as
-well as two approaches to implementation. After review and discussions with the
-charting library team, we came to a decision on the best approach that minimized
-migration for teams already using the library.
-
-Design documents also effectively serve as documentation. There were numerous
-times where I found previous design documents to gain insights into why certain
-decisions were made. When choosing between charting libraries, I cited a
-previous design document that performed accessibility research into charting
-libraries commonly used at Google. When designing the multicolor line chart, I
-found an design document detailing the core principles and implementation of the
-charting library, which provided me with a standard to follow.
+This was the first time **I wrote comprehensive frontend tests, including unit,
+integration, and snapshot tests**. Using Angular, I created
+[component harnesses](https://material.angular.io/guide/using-component-harnesses)
+to interact with and read the state of DOM elements, allowing unit and
+integration tests to ensure that all user behaviors work as expected. I also
+mocked input data, such as the sentiment scores passed into the line chart. In
+addition, I used snapshot tests for the multicolor line chart feature to ensure
+that the chart is rendered consistently.
 
 #### Angular
 
@@ -149,8 +167,8 @@ decisions you need to make. With a library like React, its ecosystem provides
 multiple library options for most features necessary to build an application.
 For example, React state management libraries include Redux, Zustand, MobX, and
 Recoil. With Angular, [NgRx](https://ngrx.io/) is the clear choice for state
-management. As a result, Angular streamlines development and creates clean,
-maintainable code.
+management. As a result, **Angular streamlines development and encourages clean,
+maintainable code**.
 
 However, Angular's opinionation can be a dealbreaker for some developers. For
 example, Angular's project file structure highly encourages splitting components
@@ -159,42 +177,23 @@ files: an HTML template, CSS stylesheet, TypeScript component, NgModule,
 component harness, route guard, and tests.
 
 This file structure can certainly feel cumbersome at times, but I found that the
-organization really helped me when working with a large codebase with complex
-components. Angular provides tools to quickly scaffold components, making the
-boilerplate less of an issue. Angular v14 also introduced
+organization helped me when working on a large codebase with complex components.
+Angular provides tools to quickly scaffold components, making the boilerplate
+less of an issue. Angular v14 also introduced
 [standalone components](https://angular.io/guide/standalone-components) that
 reduce the need to create separate NgModule files.
 
-It can also take some time getting used to Angular's design patterns. Angular is
+It can also take some time to get used to Angular's design patterns. Angular is
 tightly integrated with [RxJS](https://rxjs.dev/), a library for reactive
 programming using observables that makes it easier to compose asynchronous or
 callback-based code. While RxJS is incredibly powerful, effectively using it
 requires a shift in paradigm toward functional reactive programming. Angular
-also uses object oriented programming, which is rarely seen in other frontend
+also uses object-oriented programming, which is rarely seen in other frontend
 frameworks like React, Vue, and Svelte.
 
-Personally, I work primarily on smaller projects in my free time. As a result, I
+In my free time, I work primarily on smaller personal projects. As a result, I
 prefer single file components, simpler syntax for reactivity, and freedom to
-explore new technologies. This typically leads me to frameworks like Svelte and
-Vue. For large enterprise applications that value maintainability, Angular
-certainly has its advantages and I would be excited to continue working with
-Angular in the future.
-
-#### Testing
-
-At at huge company like Google, I learned just how important it is to
-consistently write tests. Google uses an automated testing infrastructure with
-presubmit analyses to run tests across its codebase for each new CL, which
-detects any bugs introduced by the CL. When working with the charting library,
-there were a few instances where one of my changes would have broken code in
-other teams' codebases, but these errors were quickly detected and I was able to
-fix them before merging the changes.
-
-This was the first time I properly wrote comprehensive frontend tests. Using
-Angular, I created
-[component harnesses](https://material.angular.io/guide/using-component-harnesses)
-to interact with and read the state of DOM elements, allowing unit and
-integration tests to ensure that all user behaviors work as expected. I also
-mocked input data, such as the sentiment scores passed into the line chart. In
-addition, I used snapshot testing for the multicolor line chart feature to
-ensure that the chart is rendered consistently.
+explore new technologies. This typically leads me to use frameworks like Svelte
+and Vue. For large enterprise applications that value maintainability, Angular
+certainly has its advantages and **I'm excited to continue working with Angular
+in the future**.
