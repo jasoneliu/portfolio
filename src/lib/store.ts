@@ -6,7 +6,7 @@ export const scrollY = writable<number>();
 export const mobileLayout = writable<boolean>();
 
 // Home page loader and page transition
-export const pageLoading = writable<boolean>(true);
+export const pageLoading = writable<boolean | undefined>(true);
 export const pageTransitioning = writable<boolean>(false);
 
 // Url hash
