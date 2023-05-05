@@ -7,7 +7,7 @@
     SphereGeometry,
     Vector3,
   } from 'three';
-  import { InteractiveObject, T, useFrame } from '@threlte/core';
+  import { T, useFrame } from '@threlte/core';
   import { Environment, Float } from '@threlte/extras';
   import { createNoise3D } from 'simplex-noise';
 
@@ -15,7 +15,7 @@
   export let maxScrollY: number;
 
   // Clock
-  let elapsedTime: number = 0;
+  let elapsedTime = 0;
 
   interface Bubble {
     id: number;
@@ -28,8 +28,8 @@
   }
 
   // Bubble parameters
-  const numBubbles: number = 10;
-  const bubbleRadius: number = 8;
+  const numBubbles = 10;
+  const bubbleRadius = 8;
   const bubbleGeometry = new SphereGeometry(bubbleRadius, 64, 32);
 
   // Noise for bubble geometry
@@ -59,7 +59,7 @@
   /** Add a bubble to the scene. */
   function addBubble() {
     // Bubble ID
-    let id: number = 0;
+    let id = 0;
     if (bubbles.length > 0) {
       id = bubbles[bubbles.length - 1].id + 1;
     }
@@ -94,16 +94,6 @@
       randomness,
     };
     bubbles.push(bubble);
-  }
-
-  /** Remove a bubble from the scene. */
-  function popBubble(bubbleId: number) {
-    // Remove bubble
-    const bubbleIndex = bubbles.findIndex((bubble) => bubble.id === bubbleId);
-    bubbles.splice(bubbleIndex, 1);
-
-    // Re-add bubble
-    setTimeout(() => addBubble(), 1000);
   }
 
   /** Fade in bubbles. */
@@ -194,7 +184,6 @@
 {#each bubbles as bubble (bubble.id)}
   <Float speed={2} floatIntensity={10} floatingRange={[-1, 1]}>
     <T.Mesh
-      let:ref
       geometry={bubble.geometry}
       position={bubble.position.toArray()}
       scale={bubble.scale}
@@ -217,11 +206,6 @@
             )}
         transparent
       />
-      <!-- <InteractiveObject
-        object={ref}
-        interactive
-        on:click={() => popBubble(bubble.id)}
-      /> -->
     </T.Mesh>
   </Float>
 {/each}

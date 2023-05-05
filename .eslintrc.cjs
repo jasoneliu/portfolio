@@ -7,18 +7,28 @@ module.exports = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 2020,
     extraFileExtensions: ['.svelte'],
   },
+  plugins: ['@typescript-eslint'],
   env: {
     browser: true,
     es2017: true,
     node: true,
   },
   overrides: [
+    {
+      files: ['*.ts', '*.svelte'],
+      rules: {
+        'no-undef': 'off',
+        '@typescript-eslint/no-unused-vars': [
+          'warn',
+          { argsIgnorePattern: '^_' },
+        ],
+      },
+    },
     {
       files: ['*.svelte'],
       parser: 'svelte-eslint-parser',

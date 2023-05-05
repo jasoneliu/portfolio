@@ -15,20 +15,20 @@
   let hoveredNavItem: string | null = null;
 
   // Scroll position
-  let prevScrollY: number;
+  let prevScrollY: number | undefined;
 
   // Hide navbar when scrolling down
-  let showNavbar: boolean = true;
+  let showNavbar = true;
   $: showNavbar =
     !isScrollingDown($scrollY) || $hashScrolling > 0 || $mobileLayout;
 
   // Hamburger menu for mobile layout
-  let hamburgerOpen: boolean = false;
-  let hamburgerAnimating: boolean = false;
-  const hamburgerAnimationDurationMs: number = 500;
+  let hamburgerOpen = false;
+  let hamburgerAnimating = false;
+  const hamburgerAnimationDurationMs = 500;
 
   // Show navbar items to trigger svelte transition in
-  let showNavbarItems: boolean = true;
+  let showNavbarItems = true;
   $: showNavbarItems =
     animationReady && (!$mobileLayout || hamburgerOpen || hamburgerAnimating);
 
@@ -86,7 +86,7 @@
   });
 
   // Run svelte transitions on first render
-  let animationReady: boolean = false;
+  let animationReady = false;
   onMount(() => {
     animationReady = true;
   });

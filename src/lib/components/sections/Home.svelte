@@ -10,14 +10,14 @@
   import IoMdArrowRoundDown from 'svelte-icons/io/IoMdArrowRoundDown.svelte';
 
   // Animation timing
-  const nameDelayMs: number = 600;
-  const headlineDelayMs: number = 900;
-  const schoolDelayMs: number = 1300;
-  const scrollDelayMs: number = 2200;
-  const wordDelayMs: number = 100;
+  const nameDelayMs = 600;
+  const headlineDelayMs = 900;
+  const schoolDelayMs = 1300;
+  const scrollDelayMs = 2200;
+  const wordDelayMs = 100;
 
   // Start animation when done loading / transitioning
-  let animationReady: boolean = false;
+  let animationReady = false;
   $: if (!$pageLoading && !$pageTransitioning) {
     animationReady = true;
   }

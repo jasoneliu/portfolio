@@ -5,23 +5,23 @@
   import { pageLoading, pageTransitioning } from '$lib/store';
 
   // svelte-inview options
-  export let rootMargin: string = '-15%';
-  export let unobserveOnEnter: boolean = true;
+  export let rootMargin = '-15%';
+  export let unobserveOnEnter = true;
   const options: Options = {
     rootMargin,
     unobserveOnEnter,
   };
 
   // Option to disable inview (always show component)
-  export let disabled: boolean = false;
+  export let disabled = false;
 
   // Transition options
-  export let y: number = 100;
-  export let duration: number = 500;
-  export let delay: number = 0;
-  export let inline: boolean = false;
-  export let inlineBlock: boolean = false;
-  export let overflowHidden: boolean = false;
+  export let y = 100;
+  export let duration = 500;
+  export let delay = 0;
+  export let inline = false;
+  export let inlineBlock = false;
+  export let overflowHidden = false;
 
   // InView component
   let inViewRef: HTMLElement;
@@ -31,8 +31,8 @@
   let scrollDirection: ScrollDirection;
 
   // InView edge cases
-  let firstRender: boolean = true;
-  let aboveViewport: boolean = false;
+  let firstRender = true;
+  let aboveViewport = false;
 
   // Handle edge cases
   $: if (!$pageLoading && !$pageTransitioning) {

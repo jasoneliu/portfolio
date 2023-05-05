@@ -16,9 +16,9 @@
   let animatePageIn = true;
 
   // Animation timing
-  const pageAnimationDurationMs: number = 500;
-  const slideAnimationDurationMs: number = 500;
-  const slideAnimationDelayMs: number = 250;
+  const pageAnimationDurationMs = 500;
+  const slideAnimationDurationMs = 500;
+  const slideAnimationDelayMs = 250;
 
   // Styles for slide transition
   let slideTransition: HTMLElement;

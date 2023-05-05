@@ -94,6 +94,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- PWA web app manifest -->
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html webManifest}
   <meta name="theme-color" content="#1e1e2e" />
 </svelte:head>

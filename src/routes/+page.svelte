@@ -13,7 +13,7 @@
     skillsAnchor,
   } from '$lib/store';
 
-  let scrollReady: boolean = false;
+  let scrollReady = false;
   let scrollBehavior: ScrollBehavior = 'auto';
 
   /** Scroll to home page section based on the page url. */
@@ -35,7 +35,7 @@
     }, 750);
 
     // Scroll position for projects and skills sections
-    let scrollTop: number = 0;
+    let scrollTop = 0;
     const marginTop: number = window.innerHeight / ($mobileLayout ? 7 : 10);
     if ($url.hash === '#projects') {
       scrollTop = $projectsAnchor.offsetTop - marginTop;

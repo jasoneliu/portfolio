@@ -17,7 +17,7 @@
     <h2>Projects</h2>
   </InView>
   <div class="projects__project-list">
-    {#each Object.entries(projects) as [_, project] (project.slug)}
+    {#each Object.entries(projects) as [_projectSlug, project] (project.slug)}
       <InView>
         <ProjectCard {project} />
       </InView>

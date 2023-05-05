@@ -5,7 +5,7 @@
   import { Canvas, T } from '@threlte/core';
 
   // Scene is visible when $scrollY <= maxScrollY
-  const maxScrollY: number = 850;
+  const maxScrollY = 850;
 </script>
 
 <div class="bubbles">

@@ -10,6 +10,7 @@
 <div class="project-image">
   <ResponsiveImage {image} {alt} />
   {#if caption}
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     <caption>{@html caption}</caption>
   {/if}
 </div>

@@ -8,19 +8,19 @@
   import { slide } from '$lib/transition';
 
   // Animation timing
-  const loadingAnimationDurationMs: number = 750;
-  const loadingAnimationDelayMs: number = 150;
-  const outroAnimationDurationMs: number = 750;
+  const loadingAnimationDurationMs = 750;
+  const loadingAnimationDelayMs = 150;
+  const outroAnimationDurationMs = 750;
 
   // Loader state
-  let loadingDone: boolean = false;
+  let loadingDone = false;
   let loadingPercentage = tweened<number>(0, {
     duration: loadingAnimationDurationMs,
     easing: cubicInOut,
   });
 
   // Run svelte transitions on first render
-  let animationReady: boolean = false;
+  let animationReady = false;
 
   // Animate loader
   onMount(async () => {

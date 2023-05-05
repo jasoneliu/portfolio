@@ -19,14 +19,14 @@
   let camera: PerspectiveCamera;
 
   // Camera position (spherical coordinates) and zoom
-  const radius: number = 275;
+  const radius = 275;
   const initialPhi: number = Math.PI / 2 - Math.PI / 16;
   let phi = tweened<number>(initialPhi);
   let theta = tweened<number>(0);
   let zoom = tweened<number>(1);
 
   // Intro animation options
-  const introAnimationDurationMs: number = 3000;
+  const introAnimationDurationMs = 3000;
   const introAnimationEasing = quadInOut;
   const introAnimationOptions = {
     duration: introAnimationDurationMs,
@@ -46,7 +46,7 @@
   };
 
   // Run intro animation after load
-  let introAnimating: boolean = true;
+  let introAnimating = true;
   $: if (!$pageLoading && !$pageTransitioning) {
     animateIntro();
   }
@@ -134,7 +134,7 @@
   }
 
   // Prevent scroll animation on first render
-  let scrollReady: boolean = false;
+  let scrollReady = false;
   onMount(() => {
     setTimeout(() => (scrollReady = true), 500);
   });
@@ -144,7 +144,8 @@
     camera.lookAt(new Vector3(0, 0, 0));
   });
 
-  // Renderer for OrbitControls
+  // OrbitControls
+  const orbitControlsEnabled = false;
   const { renderer } = useThrelte();
 </script>
 
@@ -159,7 +160,7 @@
     .toArray()}
   zoom={$zoom}
 >
-  <!-- {#if camera}
+  {#if orbitControlsEnabled && camera}
     <T.OrbitControls args={[camera, renderer?.domElement]} />
-  {/if} -->
+  {/if}
 </T.PerspectiveCamera>
