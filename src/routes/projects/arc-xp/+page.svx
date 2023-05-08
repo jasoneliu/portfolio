@@ -24,7 +24,7 @@
 
 ### Overview
 
-[Arc XP](https://www.arcxp.com/) is The Washington Post's cloud-native digital
+[Arc XP](https://www.arcxp.com) is The Washington Post's cloud-native digital
 experience platform that helps enterprise companies, retail brands and media
 organizations create and distribute content, drive digital commerce, and deliver
 powerful multichannel experiences. One of Arc XP's core products is Arc XP
@@ -122,7 +122,7 @@ dependencies, build the app, and deploy the app** to S3 and CloudFront.
 #### UI Components
 
 Ideally, we would have used components from
-[Arc Design System](https://design.arcxp.com/). However, many core components
+[Arc Design System](https://design.arcxp.com). However, many core components
 were not available yet and did not have a roadmap for completion. To continue
 development on ANS Mapper while maintaining a consistent user experience across
 the Arc platform, **I built UI components following standards set by Arc Design
@@ -133,9 +133,9 @@ built using the following technologies:
   Accessible UI primitives for design systems
 - [React Stately](https://react-spectrum.adobe.com/react-stately/index.html):
   Cross-platform state management for design systems
-- [Stitches](https://stitches.dev/): CSS-in-JS and design system tokens (color,
+- [Stitches](https://stitches.dev): CSS-in-JS and design system tokens (color,
   spacing, typography)
-- [Storybook](https://storybook.js.org/): Component development, testing, and
+- [Storybook](https://storybook.js.org): Component development, testing, and
   documentation
 
 I began with development of the ANS Mapper home page. The core functionality on

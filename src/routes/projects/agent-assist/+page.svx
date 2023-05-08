@@ -166,7 +166,7 @@ Opinionated frameworks can speed up development by reducing the number of
 decisions you need to make. With a library like React, its ecosystem provides
 multiple library options for most features necessary to build an application.
 For example, React state management libraries include Redux, Zustand, MobX, and
-Recoil. With Angular, [NgRx](https://ngrx.io/) is the clear choice for state
+Recoil. With Angular, [NgRx](https://ngrx.io) is the clear choice for state
 management. As a result, **Angular streamlines development and encourages clean,
 maintainable code**.
 
@@ -184,7 +184,7 @@ less of an issue. Angular v14 also introduced
 reduce the need to create separate NgModule files.
 
 It can also take some time to get used to Angular's design patterns. Angular is
-tightly integrated with [RxJS](https://rxjs.dev/), a library for reactive
+tightly integrated with [RxJS](https://rxjs.dev), a library for reactive
 programming using observables that makes it easier to compose asynchronous or
 callback-based code. While RxJS is incredibly powerful, effectively using it
 requires a shift in paradigm toward functional reactive programming. Angular
