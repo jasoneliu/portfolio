@@ -37,7 +37,7 @@
     "svelte-inview": "^4.0.0",
     "svelte-preprocess": "^5.0.0",
     "svelte-sequential-preprocessor": "^1.0.0",
-    "svelte-toc": "^0.5.2",
+    "svelte-toc": "^0.5.5",
     "three": "^0.150.0",
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
