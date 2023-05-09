@@ -1,5 +1,475 @@
+<script lang="ts">
+  import ProjectPageImage from '$lib/components/ProjectPageImage.svelte';
+  import type { Image } from '$lib/image';
+
+  import sleeperSiteOldImageFallback from '$lib/assets/projects/bitcamp/sleeper-site-old.png';
+  import sleeperSiteOldImageAvif from '$lib/assets/projects/bitcamp/sleeper-site-old.png?avif';
+  import sleeperSiteOldImageWebp from '$lib/assets/projects/bitcamp/sleeper-site-old.png?webp';
+  import sleeperSiteImageFallback from '$lib/assets/projects/bitcamp/sleeper-site.png';
+  import sleeperSiteImageAvif from '$lib/assets/projects/bitcamp/sleeper-site.png?avif';
+  import sleeperSiteImageWebp from '$lib/assets/projects/bitcamp/sleeper-site.png?webp';
+  import websiteImageFallback from '$lib/assets/projects/bitcamp/website.png';
+  import websiteImageAvif from '$lib/assets/projects/bitcamp/website.png?avif';
+  import websiteImageWebp from '$lib/assets/projects/bitcamp/website.png?webp';
+  import websiteScheduleImageFallback from '$lib/assets/projects/bitcamp/website-schedule.png';
+  import websiteScheduleImageAvif from '$lib/assets/projects/bitcamp/website-schedule.png?avif';
+  import websiteScheduleImageWebp from '$lib/assets/projects/bitcamp/website-schedule.png?webp';
+  import registrationImageAvif from '$lib/assets/projects/bitcamp/registration.png?avif';
+  import registrationImageWebp from '$lib/assets/projects/bitcamp/registration.png?webp';
+  import registrationImageFallback from '$lib/assets/projects/bitcamp/registration.png';
+  import registrationSchoolImageAvif from '$lib/assets/projects/bitcamp/registration-school.png?avif';
+  import registrationSchoolImageWebp from '$lib/assets/projects/bitcamp/registration-school.png?webp';
+  import registrationSchoolImageFallback from '$lib/assets/projects/bitcamp/registration-school.png';
+  import registrationTracksImageAvif from '$lib/assets/projects/bitcamp/registration-tracks.png?avif';
+  import registrationTracksImageWebp from '$lib/assets/projects/bitcamp/registration-tracks.png?webp';
+  import registrationTracksImageFallback from '$lib/assets/projects/bitcamp/registration-tracks.png';
+  import mobileAppImageAvif from '$lib/assets/projects/bitcamp/mobile-app.png?avif';
+  import mobileAppImageWebp from '$lib/assets/projects/bitcamp/mobile-app.png?webp';
+  import mobileAppImageFallback from '$lib/assets/projects/bitcamp/mobile-app.png';
+  import checkInWristbandsImageAvif from '$lib/assets/projects/bitcamp/check-in-wristbands.png?avif';
+  import checkInWristbandsImageWebp from '$lib/assets/projects/bitcamp/check-in-wristbands.png?webp';
+  import checkInWristbandsImageFallback from '$lib/assets/projects/bitcamp/check-in-wristbands.png';
+  import scannerAppCheckInImageAvif from '$lib/assets/projects/bitcamp/scanner-app-check-in.png?avif';
+  import scannerAppCheckInImageWebp from '$lib/assets/projects/bitcamp/scanner-app-check-in.png?webp';
+  import scannerAppCheckInImageFallback from '$lib/assets/projects/bitcamp/scanner-app-check-in.png';
+  import scannerAppEventAttendanceImageAvif from '$lib/assets/projects/bitcamp/scanner-app-event-attendance.png?avif';
+  import scannerAppEventAttendanceImageWebp from '$lib/assets/projects/bitcamp/scanner-app-event-attendance.png?webp';
+  import scannerAppEventAttendanceImageFallback from '$lib/assets/projects/bitcamp/scanner-app-event-attendance.png';
+  import expoImageAvif from '$lib/assets/projects/bitcamp/expo.png?avif';
+  import expoImageWebp from '$lib/assets/projects/bitcamp/expo.png?webp';
+  import expoImageFallback from '$lib/assets/projects/bitcamp/expo.png';
+  import registrationBotImageAvif from '$lib/assets/projects/bitcamp/registration-bot.png?avif';
+  import registrationBotImageWebp from '$lib/assets/projects/bitcamp/registration-bot.png?webp';
+  import registrationBotImageFallback from '$lib/assets/projects/bitcamp/registration-bot.png';
+  import hackerEmailImageAvif from '$lib/assets/projects/bitcamp/hacker-email.png?avif';
+  import hackerEmailImageWebp from '$lib/assets/projects/bitcamp/hacker-email.png?webp';
+  import hackerEmailImageFallback from '$lib/assets/projects/bitcamp/hacker-email.png';
+  import checkInRetoolImageAvif from '$lib/assets/projects/bitcamp/check-in-retool.png?avif';
+  import checkInRetoolImageWebp from '$lib/assets/projects/bitcamp/check-in-retool.png?webp';
+  import checkInRetoolImageFallback from '$lib/assets/projects/bitcamp/check-in-retool.png';
+  import announcementsRetoolImageAvif from '$lib/assets/projects/bitcamp/announcements-retool.png?avif';
+  import announcementsRetoolImageWebp from '$lib/assets/projects/bitcamp/announcements-retool.png?webp';
+  import announcementsRetoolImageFallback from '$lib/assets/projects/bitcamp/announcements-retool.png';
+ 
+  const sleeperSiteOldImage: Image = {
+    avif: sleeperSiteOldImageAvif,
+    webp: sleeperSiteOldImageWebp,
+    fallback: sleeperSiteOldImageFallback,
+  }
+
+  const sleeperSiteImage: Image = {
+    avif: sleeperSiteImageAvif,
+    webp: sleeperSiteImageWebp,
+    fallback: sleeperSiteImageFallback,
+  }
+
+  const websiteImage: Image = {
+    avif: websiteImageAvif,
+    webp: websiteImageWebp,
+    fallback: websiteImageFallback,
+  }
+
+  const websiteScheduleImage: Image = {
+    avif: websiteScheduleImageAvif,
+    webp: websiteScheduleImageWebp,
+    fallback: websiteScheduleImageFallback,
+  }
+
+  const registrationImage: Image = {
+    avif: registrationImageAvif,
+    webp: registrationImageWebp,
+    fallback: registrationImageFallback,
+  }
+
+  const registrationSchoolImage: Image = {
+    avif: registrationSchoolImageAvif,
+    webp: registrationSchoolImageWebp,
+    fallback: registrationSchoolImageFallback,
+  }
+
+  const registrationTracksImage: Image = {
+    avif: registrationTracksImageAvif,
+    webp: registrationTracksImageWebp,
+    fallback: registrationTracksImageFallback,
+  }
+
+  const mobileAppImage: Image = {
+    avif: mobileAppImageAvif,
+    webp: mobileAppImageWebp,
+    fallback: mobileAppImageFallback,
+  }
+
+  const checkInWristbandsImage: Image = {
+    avif: checkInWristbandsImageAvif,
+    webp: checkInWristbandsImageWebp,
+    fallback: checkInWristbandsImageFallback,
+  }
+
+  const scannerAppCheckInImage: Image = {
+    avif: scannerAppCheckInImageAvif,
+    webp: scannerAppCheckInImageWebp,
+    fallback: scannerAppCheckInImageFallback,
+  }
+
+  const scannerAppEventAttendanceImage: Image = {
+    avif: scannerAppEventAttendanceImageAvif,
+    webp: scannerAppEventAttendanceImageWebp,
+    fallback: scannerAppEventAttendanceImageFallback,
+  }
+
+  const expoImage: Image = {
+    avif: expoImageAvif,
+    webp: expoImageWebp,
+    fallback: expoImageFallback,
+  }
+
+  const registrationBotImage: Image = {
+    avif: registrationBotImageAvif,
+    webp: registrationBotImageWebp,
+    fallback: registrationBotImageFallback,
+  }
+
+  const hackerEmailImage: Image = {
+    avif: hackerEmailImageAvif,
+    webp: hackerEmailImageWebp,
+    fallback: hackerEmailImageFallback,
+  }
+
+  const checkInRetoolImage: Image = {
+    avif: checkInRetoolImageAvif,
+    webp: checkInRetoolImageWebp,
+    fallback: checkInRetoolImageFallback,
+  }
+
+  const announcementsRetoolImage: Image = {
+    avif: announcementsRetoolImageAvif,
+    webp: announcementsRetoolImageWebp,
+    fallback: announcementsRetoolImageFallback,
+  }
+
+</script>
+
 ### Overview
 
-[Bitcamp](https://bit.camp) is the University of Maryland's premier hackathon.
+[Bitcamp](https://bit.camp) is the **University of Maryland's annual 36-hour
+hackathon, bringing in over 1,000 participants**. Hackers join together in
+College Park every spring to take part in interactive workshops, compete in fun
+mini-events, and create amazing websites, apps, and hardware projects.
 
-🚧 Work in Progress 🚧
+I first joined the Bitcamp organizing team in 2021, working on the Tech team to
+develop a mobile app and NFC scanner app for Bitcamp 2022.
+
+As Tech Co-Director for Bitcamp 2023, **I led a team of 13 organizers in the
+development of Bitcamp's tech products, including websites, mobile apps, web
+apps, and miscellaneous projects**. My role involved project management
+responsibilities such as leading weekly meetings, coordinating with other teams,
+defining project requirements, implementing project timelines, and delegating
+tasks to team members. I also contributed to development by setting up
+development environments, creating new features (frontend and backend), managing
+AWS, and handling deployment.
+
+As Co-Executive Director for Bitcamp 2024, I'm currently **leading the 75+
+person organizing body, directly managing a team of 12 directors** spanning
+Tech, Design, Logistics, Events, Marketing, Sponsorship, Finance, and
+Experience.
+
+In this article, I'll primarily be focusing on the tech products we developed
+during the Bitcamp 2023 organizing season.
+
+### Websites
+
+Bitcamp's websites have historically been written in HTML, CSS, and JavaScript.
+One of our primary goals in 2023 was to **modernize our tech stack by migrating
+our websites to Vue 3 and Nuxt, incorporating TypeScript and SCSS**. This
+required us to rebuild all of our websites from scratch, except for the hacker
+registration form which was already built with Vue.
+
+#### Sleeper Sites
+
+In June 2022, we created a [sleeper site](https://sleeper2023old.bit.camp)
+containing links to our past events and our social media. When we opened our
+organizer applications in September, we also added the form link to the sleeper
+site.
+
+<ProjectPageImage
+  image={sleeperSiteOldImage}
+  href="https://sleeper2023old.bit.camp/"
+  alt="Old Sleeper Site"
+  caption="Old Sleeper Site"
+/>
+
+In early February 2023, we finalized our desert theme with the "Find Your
+Frontier" tagline. As the design team worked on a mockup for our event site, we
+updated the [sleeper site](https://sleeper2023.bit.camp) to reflect this year's
+desert theme. We also added a list of FAQs and a link to our hacker registration
+form.
+
+<ProjectPageImage
+  image={sleeperSiteImage}
+  href="https://sleeper2023.bit.camp"
+  alt="Sleeper Site"
+  caption="Sleeper Site"
+/>
+
+#### Event Website
+
+In mid-February 2023, we launched the [event website](https://2023.bit.camp) as
+the **primary source for all information leading up to Bitcamp**, featuring an
+overview of Bitcamp's tracks, mini-events, campfire games, schedule, FAQs, and
+sponsors. It also contains links to applications for hackers, mentors,
+volunteers, and workshop holders looking to attend Bitcamp.
+
+<ProjectPageImage
+  image={websiteImage}
+  href="https://2023.bit.camp"
+  alt="Event Website"
+  caption="Event Website"
+/>
+
+The website also provides an
+[interactive event schedule](https://2023.bit.camp/#schedule) for participants
+to use throughout Bitcamp.
+
+<ProjectPageImage
+  image={websiteScheduleImage}
+  href="https://2023.bit.camp/#schedule"
+  alt="Interactive Event Schedule"
+  caption="Interactive Event Schedule"
+/>
+
+#### Hacker Registration
+
+In early February 2023, **we launched the hacker registration form and received
+over 1,700 registrations by April**. The bulk of the development work involved
+updating the form to follow new
+[MLH guidelines](https://guide.mlh.io/general-information/managing-registrations/registration-timelines#important-registration-fields)
+for required registration fields.
+
+<ProjectPageImage
+  image={registrationImage}
+  alt="Hacker Registration Form"
+  caption="Hacker Registration Form"
+/>
+
+We also made overall improvements to the registration form. We enforced a set
+list of school names using a typeahead component and added multi-select options
+for dietary restrictions and marketing information. These changes resulted in
+**more uniform registration data that made it easier to pull hacker statistics**
+from the registration table. Hacker registration statistics were particularly
+useful for organizers working on food, travel, tracks, and workshops.
+
+<ProjectPageImage
+  image={registrationSchoolImage}
+  alt="Registration: School Typeahead"
+  caption="Registration: School Typeahead"
+/>
+
+We also **implemented a waitlist system for tracks with limited capacity**.
+Hackers could register for any available track and optionally join the waitlist
+for an additional track. During Bitcamp, we monitored the number of attendees
+for limited-capacity tracks and admitted hackers from the waitlist if the track
+had additional space.
+
+<ProjectPageImage
+  image={registrationTracksImage}
+  alt="Registration: Tracks"
+  caption="Registration: Tracks"
+/>
+
+The registration form is built on a Node.js backend consisting of DynamoDB
+tables and Lambda functions written in JavaScript. We used the Serverless
+Framework to deploy the application to separate development, staging, and
+production environments. For internal testing, all organizers filled out the
+registration form using a staging URL and reported any bugs they encountered.
+
+### Mobile Apps
+
+#### Event App
+
+Bitcamp's **cross-platform mobile app allows participants to stay up to date
+throughout the event, with over 900 downloads in 2023**. Using the app,
+participants can:
+
+- See announcements and popular events at a glance
+- Browse the full event schedule
+- Get notified about their favorite events
+- View their hacker profile and the campfire games leaderboard
+- Access venue maps of Xfinity Center
+
+<ProjectPageImage
+  image={mobileAppImage}
+  alt="Mobile App"
+  caption="Mobile App"
+/>
+
+The mobile app is built with React Native and Expo, using a Node.js backend with
+DynamoDB tables and Lambda functions. For Bitcamp 2023, development primarily
+involved a **redesigned desert-themed UI with new features such as the time left
+until submission, calendar view schedule, campfire games leaderboard, and push
+notifications for favorited events**.
+
+Expo created a smooth cross-platform development process, allowing us to use
+Expo Go to run the app locally and EAS to handle builds and submissions. We used
+EAS Build to build and distribute app binaries for internal testing, and EAS
+Submit to deploy the mobile app to the
+[App Store](https://apps.apple.com/us/app/bitcamp/id1615810370) and the
+[Google Play Store](https://play.google.com/store/apps/details?id=com.Bitcamp.Bitcamp).
+
+#### NFC Scanner App
+
+The NFC scanner app allows organizers to **check participants into Bitcamp using
+QR codes and take attendance at events using NFC wristbands**.
+
+A few days before Bitcamp, every hacker, mentor, and volunteer received an email
+containing a unique QR code. During check-in, organizers used the scanner app to
+scan each participant's QR code and assign them an NFC wristband to wear
+throughout the event. This check-in process provided us with an accurate count
+of total attendees.
+
+<ProjectPageImage
+  image={checkInWristbandsImage}
+  alt="NFC Wristbands at Check-In"
+  caption="NFC Wristbands at Check-In"
+/>
+
+I focused on **streamlining the scanner app's check-in process with a
+multi-screen step-by-step guide**:
+
+- QR Scan: Scan the participant's unique QR code to start check-in
+- User Review: Confirm the participant's name, email, and school
+- ID Check: Check the participant's ID to verify their identity
+- Minors: Ensure that minors have filled out all required forms and have a
+  chaperone present
+- Mentors / Volunteers: Give a colored headband to mentors and volunteers so
+  hackers can easily identify them
+- Dietary Restrictions: Give a paper wristband to participants with dietary
+  restrictions for priority at meals
+- NFC Scan: Scan a new NFC wristband to assign it to the participant
+
+<ProjectPageImage
+  image={scannerAppCheckInImage}
+  alt="Scanner App: User Check-In"
+  caption="Scanner App: User Check-In"
+/>
+
+We also used the scanner app to **keep track of event attendance by scanning
+participants' NFC wristbands**. This provides us with accurate attendance counts
+for individual events, which are particularly useful for meals, track workshops,
+and sponsored events. Organizers could also award custom achievements to
+participants, such as mini-event winners. Event attendance and custom
+achievements allow participants to earn points for their campfire team, with the
+winning team receiving exclusive Bitcamp swag.
+
+<ProjectPageImage
+  image={scannerAppEventAttendanceImage}
+  alt="Scanner App: Event Attendance and Custom Points"
+  caption="Scanner App: Event Attendance and Custom Points"
+/>
+
+The scanner app is built with React Native and Expo, sharing a Node.js backend
+with the mobile app. However, we created a separate scanner app since Expo Go
+doesn't support NFC. This made local development more complex, requiring Expo's
+custom native code system and platform-specific development builds. Separating
+the two apps also allowed me to use internal testing releases to distribute the
+scanner app to organizers through TestFlight and Google Play, making it easier
+to quickly roll out updates to organizers.
+
+### Project Expo
+
+At the end of the hacking period, each team submits their hack to Devpost and
+selects prize categories to attempt. Bitcamp then holds a project expo where
+hackers present their projects to judges for each prize category.
+
+The [expo web app](https://expo.bit.camp) handles the logistics behind project
+expo. Using a CSV of submissions from Devpost, the web app uses an **algorithm
+to assign a table to each team and create a judging schedule**. The web app then
+displays hackathon projects with these table assignments and judging schedules
+for expo attendees, hackers, and sponsors who want to locate or learn more about
+a hack.
+
+Judges can filter projects by prize category to view a schedule of projects to
+visit. With 125 submissions for Bitcamp 2023, our algorithm limited judging to 5
+minutes for each hack in order to fit within the 2.5-hour project expo. Some
+prize categories with a greater number of submissions also required multiple
+judges.
+
+The expo web app's frontend is built with React. The backend uses Flask and
+MongoDB for the API, which runs in an EC2 instance using Docker.
+
+<ProjectPageImage
+  image={expoImage}
+  href="https://expo.bit.camp"
+  alt="Expo Web App"
+  caption="Expo Web App"
+/>
+
+### Miscellaneous Projects
+
+#### Slack Bot
+
+To provide all organizers with an accurate registration count, I created a
+**Slack bot that posts a registration update every 8 hours**. The report
+includes the total number of registrations, a breakdown of registration counts
+for each track, and marketing information (how hackers heard about Bitcamp).
+
+The Slack bot uses the registration backend, where an EventBridge rule triggers
+a Lambda function every 8 hours. The Lambda function accesses registration
+statistics from a DynamoDB table and uses a webhook to send the registration
+update to the Slack channel.
+
+<ProjectPageImage
+  image={registrationBotImage}
+  alt="Registration Slack Bot"
+  caption="Registration Slack Bot"
+/>
+
+#### Emails
+
+I was responsible for **using SES to send out emails to registered users**:
+
+- For community events such as Hackathons 101 and Bitcamp Bootcamp, we sent out
+  event information and reminders to all registered UMD students
+- A few days before Bitcamp, we sent out emails to all hackers, mentors, and
+  volunteers with instructions for attending Bitcamp
+- For certain tracks (Hardware and Quantum), we sent out emails to hackers to
+  get accurate track headcounts and provide track-specific instructions
+
+To send out these emails, I created HTML email templates and wrote JS scripts to
+upload templates to Amazon SES, pull registration data from the DynamoDB table,
+filter email recipients, and send the personalized emails using SES.
+
+<ProjectPageImage
+  image={hackerEmailImage}
+  alt="Hacker Email"
+  caption="Hacker Email"
+/>
+
+#### Internal Tools
+
+To make it easier for organizers to interact with our backend, we used
+[Retool](https://retool.com/) to quickly build internal tools.
+
+During check-in, we occasionally needed to **create new user accounts or look up
+user details**. This could occur if a participant registered for Bitcamp but
+their account wasn't created in our database. We also had a waitlist for hackers
+who didn't register for Bitcamp but still wanted to attend. To simplify these
+processes, we created a check-in retool to:
+
+- Create an account for a hacker and send them an email with instructions
+- Check if a hacker is registered for Bitcamp
+- Look up user details, including their unique QR code for check-in
+
+<ProjectPageImage
+  image={checkInRetoolImage}
+  alt="Check-In Retool"
+  caption="Check-In Retool"
+/>
+
+We also created a **retool for organizers to easily create and delete
+announcements**, which show up in our mobile app and the venue's jumbotron.
+
+<ProjectPageImage
+  image={announcementsRetoolImage}
+  alt="Announcements Retool"
+  caption="Announcements Retool"
+/>

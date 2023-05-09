@@ -13,7 +13,9 @@
       <ProjectThumbnail image={project.image} alt={project.name} />
     </a>
     <div class="project-card__info">
-      <span class="project-card__role">{project.role}</span>
+      <span class="project-card__role">
+        {[project.role].flat().join(' | ')}
+      </span>
       <h3 class="project-card__name">{project.name}</h3>
       <p class="project-card__description">{project.description}</p>
       <TagList tags={project.tags} />

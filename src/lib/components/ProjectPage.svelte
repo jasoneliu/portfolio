@@ -29,7 +29,11 @@
 <div class="project__info">
   <div>
     <h4 class="toc-exclude">Role</h4>
-    <p>{project.role}</p>
+    <div class="project__info__role">
+      {#each [project.role].flat() as role}
+        <p>{role}</p>
+      {/each}
+    </div>
   </div>
 
   <div>
@@ -87,6 +91,7 @@
         line-height: 1.2;
       }
 
+      &__role,
       &__skills {
         display: flex;
         flex-direction: column;

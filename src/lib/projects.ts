@@ -14,10 +14,34 @@ import technicaImageAvif from '$lib/assets/projects/technica/technica.png?avif';
 import technicaImageWebp from '$lib/assets/projects/technica/technica.png?webp';
 import technicaImageFallback from '$lib/assets/projects/technica/technica.png';
 
+const agentAssistImage: Image = {
+  avif: agentAssistImageAvif,
+  webp: agentAssistImageWebp,
+  fallback: agentAssistImageFallback,
+};
+
+const arcXpImage: Image = {
+  avif: arcXpImageAvif,
+  webp: arcXpImageWebp,
+  fallback: arcXpImageFallback,
+};
+
+const bitcampImage: Image = {
+  avif: bitcampImageAvif,
+  webp: bitcampImageWebp,
+  fallback: bitcampImageFallback,
+};
+
+const technicaImage: Image = {
+  avif: technicaImageAvif,
+  webp: technicaImageWebp,
+  fallback: technicaImageFallback,
+};
+
 export interface Project {
   name: string;
   description: string;
-  role: string;
+  role: string | string[];
   timeline: string;
   skills: string[];
   tags: Tag[];
@@ -40,11 +64,7 @@ const agentAssist: Project = {
     'Unit and Integration Testing',
   ],
   tags: [tags.typescript, tags.angular, tags.ngrx, tags.jasmine],
-  image: {
-    avif: agentAssistImageAvif,
-    webp: agentAssistImageWebp,
-    fallback: agentAssistImageFallback,
-  },
+  image: agentAssistImage,
   slug: 'agent-assist',
   head: {
     title: 'Agent Assist',
@@ -59,8 +79,8 @@ const arcXp: Project = {
   timeline: 'Jun. – Aug. 2022',
   skills: [
     'Full-Stack Development',
-    'Design Systems',
     'Microservices Architectures',
+    'Design Systems',
   ],
   tags: [
     tags.typescript,
@@ -70,20 +90,20 @@ const arcXp: Project = {
     tags.aws,
     tags.jest,
   ],
-  image: {
-    avif: arcXpImageAvif,
-    webp: arcXpImageWebp,
-    fallback: arcXpImageFallback,
-  },
+  image: arcXpImage,
   slug: 'arc-xp',
 };
 
 const bitcamp: Project = {
   name: 'Bitcamp',
-  description: 'The University of Maryland’s premier hackathon.',
-  role: 'Tech Co-Director',
-  timeline: 'Dec. 2021 – Apr. 2023',
-  skills: ['Full-Stack Development', 'Product Management'],
+  description: 'The University of Maryland’s annual 36-hour hackathon.',
+  role: ['Co-Executive Director ’24', 'Tech Co-Director ’23'],
+  timeline: 'Dec. 2021 – Present',
+  skills: [
+    'Full-Stack Development',
+    'Mobile Development',
+    'Product Management',
+  ],
   tags: [
     tags.typescript,
     tags.reactnative,
@@ -92,11 +112,7 @@ const bitcamp: Project = {
     tags.nuxt,
     tags.aws,
   ],
-  image: {
-    avif: bitcampImageAvif,
-    webp: bitcampImageWebp,
-    fallback: bitcampImageFallback,
-  },
+  image: bitcampImage,
   slug: 'bitcamp',
 };
 
@@ -104,14 +120,10 @@ const technica: Project = {
   name: 'Technica',
   description: 'The world’s largest hackathon for underrepresented genders.',
   role: 'Tech Organizer',
-  timeline: 'Apr. – Oct. 2022',
+  timeline: 'Apr. 2022 – Present',
   skills: ['Frontend Development'],
   tags: [tags.typescript, tags.vue, tags.nuxt, tags.aws],
-  image: {
-    avif: technicaImageAvif,
-    webp: technicaImageWebp,
-    fallback: technicaImageFallback,
-  },
+  image: technicaImage,
   slug: 'technica',
 };
 

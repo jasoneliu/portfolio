@@ -3,12 +3,20 @@
   import type { Image } from '$lib/image';
 
   export let image: Image;
+  export let href: string | undefined = undefined;
   export let alt: string;
   export let caption: string | undefined = undefined;
 </script>
 
 <div class="project-image">
-  <ResponsiveImage {image} {alt} />
+  {#if href}
+    <a {href} target="_blank">
+      <ResponsiveImage {image} {alt} />
+    </a>
+  {:else}
+    <ResponsiveImage {image} {alt} />
+  {/if}
+
   {#if caption}
     <!-- eslint-disable-next-line svelte/no-at-html-tags -->
     <caption>{@html caption}</caption>
@@ -21,13 +29,15 @@
     flex-direction: column;
     align-items: center;
     margin: 1.5rem 0;
+    padding: 0 10%;
 
-    & :global(picture) {
-      width: 80%;
+    @media screen and (max-width: $breakpoint-md) {
+      padding: 0 5%;
+    }
 
-      @media screen and (max-width: $breakpoint-md) {
-        width: 90%;
-      }
+    & :global(img) {
+      max-height: 60vh;
+      box-shadow: 0 0 1rem 0.125rem rgba($text, 0.1);
     }
   }
 

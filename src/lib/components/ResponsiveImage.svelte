@@ -21,7 +21,7 @@
 
 <style lang="scss">
   img {
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     object-fit: cover;
   }
 </style>
