@@ -114,6 +114,6 @@
     justify-content: center;
     flex-direction: column;
     flex-grow: 1;
-    padding-top: 8rem;
+    padding-top: 6.5rem;
   }
 </style>
