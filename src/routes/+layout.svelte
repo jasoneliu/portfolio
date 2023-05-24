@@ -99,6 +99,7 @@
   <meta name="theme-color" content="#1e1e2e" />
 </svelte:head>
 
+<div class="background-gradient" />
 <Navbar />
 <PageTransition>
   <div class="page">
@@ -108,6 +109,25 @@
 </PageTransition>
 
 <style lang="scss">
+  // CSS linear-gradient causes banding on Firefox
+  // This is a workaround using a PNG background-image for the linear-gradient
+  .background-gradient {
+    position: absolute;
+    top: 0rem;
+    z-index: -1;
+    width: 100%;
+    height: 100dvh;
+    background-image: url('$lib/assets/background-gradient.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100dvh;
+
+    @media screen and (max-width: $breakpoint-md) {
+      top: 4rem;
+      height: calc(100dvh - 4rem);
+      background-size: 100% calc(100dvh - 4rem);
+    }
+  }
+
   .page {
     display: flex;
     align-items: center;
