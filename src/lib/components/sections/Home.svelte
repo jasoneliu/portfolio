@@ -135,7 +135,12 @@
 
     &__name {
       text-align: center;
-      text-shadow: 0px 0.25rem 0.75rem rgba($crust, 0.3);
+      text-shadow: 0 0.25rem 0.5rem $crust;
+
+      & > :global(span) {
+        margin: -1rem;
+        padding: 1rem;
+      }
     }
 
     &__about {
