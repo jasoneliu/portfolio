@@ -163,7 +163,7 @@
     &__scroll-icon {
       width: 1rem;
       height: 1rem;
-      animation: scrollIconLoop 3s ease infinite;
+      animation: 3s $ease-in-out-cubic infinite scrollIconLoop;
       animation-delay: 1s;
     }
 
@@ -177,10 +177,7 @@
       transform: translateY(-120%);
     }
 
-    30% {
-      transform: translateY(0%);
-    }
-
+    30%,
     70% {
       transform: translateY(0%);
     }
