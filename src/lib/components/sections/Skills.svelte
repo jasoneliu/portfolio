@@ -1,5 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import softwareIcon from '$lib/assets/icons/software.svg';
+  import frontendIcon from '$lib/assets/icons/frontend.svg';
+  import backendIcon from '$lib/assets/icons/backend.svg';
   import InView from '$lib/components/InView.svelte';
   import { skillsAnchor } from '$lib/store';
 
@@ -7,16 +10,19 @@
     {
       title: 'Software Dev',
       body: 'Experienced in working with the entire software development life cycle, including solution design, implementation, testing, and deployment.',
+      icon: softwareIcon,
       slug: 'software',
     },
     {
       title: 'Frontend',
       body: 'Passionate about developing elegant and intuitive UIs. Proficient in HTML/CSS/JS and frontend frameworks such as React, Vue, Angular, and Svelte.',
+      icon: frontendIcon,
       slug: 'frontend',
     },
     {
       title: 'Backend',
       body: 'Skilled at building Node.js backends involving SQL and NoSQL databases, REST APIs, and serverless architectures using cloud-computing platforms such as AWS and Google Cloud.',
+      icon: backendIcon,
       slug: 'backend',
     },
   ];
@@ -39,7 +45,7 @@
           <div class="skills__heading">
             <div
               class="skills__icon {skill.slug}"
-              style:mask-image={`url('src/lib/assets/icons/${skill.slug}.svg')`}
+              style:mask-image={`url(${skill.icon})`}
             />
             <h3
               class="skills__heading-text {skill.slug}"
