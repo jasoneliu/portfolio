@@ -270,6 +270,10 @@
       margin-top: 0;
       pointer-events: auto;
 
+      &__icon {
+        margin-left: 0;
+      }
+
       &__wrapper {
         position: fixed;
         top: 4.5rem;
@@ -346,7 +350,7 @@
         align-items: center;
         justify-content: center;
         z-index: 10;
-        margin-right: 0.5rem;
+        margin-right: 0.25rem;
         width: 2rem;
         height: 2rem;
 

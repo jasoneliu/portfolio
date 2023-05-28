@@ -76,6 +76,7 @@
       @media screen and (max-width: $breakpoint-lg) {
         grid-template-rows: auto;
         grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
       }
     }
 

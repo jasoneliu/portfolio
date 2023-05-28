@@ -21,11 +21,11 @@
   .toc {
     position: fixed;
     top: 0;
-    left: 1rem;
+    left: 0;
     padding: inherit;
 
     & :global(nav) {
-      padding: 1rem;
+      padding: 1.25rem;
       padding-top: 1.5rem;
       overflow-y: auto;
       animation-duration: 0s !important; // Disable svelte transition
@@ -34,6 +34,7 @@
     & :global(li) {
       transition: color 0.3s, font-weight 0s;
       background-color: transparent;
+      padding: 0.1875rem 0.5rem;
       color: $subtext0;
       font-weight: 400;
 

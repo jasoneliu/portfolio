@@ -9,7 +9,6 @@
 </script>
 
 <Toc />
-
 <main class="project">
   <ProjectPage {project}>
     <slot />
@@ -21,7 +20,7 @@
     display: block;
     margin-left: 5rem;
     width: 60%;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 
     @media screen and (max-width: $breakpoint-lg) {
       margin: 0;

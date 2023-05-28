@@ -36,8 +36,7 @@
       display: grid;
       grid-template-rows: auto;
       grid-template-columns: 1fr 1fr;
-      row-gap: 1.5rem;
-      column-gap: 3rem;
+      gap: 1.5rem 3rem;
 
       max-width: 100rem;
       padding: 2rem 8vw;
@@ -45,7 +44,7 @@
       @media screen and (max-width: $breakpoint-md) {
         grid-template-rows: auto auto;
         grid-template-columns: 1fr;
-        padding: 2rem;
+        padding: 2rem 1.5rem;
       }
     }
 
