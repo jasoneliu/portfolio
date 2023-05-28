@@ -8,7 +8,7 @@
 
 <footer>
   <InView disabled={$page.url.pathname !== '/'}>
-    <div class="footer">
+    <div class="footer__wrapper">
       <p class="footer__text">
         Designed and developed with <span class="heart">&#xe9da;</span>
       </p>
@@ -25,12 +25,18 @@
 </footer>
 
 <style lang="scss">
+  footer {
+    overflow: hidden;
+  }
+
   .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 3rem 0;
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 3rem 0;
+    }
 
     &__text {
       color: $subtext1;
