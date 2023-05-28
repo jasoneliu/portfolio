@@ -86,7 +86,7 @@
     bind:this={slideTransition}
     in:slide={{
       duration: slideAnimationDurationMs,
-      delay: pageAnimationDurationMs / 2,
+      delay: slideAnimationDelayMs,
       easing: cubicOut,
     }}
     out:slide={{
@@ -103,6 +103,16 @@
   />
 {:else}
   <div
+    class="background-transition"
+    out:fly={{
+      duration: pageAnimationDurationMs,
+      delay: slideAnimationDelayMs,
+      opacity: 1,
+    }}
+  >
+    <slot name="background" />
+  </div>
+  <div
     class="page-transition"
     in:fly={{
       y: 200,
@@ -112,17 +122,11 @@
     }}
     out:fade={{ duration: pageAnimationDurationMs }}
   >
-    <slot />
+    <slot name="page" />
   </div>
 {/if}
 
 <style lang="scss">
-  .page-transition {
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
-  }
-
   .slide-transition {
     position: fixed;
     bottom: 0;
@@ -131,5 +135,11 @@
     width: 100%;
     height: 100%;
     background-color: $mantle;
+  }
+
+  .page-transition {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
   }
 </style>
