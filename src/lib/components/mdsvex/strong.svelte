@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import { colors } from '$lib/colors';
   import InView from '$lib/components/InView.svelte';
@@ -14,17 +15,31 @@
   // Project text highlight color
   const slug = getSlug($page.url);
   const highlightColor = colors[slug as ProjectSlug];
+
+  // Determine animation duration based on text length
+  let textRef: HTMLElement;
+  let animationDuration: number;
+  onMount(() => {
+    const textLength = textRef.innerText.length;
+    animationDuration = Math.min(Math.max(textLength / 100, 1), 2);
+  });
 </script>
 
 <InView rootMargin="10% 0px -10%" inline disabled let:inView>
-  <mark class:in-view={inView} style="--highlight-color: {highlightColor}">
+  <mark
+    bind:this={textRef}
+    class:in-view={inView}
+    style:transition-duration={`${animationDuration}s`}
+    style="--highlight-color: {highlightColor}"
+  >
     <slot />
   </mark>
 </InView>
 
 <style lang="scss">
   mark {
-    transition: background-position 1s $ease-out-cubic;
+    transition-property: background-position;
+    transition-timing-function: $ease-out-cubic;
     margin: 0 -0.125rem;
     padding: 0 0.125rem;
     background-color: transparent;
