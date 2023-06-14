@@ -114,13 +114,13 @@
   .home {
     display: flex;
     justify-content: center;
-    margin-bottom: calc(10dvh + 13rem);
+    margin-bottom: calc(10vh + 13rem);
     width: 100%;
-    height: calc(100dvh - 13rem);
+    height: calc(100vh - 13rem);
 
     @media screen and (max-width: $breakpoint-md) {
-      margin-bottom: calc(10dvh + 10rem);
-      height: calc(100dvh - 10rem);
+      margin-bottom: calc(10vh + 10rem);
+      height: calc(100vh - 10rem);
     }
 
     &__info {
