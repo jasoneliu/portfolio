@@ -170,8 +170,8 @@ AWS, and handling deployment.
 
 As Co-Executive Director for Bitcamp 2024, I'm currently **leading the 75+
 person organizing body, directly managing a team of 12 directors** spanning
-Tech, Design, Logistics, Events, Marketing, Sponsorship, Finance, and
-Experience.
+Design, Events, Experience, Logistics, Marketing, Sponsorship & Finance, and
+Tech.
 
 In this article, I'll primarily be focusing on the tech products we developed
 during the Bitcamp 2023 organizing season.
