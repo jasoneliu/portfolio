@@ -10,13 +10,17 @@
   } from '$lib/store';
   import { PerspectiveCamera, Vector3 } from 'three';
   import { mapLinear } from 'three/src/math/MathUtils';
-  import { T, useFrame, useThrelte } from '@threlte/core';
+  import { T, useFrame } from '@threlte/core';
+  import { OrbitControls } from '@threlte/extras';
 
   // Scene is visible when $scrollY <= maxScrollY
   export let maxScrollY: number;
 
   // Camera ref
   let camera: PerspectiveCamera;
+
+  // OrbitControls
+  const orbitControlsEnabled = false;
 
   // Camera position (spherical coordinates) and zoom
   const radius = 275;
@@ -109,7 +113,12 @@
 
   /** Update camera position on mouse move. */
   function handleMouseMove(event: MouseEvent) {
-    if (!introAnimating && $scrollY <= maxScrollY && $innerWidth >= 576) {
+    if (
+      !introAnimating &&
+      !orbitControlsEnabled &&
+      $scrollY <= maxScrollY &&
+      $innerWidth >= 576
+    ) {
       phi.set(
         mapLinear(
           1 - event.clientY / window.innerHeight,
@@ -143,10 +152,6 @@
   useFrame(() => {
     camera.lookAt(new Vector3(0, 0, 0));
   });
-
-  // OrbitControls
-  const orbitControlsEnabled = false;
-  const { renderer } = useThrelte();
 </script>
 
 <!-- Animate camera on mouse move -->
@@ -160,7 +165,7 @@
     .toArray()}
   zoom={$zoom}
 >
-  {#if orbitControlsEnabled && camera}
-    <T.OrbitControls args={[camera, renderer?.domElement]} />
+  {#if orbitControlsEnabled}
+    <OrbitControls />
   {/if}
 </T.PerspectiveCamera>

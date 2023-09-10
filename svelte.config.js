@@ -1,6 +1,5 @@
 import sequence from 'svelte-sequential-preprocessor';
 import sveltePreprocess from 'svelte-preprocess';
-import { preprocessThrelte } from '@threlte/preprocess';
 import { mdsvex } from 'mdsvex';
 import adapter from '@sveltejs/adapter-auto';
 
@@ -18,11 +17,6 @@ const config = {
       ],
       scss: {
         prependData: `@use 'src/styles/_variables.scss' as *;`,
-      },
-    }),
-    preprocessThrelte({
-      extensions: {
-        'three/examples/jsm/controls/OrbitControls': ['OrbitControls'],
       },
     }),
     mdsvex({

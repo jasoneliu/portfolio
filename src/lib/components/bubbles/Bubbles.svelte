@@ -9,7 +9,7 @@
 </script>
 
 <div class="bubbles">
-  <Canvas shadowMapType={PCFShadowMap}>
+  <Canvas shadows={PCFShadowMap}>
     <!-- Camera -->
     <BubblesCamera {maxScrollY} />
 
@@ -48,6 +48,5 @@
     top: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
   }
 </style>
