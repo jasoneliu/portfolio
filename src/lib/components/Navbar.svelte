@@ -142,7 +142,7 @@
                         hoveredNavItem !== navItem}
                       on:mouseenter={() => setHoveredNavItem(navItem)}
                       on:mouseleave={() => setHoveredNavItem(null)}
-                      in:fly={$mobileLayout
+                      in:fly|global={$mobileLayout
                         ? {
                             y: -20,
                             duration: 500,
@@ -162,7 +162,7 @@
             {#if $mobileLayout}
               <div
                 class="navbar__mobile-separator"
-                in:slide={{
+                in:slide|global={{
                   duration: 500,
                   delay: 500,
                   easing: cubicOut,
@@ -173,7 +173,7 @@
                 {#each socials as social, socialIndex}
                   <div
                     class="navbar__link-wrapper"
-                    in:fade={{
+                    in:fade|global={{
                       duration: 500,
                       delay: 500 + 100 * socialIndex,
                       easing: cubicOut,

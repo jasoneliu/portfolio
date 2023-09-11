@@ -74,8 +74,8 @@
           duration: loadingAnimationDurationMs,
           easing: cubicOut,
         }}
-        out:fly={{
-          y: 150,
+        out:fly|global={{
+          y: 125,
           duration: outroAnimationDurationMs,
           opacity: 1,
           easing: cubicOut,
