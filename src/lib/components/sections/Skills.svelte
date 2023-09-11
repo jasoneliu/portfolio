@@ -46,6 +46,7 @@
             <div
               class="skills__icon {skill.slug}"
               style:mask-image={`url(${skill.icon})`}
+              style:-webkit-mask-image={`url(${skill.icon})`}
             />
             <h3
               class="skills__heading-text {skill.slug}"
@@ -126,6 +127,9 @@
       mask-position: center;
       mask-size: contain;
       mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
 
       &.software {
         background-image: linear-gradient(135deg, $red, 80%, $yellow);
