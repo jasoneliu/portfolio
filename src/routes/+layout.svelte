@@ -13,7 +13,7 @@
     mobileLayout,
   } from '$lib/store';
   import { webVitals } from '$lib/vitals';
-  import { pwaInfo } from 'virtual:pwa-info';
+  // import { pwaInfo } from 'virtual:pwa-info';
   import '../app.scss';
 
   let windowInnerWidth: number;
@@ -44,7 +44,7 @@
   }
 
   // PWA web app manifest
-  $: webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : '';
+  // $: webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : '';
 
   onMount(async () => {
     // Update url hash on navigation
@@ -58,20 +58,20 @@
     });
 
     // Register PWA service worker
-    if (pwaInfo) {
-      const { registerSW } = await import('virtual:pwa-register');
-      registerSW({
-        immediate: true,
-        onRegistered(registration: ServiceWorkerRegistration | undefined) {
-          // Check for updates every 24 hours
-          if (registration) {
-            setInterval(() => {
-              registration.update();
-            }, 1000 * 60 * 60 * 24);
-          }
-        },
-      });
-    }
+    // if (pwaInfo) {
+    //   const { registerSW } = await import('virtual:pwa-register');
+    //   registerSW({
+    //     immediate: true,
+    //     onRegistered(registration: ServiceWorkerRegistration | undefined) {
+    //       // Check for updates every 24 hours
+    //       if (registration) {
+    //         setInterval(() => {
+    //           registration.update();
+    //         }, 1000 * 60 * 60 * 24);
+    //       }
+    //     },
+    //   });
+    // }
   });
 </script>
 
@@ -95,7 +95,7 @@
 
   <!-- PWA web app manifest -->
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-  {@html webManifest}
+  <!-- {@html webManifest} -->
   <meta name="theme-color" content="#1e1e2e" />
 </svelte:head>
 
