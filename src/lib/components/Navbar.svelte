@@ -12,7 +12,6 @@
 
   // Navbar items
   const navItems: string[] = ['Home', 'Projects', 'Resume'];
-  let hoveredNavItem: string | null = null;
 
   // Scroll position
   let prevScrollY: number | undefined;
@@ -35,11 +34,6 @@
   // Close hamburger menu after switching to desktop layout
   $: if (!$mobileLayout && animationReady) {
     closeHamburger();
-  }
-
-  /** Update which navbar item is hovered. */
-  function setHoveredNavItem(navItem: string | null) {
-    hoveredNavItem = navItem;
   }
 
   /** Update URL hash on navigation. */
@@ -77,7 +71,6 @@
   function closeHamburger() {
     animateHamburger();
     hamburgerOpen = false;
-    hoveredNavItem = null;
   }
 
   // Close hamburger before navigating
@@ -138,10 +131,6 @@
                   >
                     <span
                       class="navbar__text"
-                      class:hovered={hoveredNavItem &&
-                        hoveredNavItem !== navItem}
-                      on:mouseenter={() => setHoveredNavItem(navItem)}
-                      on:mouseleave={() => setHoveredNavItem(null)}
                       in:fly|global={$mobileLayout
                         ? {
                             y: -20,
@@ -252,15 +241,30 @@
       text-decoration: none;
       color: $text;
       pointer-events: auto;
+      margin: 0 0.25rem;
     }
 
     &__text {
       display: inline-block;
-      transition: opacity 0.3s;
-      padding: 0.25rem 0.75rem;
+      position: relative;
+      padding: 0.5rem;
 
-      &.hovered {
-        opacity: 0.4;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0.5rem;
+        right: 100%;
+        bottom: 0;
+        transition: right 0.3s $ease-in-out-quad;
+        margin-top: 0rem;
+        height: 1px;
+        background-color: $text;
+      }
+
+      &:hover {
+        &::after {
+          right: 0.5rem;
+        }
       }
     }
   }
@@ -305,14 +309,17 @@
         margin-bottom: 0.5rem;
       }
 
+      &__link {
+        margin: 0;
+      }
+
       &__text {
         width: 100%;
-        padding: 0.5rem;
         text-align: center;
         font-size: 1.75rem;
 
-        &.hovered {
-          opacity: 1;
+        &::after {
+          display: none;
         }
       }
 
@@ -329,13 +336,11 @@
       }
 
       &__link-wrapper {
-        &:nth-child(1) {
+        text-align: center;
+        &:first-child {
           text-align: left;
         }
-        &:nth-child(2) {
-          text-align: center;
-        }
-        &:nth-child(3) {
+        &:last-child {
           text-align: right;
         }
       }
