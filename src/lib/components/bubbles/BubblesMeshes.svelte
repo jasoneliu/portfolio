@@ -1,9 +1,9 @@
 <script lang="ts">
   import { scrollY, pageLoading, pageTransitioning } from '$lib/store';
   import {
-    BackSide,
     BufferAttribute,
     Color,
+    DoubleSide,
     SphereGeometry,
     Vector3,
   } from 'three';
@@ -22,6 +22,7 @@
     geometry: SphereGeometry;
     position: Vector3;
     scale: number;
+    hue: number;
     opacityScrollStart: number;
     opacityScrollEnd: number;
     randomness: number;
@@ -73,6 +74,9 @@
     // Size
     const scale = randomInRange(1, 3);
 
+    // Color hue
+    const hue = 232 + randomInRange(-25, 25);
+
     // Scroll positions at which bubbles fade from scene
     const opacityScrollStartScale = randomInRange(0.1, 0.7);
     const opacityScrollStart = maxScrollY * opacityScrollStartScale;
@@ -89,6 +93,7 @@
       geometry,
       position,
       scale,
+      hue,
       opacityScrollStart,
       opacityScrollEnd,
       randomness,
@@ -190,20 +195,23 @@
       castShadow
     >
       <T.MeshPhysicalMaterial
-        color={new Color('hsl(255, 100%, 20%))')}
-        metalness={0.3}
+        color={new Color(`hsl(${bubble.hue}, 97%, 40%))`)}
+        envMapIntensity={4}
+        iridescence={0.25}
+        reflectivity={1}
         roughness={0}
-        transmission={0.6}
-        clearcoat={0.5}
-        envMapIntensity={10}
-        side={BackSide}
-        opacity={introFadingIn
-          ? Math.min(elapsedTime - 0.5 * bubble.randomness, 1)
-          : Math.min(
-              (bubble.opacityScrollEnd - $scrollY) /
-                (bubble.opacityScrollEnd - bubble.opacityScrollStart),
-              1
-            )}
+        transmission={0.85}
+        side={DoubleSide}
+        opacity={Math.min(
+          Math.max(
+            introFadingIn
+              ? elapsedTime - 0.5 * bubble.randomness
+              : (bubble.opacityScrollEnd - $scrollY) /
+                  (bubble.opacityScrollEnd - bubble.opacityScrollStart),
+            0
+          ),
+          1
+        )}
         transparent
       />
     </T.Mesh>
