@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Satoshi';
-  src: url('$lib/assets/fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
+  src:
+    url('$lib/assets/fonts/satoshi/Satoshi-Variable.woff2') format('woff2'),
     url('$lib/assets/fonts/satoshi/Satoshi-Variable.woff') format('woff'),
     url('$lib/assets/fonts/satoshi/Satoshi-Variable.ttf') format('truetype');
   font-weight: 300 900;
@@ -10,7 +11,8 @@
 
 @font-face {
   font-family: 'Satoshi';
-  src: url('$lib/assets/fonts/satoshi/Satoshi-VariableItalic.woff2')
+  src:
+    url('$lib/assets/fonts/satoshi/Satoshi-VariableItalic.woff2')
       format('woff2'),
     url('$lib/assets/fonts/satoshi/Satoshi-VariableItalic.woff') format('woff'),
     url('$lib/assets/fonts/satoshi/Satoshi-VariableItalic.ttf')
@@ -22,7 +24,8 @@
 
 @font-face {
   font-family: 'Cabinet Grotesk';
-  src: url('$lib/assets/fonts/cabinet-grotesk/CabinetGrotesk-Variable.woff2')
+  src:
+    url('$lib/assets/fonts/cabinet-grotesk/CabinetGrotesk-Variable.woff2')
       format('woff2'),
     url('$lib/assets/fonts/cabinet-grotesk/CabinetGrotesk-Variable.woff')
       format('woff'),
@@ -79,7 +82,8 @@
 
 @font-face {
   font-family: 'Icomoon';
-  src: url('$lib/assets/fonts/icomoon/icomoon.woff') format('woff'),
+  src:
+    url('$lib/assets/fonts/icomoon/icomoon.woff') format('woff'),
     url('$lib/assets/fonts/icomoon/icomoon.ttf') format('truetype');
   font-display: swap;
   font-style: normal;
