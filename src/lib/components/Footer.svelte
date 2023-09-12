@@ -54,14 +54,16 @@
     }
 
     &__icon {
-      transition: opacity 0.3s;
+      transition: opacity 0.3s $ease-out-cubic;
       width: 2.5rem;
       height: 2.5rem;
       padding: 0.25rem;
       color: $text;
 
-      &:hover {
-        opacity: 0.5;
+      @media screen and (min-width: $breakpoint-md) {
+        &:hover {
+          opacity: 0.5;
+        }
       }
     }
 

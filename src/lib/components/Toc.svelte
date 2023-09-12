@@ -32,7 +32,9 @@
     }
 
     & :global(li) {
-      transition: color 0.3s, font-weight 0s;
+      transition:
+        color 0.3s $ease-out-cubic,
+        font-weight 0s;
       background-color: transparent;
       padding: 0.1875rem 0.5rem;
       color: $subtext0;
