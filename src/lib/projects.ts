@@ -1,6 +1,9 @@
 import type { Image } from '$lib/image';
 import { tags, type Tag } from '$lib/tags';
 
+import lookerStudioImageAvif from '$lib/assets/projects/looker-studio/looker-studio.png?avif';
+import lookerStudioImageWebp from '$lib/assets/projects/looker-studio/looker-studio.png?webp';
+import lookerStudioImageFallback from '$lib/assets/projects/looker-studio/looker-studio.png';
 import agentAssistImageAvif from '$lib/assets/projects/agent-assist/agent-assist.png?avif';
 import agentAssistImageWebp from '$lib/assets/projects/agent-assist/agent-assist.png?webp';
 import agentAssistImageFallback from '$lib/assets/projects/agent-assist/agent-assist.png';
@@ -13,6 +16,12 @@ import bitcampImageFallback from '$lib/assets/projects/bitcamp/bitcamp.png';
 import technicaImageAvif from '$lib/assets/projects/technica/technica.png?avif';
 import technicaImageWebp from '$lib/assets/projects/technica/technica.png?webp';
 import technicaImageFallback from '$lib/assets/projects/technica/technica.png';
+
+const lookerStudioImage: Image = {
+  avif: lookerStudioImageAvif,
+  webp: lookerStudioImageWebp,
+  fallback: lookerStudioImageFallback,
+};
 
 const agentAssistImage: Image = {
   avif: agentAssistImageAvif,
@@ -52,6 +61,32 @@ export interface Project {
     description?: string;
   };
 }
+
+const lookerStudio: Project = {
+  name: 'Google — Looker Studio',
+  description:
+    'Unlock the power of your data with interactive dashboards and beautiful reports.',
+  role: 'Software Engineering Intern',
+  timeline: 'May – Aug. 2023',
+  skills: [
+    'Frontend Development',
+    'Solution Design',
+    'Unit and Integration Testing',
+  ],
+  tags: [
+    tags.typescript,
+    tags.angular,
+    tags.angularjs,
+    tags.jasmine,
+    tags.java,
+    tags.junit,
+  ],
+  image: lookerStudioImage,
+  slug: 'looker-studio',
+  head: {
+    title: 'Looker Studio',
+  },
+};
 
 const agentAssist: Project = {
   name: 'Google — Agent Assist',
@@ -128,6 +163,7 @@ const technica: Project = {
 };
 
 export const projects = {
+  'looker-studio': lookerStudio,
   'agent-assist': agentAssist,
   'arc-xp': arcXp,
   bitcamp,

@@ -10,6 +10,11 @@ const angular: Tag = {
   color: 'red',
 };
 
+const angularjs: Tag = {
+  text: 'AngularJS',
+  color: 'red',
+};
+
 const aws: Tag = {
   text: 'AWS',
   color: 'peach',
@@ -25,6 +30,11 @@ const jasmine: Tag = {
   color: 'mauve',
 };
 
+const java: Tag = {
+  text: 'Java',
+  color: 'peach',
+};
+
 const javascript: Tag = {
   text: 'JavaScript',
   color: 'yellow',
@@ -33,6 +43,11 @@ const javascript: Tag = {
 const jest: Tag = {
   text: 'Jest',
   color: 'red',
+};
+
+const junit: Tag = {
+  text: 'JUnit',
+  color: 'green',
 };
 
 const nextjs: Tag = {
@@ -77,11 +92,14 @@ const vue: Tag = {
 
 export const tags = {
   angular,
+  angularjs,
   aws,
   expo,
   jasmine,
+  java,
   javascript,
   jest,
+  junit,
   nextjs,
   ngrx,
   nuxt,
