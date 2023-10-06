@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { threeMinifier } from '@yushijinhun/three-minifier-rollup';
 import { imagetools } from 'vite-imagetools';
 import { sveltekit } from '@sveltejs/kit/vite';
-// import { SvelteKitPWA } from '@vite-pwa/sveltekit';
+import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 
 export default defineConfig({
   plugins: [
@@ -25,53 +25,56 @@ export default defineConfig({
     sveltekit(),
 
     // PWA
-    // SvelteKitPWA({
-    //   strategies: 'generateSW',
-    //   registerType: 'autoUpdate',
-    //   base: '/',
-    //   scope: '/',
-    //   workbox: {
-    //     // Exclude /resume from sw precache
-    //     navigateFallbackDenylist: [/\/resume/],
-    //   },
-    //   manifest: {
-    //     name: 'Jason Liu',
-    //     short_name: 'Jason Liu',
-    //     description:
-    //       'Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland.',
-    //     start_url: '/',
-    //     scope: '/',
-    //     display: 'standalone',
-    //     background_color: '#1e1e2e',
-    //     theme_color: '#1e1e2e',
-    //     icons: [
-    //       {
-    //         src: '/icon-192.png',
-    //         sizes: '192x192',
-    //         type: 'image/png',
-    //         purpose: 'any',
-    //       },
-    //       {
-    //         src: '/icon-maskable-192.png',
-    //         sizes: '192x192',
-    //         type: 'image/png',
-    //         purpose: 'maskable',
-    //       },
-    //       {
-    //         src: '/icon-512.png',
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //         purpose: 'any',
-    //       },
-    //       {
-    //         src: '/icon-maskable-512.png',
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //         purpose: 'maskable',
-    //       },
-    //     ],
-    //   },
-    // }),
+    SvelteKitPWA({
+      // Unregister service worker
+      // Disable selfDestroying option to re-add PWA
+      selfDestroying: true,
+      strategies: 'generateSW',
+      registerType: 'autoUpdate',
+      base: '/',
+      scope: '/',
+      workbox: {
+        // Exclude /resume from sw precache
+        navigateFallbackDenylist: [/\/resume/],
+      },
+      manifest: {
+        name: 'Jason Liu',
+        short_name: 'Jason Liu',
+        description:
+          'Portfolio and personal website of Jason Liu, a web developer and student at the University of Maryland.',
+        start_url: '/',
+        scope: '/',
+        display: 'standalone',
+        background_color: '#1e1e2e',
+        theme_color: '#1e1e2e',
+        icons: [
+          {
+            src: '/icon-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any',
+          },
+          {
+            src: '/icon-maskable-192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+          {
+            src: '/icon-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any',
+          },
+          {
+            src: '/icon-maskable-512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
+        ],
+      },
+    }),
   ],
 
   ssr: {
