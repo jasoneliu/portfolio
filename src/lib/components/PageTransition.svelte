@@ -139,6 +139,7 @@
 
   .page-transition {
     display: flex;
+    position: relative;
     flex-direction: column;
     min-height: 100dvh;
   }

@@ -16,10 +16,13 @@
   // Scroll position
   let prevScrollY: number | undefined;
 
+  // Detect whether the user is scrolling down
+  let isScrollingDown = false;
+  $: isScrollingDown = getIsScrollingDown($scrollY);
+
   // Hide navbar when scrolling down
   let showNavbar = true;
-  $: showNavbar =
-    !isScrollingDown($scrollY) || $hashScrolling > 0 || $mobileLayout;
+  $: showNavbar = !isScrollingDown || $hashScrolling > 0 || $mobileLayout;
 
   // Hamburger menu for mobile layout
   let hamburgerOpen = false;
@@ -36,6 +39,9 @@
     closeHamburger();
   }
 
+  // Update body background color for overscroll
+  $: updateBodyBackgroundColor(isScrollingDown);
+
   /** Update URL hash on navigation. */
   function setUrlHash(navItem: string) {
     if (navItem === 'Home') {
@@ -46,7 +52,7 @@
   }
 
   /** Detect whether the user is scrolling down. */
-  function isScrollingDown(scrollY: number) {
+  function getIsScrollingDown(scrollY: number) {
     // Not scrolling down on first render
     if (!prevScrollY) {
       prevScrollY = scrollY;
@@ -71,6 +77,15 @@
   function closeHamburger() {
     animateHamburger();
     hamburgerOpen = false;
+  }
+
+  /** Update body background color based on scroll direction. */
+  function updateBodyBackgroundColor(isScrollingDown: boolean) {
+    if (!animationReady) {
+      return;
+    }
+    const backgroundColor = isScrollingDown ? colors.base : colors.crust;
+    document.body.style.backgroundColor = backgroundColor;
   }
 
   // Close hamburger before navigating

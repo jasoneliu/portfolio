@@ -115,7 +115,6 @@
   .background-gradient {
     position: absolute;
     top: 0;
-    z-index: -1;
     width: 100%;
     height: 100dvh;
     background-image: url('$lib/assets/background-gradient.png');
@@ -135,6 +134,13 @@
     justify-content: center;
     flex-direction: column;
     flex-grow: 1;
+    // Start solid background color after background-gradient
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      transparent 100dvh,
+      $base 100dvh
+    );
     padding-top: 6.5rem;
   }
 </style>
