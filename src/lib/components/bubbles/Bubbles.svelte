@@ -46,7 +46,9 @@
   .bubbles {
     position: fixed;
     top: 0;
-    width: 100%;
+
+    // Prevent flickering on window resize
+    width: max(100%, 100rem);
     height: 100vh;
   }
 </style>
