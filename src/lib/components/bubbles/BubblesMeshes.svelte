@@ -131,9 +131,9 @@
 
       // Compute noise
       const noise = noise3D(
-        x * 0.025 + elapsedTime * 0.1 + bubble.randomness,
-        y * 0.025 + elapsedTime * 0.1 + bubble.randomness,
-        z * 0.025 + elapsedTime * 0.1 + bubble.randomness
+        x * 0.03 + elapsedTime * 0.1 + bubble.randomness,
+        y * 0.03 + elapsedTime * 0.1 + bubble.randomness,
+        z * 0.03 + elapsedTime * 0.1 + bubble.randomness
       );
       const scale = 1 + noise * 0.25;
 
