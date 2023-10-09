@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { quadInOut, quintOut } from 'svelte/easing';
   import { tweened } from 'svelte/motion';
+  import { bubblesScroll } from '$lib/easing';
   import {
     innerWidth,
     scrollY,
@@ -55,7 +56,8 @@
     animateIntro();
   }
   $: if (!introAnimating) {
-    scrollAnimationOptions.duration = 1000;
+    scrollAnimationOptions.duration = 500;
+    scrollAnimationOptions.easing = bubblesScroll;
   }
 
   /** Run intro animation. */
