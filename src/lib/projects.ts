@@ -117,14 +117,7 @@ const arcXp: Project = {
     'Microservices Architectures',
     'Design Systems',
   ],
-  tags: [
-    tags.typescript,
-    tags.react,
-    tags.nextjs,
-    tags.storybook,
-    tags.aws,
-    tags.jest,
-  ],
+  tags: [tags.typescript, tags.react, tags.storybook, tags.aws, tags.jest],
   image: arcXpImage,
   slug: 'arc-xp',
 };
