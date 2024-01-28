@@ -1,3 +1,10 @@
 ### Overview
 
 🚧 Work in Progress 🚧
+
+I haven't gotten around to writing about my internship project yet, check back
+in a few months!
+
+In the meantime, check out the
+[documentation for dimension control](https://support.google.com/looker-studio/answer/14010352),
+the feature I developed during this internship.
